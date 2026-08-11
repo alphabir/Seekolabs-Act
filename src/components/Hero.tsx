@@ -5,11 +5,12 @@ import {
   Globe2, 
   CheckCircle2, 
   Sparkles,
-  Megaphone,
   ShieldCheck,
   Zap,
-  Layers,
-  Award
+  Code2,
+  Rocket,
+  AppWindow,
+  Terminal
 } from 'lucide-react';
 
 interface HeroProps {
@@ -35,8 +36,8 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="relative rounded-3xl bg-gradient-to-b from-slate-900/90 via-blue-950/80 to-slate-900/90 border border-indigo-500/30 p-8 sm:p-12 lg:p-16 shadow-2xl shadow-indigo-950/50 backdrop-blur-2xl overflow-hidden mb-12">
           
           {/* Background Decorative Graphic */}
-          <div className="absolute top-4 right-6 opacity-10 pointer-events-none hidden lg:block">
-            <Megaphone className="w-80 h-80 text-cyan-400 rotate-12" />
+          <div className="absolute top-4 right-6 opacity-10 pointer-events-none hidden lg:block text-cyan-400">
+            <Terminal className="w-80 h-80 rotate-12" />
           </div>
 
           <div className="max-w-3xl space-y-6 text-left">
@@ -44,39 +45,39 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Brand Chip */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold tracking-wide">
               <Sparkles className="w-4 h-4 text-cyan-400" />
-              <span>seekolabs.tech • Global Performance CPA Engine</span>
+              <span>seekolabs.tech • House of Developers & Digital App Publishing House</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
-              Next-Gen Performance <br />
+              We Engineer & Publish <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300">
-                Marketing & AdTech Engine
+                Next-Gen Software & Apps
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-              Seekolabs is a premier ad technology and performance marketing network delivering high-converting global traffic across direct CPA, CPL, and CPS offers. We empower advertisers and publishers with zero-fraud telemetry, real-time S2S postbacks, and premium global inventory.
+              Seekolabs is an independent app publishing house and product studio powered by a collective of passionate software engineers. Based in Kolkata, India, we build, scale, and publish our own ecosystem of high-performance web applications, mobile software, utilities, and developer tools.
             </p>
 
             {/* Bullet Highlights */}
             <div className="grid sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-200 pt-2">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Direct Advertiser High-Payout Offers</span>
+                <span>100% In-House Software Engineering</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>99.8% AI Bot & Fraud Telemetry</span>
+                <span>Publishing House Model — Not an Agency</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Instant S2S Postback Integration</span>
+                <span>Multi-Platform App Distribution</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                <span>Dedicated Account & Traffic Managers</span>
+                <span>Data-Driven Growth & Scaling Engine</span>
               </div>
             </div>
 
@@ -96,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({
                 className="px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-indigo-500/40 text-indigo-200 font-bold text-sm flex items-center gap-2 transition-all"
               >
                 <Globe2 className="w-4 h-4 text-indigo-400" />
-                <span>Read Company Brief</span>
+                <span>Read About Our House</span>
               </button>
             </div>
 
@@ -108,34 +109,34 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-slate-900/60 border border-indigo-900/40 p-5 rounded-2xl backdrop-blur-md">
             <div className="flex items-center gap-2 text-cyan-400 mb-1">
-              <Zap className="w-4 h-4" />
-              <span className="text-xs font-mono uppercase font-bold">Monthly Impressions</span>
+              <Code2 className="w-4 h-4" />
+              <span className="text-xs font-mono uppercase font-bold">In-House Engineers</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-white">4.2 Billion+</div>
+            <div className="text-2xl sm:text-3xl font-black text-white">House of Devs</div>
           </div>
 
           <div className="bg-slate-900/60 border border-indigo-900/40 p-5 rounded-2xl backdrop-blur-md">
             <div className="flex items-center gap-2 text-indigo-400 mb-1">
-              <Layers className="w-4 h-4" />
-              <span className="text-xs font-mono uppercase font-bold">Core CPA Verticals</span>
+              <AppWindow className="w-4 h-4" />
+              <span className="text-xs font-mono uppercase font-bold">Product Portfolio</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-white">7 High-Payout Niches</div>
+            <div className="text-2xl sm:text-3xl font-black text-white">Web & Mobile Apps</div>
           </div>
 
           <div className="bg-slate-900/60 border border-indigo-900/40 p-5 rounded-2xl backdrop-blur-md">
             <div className="flex items-center gap-2 text-emerald-400 mb-1">
-              <ShieldCheck className="w-4 h-4" />
-              <span className="text-xs font-mono uppercase font-bold">Bot Protection</span>
+              <Rocket className="w-4 h-4" />
+              <span className="text-xs font-mono uppercase font-bold">Business Model</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-white">99.8% Clean Traffic</div>
+            <div className="text-2xl sm:text-3xl font-black text-white">App Publishing</div>
           </div>
 
           <div className="bg-slate-900/60 border border-indigo-900/40 p-5 rounded-2xl backdrop-blur-md">
             <div className="flex items-center gap-2 text-purple-400 mb-1">
-              <Award className="w-4 h-4" />
-              <span className="text-xs font-mono uppercase font-bold">Global Presence</span>
+              <Globe2 className="w-4 h-4" />
+              <span className="text-xs font-mono uppercase font-bold">Headquarters</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-white">150+ GEOs</div>
+            <div className="text-2xl sm:text-3xl font-black text-white">Kolkata, India</div>
           </div>
         </div>
 
@@ -143,4 +144,5 @@ export const Hero: React.FC<HeroProps> = ({
     </section>
   );
 };
+
 

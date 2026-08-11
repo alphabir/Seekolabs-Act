@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Mail, MapPin, Sparkles, Send } from 'lucide-react';
+import { Code2, Mail, MapPin, Sparkles, Send } from 'lucide-react';
 
 interface FooterProps {
   onScrollToSection: (sectionId: string) => void;
@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => onScrollToSection('hero')}>
               <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-400 p-0.5 shadow-md">
                 <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <Cpu className="w-5 h-5 text-cyan-400" />
+                  <Code2 className="w-5 h-5 text-cyan-400" />
                 </div>
               </div>
               <span className="font-black text-xl tracking-wider text-white">
@@ -26,12 +26,12 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
             </div>
 
             <p className="text-slate-300 text-xs leading-relaxed">
-              Seekolabs (<code className="text-cyan-300">seekolabs.tech</code>) is a performance marketing adtech engine connecting direct advertisers with high-yield global traffic inventory.
+              Seekolabs (<code className="text-cyan-300">seekolabs.tech</code>) is a digital app publishing house and product studio. We engineer, launch, and scale our own ecosystem of software products.
             </p>
 
             <div className="flex items-center gap-2 text-slate-300 text-xs">
               <MapPin className="w-4 h-4 text-indigo-400 shrink-0" />
-              <span>Kolkata, India • Global Operations</span>
+              <span>Kolkata, India • Global Publishing</span>
             </div>
 
             <div className="space-y-1.5 text-slate-300 text-xs">
@@ -47,31 +47,30 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
 
           {/* Col 2: Navigation */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Quick Navigation</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Navigation</h4>
             <ul className="space-y-2 font-medium">
-              <li onClick={() => onScrollToSection('about')} className="hover:text-cyan-400 cursor-pointer">Company Brief</li>
-              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">AdTech Solutions</li>
-              <li onClick={() => onScrollToSection('contact')} className="hover:text-cyan-400 cursor-pointer text-cyan-400 font-bold">Partner Inquiry Form</li>
+              <li onClick={() => onScrollToSection('about')} className="hover:text-cyan-400 cursor-pointer">About Our House</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">App Ecosystem</li>
+              <li onClick={() => onScrollToSection('contact')} className="hover:text-cyan-400 cursor-pointer text-cyan-400 font-bold">Contact Leadership</li>
             </ul>
           </div>
 
-          {/* Col 3: AdTech Solutions */}
+          {/* Col 3: Publishing House Focus */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Capabilities</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Publishing Focus</h4>
             <ul className="space-y-2 font-medium">
-              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Direct Advertiser Supply</li>
-              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Real-Time S2S Telemetry</li>
-              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">AI Anti-Fraud Protection</li>
-              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Conversion Pre-Landers</li>
-              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Global Traffic Reach</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Web & Productivity Apps</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Mobile Utilities & Tools</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Developer Tools & APIs</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">App Incubator & Growth</li>
             </ul>
           </div>
 
           {/* Col 4: Contact CTA */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Get Started</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Connect</h4>
             <p className="text-slate-400 text-xs">
-              Connect with our partnership team to access direct CPA offers or buy premium traffic.
+              Collaborate with Seekolabs for app co-publishing, distribution, or technical alliances.
             </p>
 
             <button
@@ -79,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
               className="w-full py-2.5 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md"
             >
               <Send className="w-3.5 h-3.5" />
-              <span>Submit Partnership Form</span>
+              <span>Contact Seekolabs</span>
             </button>
           </div>
 
@@ -101,4 +100,5 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
     </footer>
   );
 };
+
 

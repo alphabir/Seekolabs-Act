@@ -1,18 +1,19 @@
 import React from 'react';
 import { 
   Cpu, 
-  ShieldCheck, 
-  Zap, 
-  BarChart3, 
-  Target, 
+  Code2, 
+  AppWindow, 
+  Smartphone, 
+  Rocket, 
   Globe2, 
-  TrendingUp, 
   Layers, 
   CheckCircle2, 
   ArrowRight, 
   Send,
   Database,
-  Sliders
+  Terminal,
+  Sparkles,
+  Workflow
 } from 'lucide-react';
 
 interface SolutionsSectionProps {
@@ -20,73 +21,73 @@ interface SolutionsSectionProps {
 }
 
 export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToContact }) => {
-  const corePillars = [
+  const publishingPillars = [
     {
-      icon: Cpu,
-      title: "Direct Advertiser Supply Chain",
-      badge: "0% Intermediary Fee",
-      description: "We bypass multi-tier broker networks to bring publishers direct advertiser budgets with unclipped CPA payouts and real-time conversion verification.",
+      icon: AppWindow,
+      title: "Web Applications & Productivity Studios",
+      badge: "In-House Products",
+      description: "We build intuitive, ultra-fast web applications designed for high daily utility, rich user engagement, and clean desktop performance.",
       points: [
-        "Direct-from-source budget allocations",
-        "Higher payout caps & custom payouts",
-        "Faster payout cycles with zero hidden deductions"
+        "Modern React & TypeScript frontend architectures",
+        "Sub-second load times & responsive design",
+        "In-house UX design & component systems"
       ]
     },
     {
-      icon: Zap,
-      title: "Real-Time S2S Telemetry Engine",
-      badge: "< 50ms Processing",
-      description: "Server-to-Server postbacks with instant attribution mapping prevent conversion dropping, browser tracking blocks, and attribution latency.",
+      icon: Smartphone,
+      title: "Mobile Tools & Utility Applications",
+      badge: "iOS & Android",
+      description: "Consumer utilities, productivity helpers, and mobile software built for performance, security, and global app store distribution.",
       points: [
-        "Cookie-less S2S postback tracking",
-        "Custom parameter pass-through (sub_id, click_id)",
-        "Automated API log synchronization"
+        "Cross-platform mobile engineering",
+        "Lightweight offline-first data persistence",
+        "Seamless multi-device synchronization"
       ]
     },
     {
-      icon: ShieldCheck,
-      title: "AI Anti-Fraud & IVT Protection",
-      badge: "99.8% Clean Traffic",
-      description: "Multi-layered bot detection analyzes fingerprinting, IP reputation, proxy spoofing, and click velocity to ensure pure user traffic.",
+      icon: Terminal,
+      title: "Developer Tooling & Micro-SaaS",
+      badge: "Developer House",
+      description: "Developer-focused APIs, code utilities, and specialized web tools crafted to solve complex software engineering bottlenecks.",
       points: [
-        "Real-time IP & ASN reputation screening",
-        "Device fingerprinting & click pattern analysis",
-        "Automated fake lead and bot exclusion"
+        "API-first architecture & developer SDKs",
+        "Real-time data processing microservices",
+        "Automated deployment & CI/CD pipelines"
       ]
     },
     {
-      icon: Sliders,
-      title: "Conversion-Engineered Pre-Landers",
-      badge: "Pre-Tested Landers",
-      description: "Our in-house creative desk builds, tests, and optimizes localized landing pages designed for high-conversion velocity across mobile and desktop.",
+      icon: Rocket,
+      title: "App Incubator & Growth Engine",
+      badge: "In-House Scale",
+      description: "Our publishing desk runs continuous R&D, rapid prototyping, and user acquisition strategies to scale our app portfolio globally.",
       points: [
-        "Geo-targeted and localized creative copy",
-        "Mobile-first ultra-fast loading designs",
-        "Continuous A/B multivariate testing"
+        "Data-driven App Store Optimization (ASO)",
+        "User retention & telemetry analytics",
+        "Continuous feature iteration & testing"
       ]
     }
   ];
 
-  const trafficChannels = [
+  const houseCapabilities = [
     {
-      title: "In-Page Push & Native",
-      reach: "500M+ Daily Imps",
-      desc: "Non-intrusive high-CTR ad units delivering genuine user clicks with native content blending."
+      title: "Full-Stack Development",
+      category: "Core Stack",
+      desc: "TypeScript, React, Node.js, Express, and cloud native backend services."
     },
     {
-      title: "Popunder & Direct Domain",
-      reach: "1.2B+ Daily Imps",
-      desc: "Full-screen high-impact landing page exposure ideal for high-volume conversion offers."
+      title: "UI/UX Product Design",
+      category: "Design System",
+      desc: "Pixel-perfect user interfaces, custom component libraries, and intuitive user journeys."
     },
     {
-      title: "Social & Search Intent",
-      reach: "High Intent Users",
-      desc: "Targeted keyword and demographic campaigns driving highly qualified, high-LTV users."
+      title: "Global Distribution",
+      category: "Publishing",
+      desc: "Deploying and managing applications across web domains and app marketplaces."
     },
     {
-      title: "Video & In-App Inventory",
-      reach: "300M+ Monthly Users",
-      desc: "Immersive video pre-rolls and rewarded in-app placements for maximum engagement."
+      title: "Telemetry & Performance",
+      category: "Analytics",
+      desc: "Real-time error logging, performance monitoring, and user conversion insights."
     }
   ];
 
@@ -99,16 +100,16 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-3">
               <Layers className="w-3.5 h-3.5" />
-              <span>Performance Architecture & Technology</span>
+              <span>App Publishing Ecosystem</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              Next-Generation AdTech Infrastructure <br />
+              Our Publishing House <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300">
-                Built for Scalable ROI
+                Product Pillars & Software Engineering
               </span>
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
-              Seekolabs combines proprietary tracking telemetry, direct advertiser integration, and AI fraud suppression to maximize media buying yield and campaign longevity.
+            <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed font-light">
+              At Seekolabs, we combine modern software engineering, product design, and distribution capabilities to build and publish first-party digital applications.
             </p>
           </div>
 
@@ -118,14 +119,14 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg transition-all"
             >
               <Send className="w-4 h-4" />
-              <span>Inquire For Media Partnerships</span>
+              <span>Get In Touch For Collaborations</span>
             </button>
           </div>
         </div>
 
-        {/* 4 Core Technology Pillars */}
+        {/* 4 Core Publishing Pillars */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {corePillars.map((pillar, idx) => {
+          {publishingPillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
               <div 
@@ -166,51 +167,51 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
           })}
         </div>
 
-        {/* Global Traffic Reach & Channel Breakdown */}
+        {/* Product Studio Capabilities Grid */}
         <div className="bg-slate-900 border border-indigo-500/20 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-5 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs uppercase tracking-widest">
-                <Globe2 className="w-3.5 h-3.5" />
-                <span>Global Traffic Ecosystem</span>
+                <Code2 className="w-3.5 h-3.5" />
+                <span>House Stack & Infrastructure</span>
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-black text-white">
-                Multi-Channel Traffic Distribution
+                Engineered In-House From Concept to Code
               </h3>
 
               <p className="text-sm text-slate-300 leading-relaxed font-light">
-                Our media buying desks operate programmatic ad distribution across high-performing traffic channels, ensuring optimal audience matching for direct advertisers.
+                Our house of developers maintains full control over product architecture, performance optimization, and release schedules to ensure consistent software standards across our app portfolio.
               </p>
 
               <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-2 font-mono text-xs">
                 <div className="flex justify-between items-center text-slate-300">
-                  <span>Targetable GEOs:</span>
-                  <span className="text-cyan-400 font-bold">150+ Global Markets</span>
+                  <span>Development Model:</span>
+                  <span className="text-cyan-400 font-bold">In-House Publishing</span>
                 </div>
                 <div className="flex justify-between items-center text-slate-300">
-                  <span>Tracking Latency:</span>
-                  <span className="text-emerald-400 font-bold">&lt; 50ms Real-Time</span>
+                  <span>Client Work:</span>
+                  <span className="text-emerald-400 font-bold">None (100% First-Party)</span>
                 </div>
                 <div className="flex justify-between items-center text-slate-300">
-                  <span>Postback Success Rate:</span>
-                  <span className="text-indigo-300 font-bold">99.98% Accuracy</span>
+                  <span>Development Hub:</span>
+                  <span className="text-indigo-300 font-bold">Kolkata, India</span>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
-              {trafficChannels.map((channel, cIdx) => (
+              {houseCapabilities.map((cap, cIdx) => (
                 <div key={cIdx} className="p-5 bg-slate-950/80 border border-slate-800 rounded-2xl space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-white">{channel.title}</span>
+                    <span className="text-sm font-bold text-white">{cap.title}</span>
                   </div>
                   <span className="inline-block px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-mono text-[10px] font-bold">
-                    {channel.reach}
+                    {cap.category}
                   </span>
                   <p className="text-xs text-slate-400 leading-relaxed">
-                    {channel.desc}
+                    {cap.desc}
                   </p>
                 </div>
               ))}
@@ -222,9 +223,9 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
         {/* Partnership Callout Banner */}
         <div className="mt-12 p-8 bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 border border-indigo-500/30 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-xl font-bold text-white">Ready to Scale With Seekolabs?</h4>
+            <h4 className="text-xl font-bold text-white">Interested in Co-Publishing or Strategic Alliances?</h4>
             <p className="text-xs text-slate-300 max-w-xl">
-              Whether you are an advertiser looking for validated user acquisitions or a media buyer seeking direct advertiser inventory, connect with our management team today.
+              Seekolabs collaborates with distribution partners, platform creators, and tech innovators. Connect with our engineering and publishing team today.
             </p>
           </div>
 
@@ -232,7 +233,7 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
             onClick={onScrollToContact}
             className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shrink-0 flex items-center gap-2 transition-all"
           >
-            <span>Partner With Us</span>
+            <span>Reach Out To Seekolabs</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -241,3 +242,4 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
     </section>
   );
 };
+

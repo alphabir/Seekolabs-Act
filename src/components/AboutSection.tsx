@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Cpu, Globe, Zap, Target, Layers, ArrowRight, Award, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Cpu, Globe, Zap, Code2, Rocket, Layers, ArrowRight, Award, CheckCircle2, AppWindow, Users } from 'lucide-react';
 
 interface AboutSectionProps {
   onScrollToContact: () => void;
@@ -16,63 +16,63 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact })
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs uppercase tracking-widest">
               <Cpu className="w-3.5 h-3.5" />
-              <span>Company Brief & Overview</span>
+              <span>House of Developers & Publishing House</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              Empowering High-Yield <br />
+              A Digital Publishing House <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300">
-                Performance Advertising
+                Driven by Passionate Developers
               </span>
             </h2>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-              <strong className="text-white font-semibold">Seekolabs</strong> (`seekolabs.tech`) is a premier ad technology company and performance marketing network headquartered in Kolkata, India, operating across tier-1, tier-2, and emerging global markets.
+              <strong className="text-white font-semibold">Seekolabs</strong> (`seekolabs.tech`) is an independent software publishing house based in Kolkata, India. We are <strong className="text-cyan-300 font-medium">not a client services agency</strong> — we are a collective of product builders and software engineers who build, launch, scale, and publish our own ecosystem of digital products, mobile tools, and web applications.
             </p>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-              We connect direct advertisers with top-tier affiliate media buyers and publishers. Powered by real-time server-to-server (S2S) postback telemetry and machine-learning bot protection, Seekolabs ensures max EPCs and clean, verified conversion data.
+              By controlling the entire lifecycle from initial architectural concept to code execution, user experience design, and global app store distribution, Seekolabs crafts high-quality software that solves real user needs.
             </p>
 
             {/* Core Values / Pillars */}
             <div className="grid sm:grid-cols-2 gap-4 pt-2">
               <div className="p-4 bg-slate-900/80 border border-indigo-900/50 rounded-2xl">
                 <div className="flex items-center gap-2 text-cyan-400 font-bold text-sm mb-1">
-                  <Target className="w-4 h-4" />
-                  <span>Direct Advertiser Offers</span>
+                  <Code2 className="w-4 h-4" />
+                  <span>100% In-House Engineering</span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Exclusive CPA, CPL, and RevShare offers across Games, iGaming, Dating, VOD, Nutra, and Betting with no middleman cuts.
+                  Every product in our portfolio is engineered directly by our core development team with modern TypeScript, React, Cloud Native, and mobile stacks.
                 </p>
               </div>
 
               <div className="p-4 bg-slate-900/80 border border-indigo-900/50 rounded-2xl">
                 <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm mb-1">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>AI Anti-Fraud Telemetry</span>
+                  <Rocket className="w-4 h-4" />
+                  <span>Publishing House Model</span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  99.8% bot filtering ensuring only real, high-intent user traffic reaches landing pages.
+                  We invest our own capital, talent, and distribution resources to incubate and grow software products internally.
                 </p>
               </div>
 
               <div className="p-4 bg-slate-900/80 border border-indigo-900/50 rounded-2xl">
                 <div className="flex items-center gap-2 text-purple-400 font-bold text-sm mb-1">
-                  <Zap className="w-4 h-4" />
-                  <span>Real-Time S2S Postbacks</span>
+                  <AppWindow className="w-4 h-4" />
+                  <span>Product Diversity</span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Instant conversion log dispatching with zero attribution loss and sub-50ms latency.
+                  Our app portfolio spans utility software, developer tooling, web productivity platforms, and mobile consumer applications.
                 </p>
               </div>
 
               <div className="p-4 bg-slate-900/80 border border-indigo-900/50 rounded-2xl">
                 <div className="flex items-center gap-2 text-amber-400 font-bold text-sm mb-1">
                   <Globe className="w-4 h-4" />
-                  <span>Global Traffic Coverage</span>
+                  <span>Global Reach & Scaling</span>
                 </div>
                 <p className="text-xs text-slate-400">
-                  Tier-1, Tier-2, and high-growth emerging GEO coverage with 150+ targetable regions worldwide.
+                  We ship software to users across North America, Europe, Asia, and emerging markets with localized user experiences.
                 </p>
               </div>
             </div>
@@ -82,7 +82,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact })
                 onClick={onScrollToContact}
                 className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg flex items-center gap-2 transition-all"
               >
-                <span>Inquire For Partnerships</span>
+                <span>Connect With Leadership</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -96,35 +96,35 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact })
 
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-cyan-400 font-bold">Seekolabs Tech Stack</span>
+                  <span className="text-xs font-mono uppercase text-cyan-400 font-bold">Seekolabs House Manifesto</span>
                   <span className="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[10px] rounded-full font-bold">
-                    ACTIVE
+                    IN-HOUSE PRODUCT STUDIO
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-black text-white">Why Media Buyers & Advertisers Choose Seekolabs</h3>
+                <h3 className="text-2xl font-black text-white">Why We Build As A Publishing House</h3>
 
                 <ul className="space-y-3 text-xs text-slate-300">
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong>Flexible Bidding:</strong> Support for CPA, CPL, CPS, RevShare, CPT, and CPC formats.</span>
+                    <span><strong>Product Autonomy:</strong> No client specs or agency constraints — we build software we believe in.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong>Pre-Lander Optimization:</strong> Tested landers optimized for high conversion velocity.</span>
+                    <span><strong>Rapid Iteration:</strong> Continuous deployment cycles with immediate user telemetry feedback loops.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong>Fast & Reliable Payouts:</strong> Flexible weekly and bi-weekly payouts for qualified partners.</span>
+                    <span><strong>Modern Technology Stack:</strong> Full-stack TypeScript, React, Next/Vite, Node.js microservices, and native mobile modules.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                    <span><strong>1-on-1 Account Management:</strong> Dedicated affiliate managers and media buyers assigned to every account.</span>
+                    <span><strong>Collaborative Ecosystem:</strong> Strategic distribution, co-publishing, and technical integration partnerships.</span>
                   </li>
                 </ul>
 
                 <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-center space-y-1">
-                  <span className="text-slate-400 text-[10px] uppercase font-mono block">Main Partnership Contacts</span>
+                  <span className="text-slate-400 text-[10px] uppercase font-mono block">Direct Leadership Contacts</span>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-1 font-mono text-xs">
                     <a href="mailto:abir@seekolabs.tech" className="text-cyan-400 font-bold hover:underline">
                       abir@seekolabs.tech
@@ -146,3 +146,4 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact })
     </section>
   );
 };
+

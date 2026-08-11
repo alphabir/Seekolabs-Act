@@ -1,32 +1,30 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, ShieldCheck, Mail, Building, User, DollarSign, Layers, Sparkles, MessageSquare } from 'lucide-react';
+import { Send, CheckCircle2, ShieldCheck, Mail, Building, User, Layers, Sparkles, MessageSquare, Code2, Rocket } from 'lucide-react';
 
 export const ContactForm: React.FC = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [companyName, setCompanyName] = useState('');
-  const [role, setRole] = useState('Advertiser / Brand');
-  const [monthlyVolume, setMonthlyVolume] = useState('$10,000 - $50,000 / mo');
-  const [selectedVerticals, setSelectedVerticals] = useState<string[]>(['iGaming & Casino', 'Games & MMORPG']);
+  const [inquiryType, setInquiryType] = useState('App Distribution & Publishing');
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(['Productivity & Web Apps', 'Mobile Utilities']);
   const [message, setMessage] = useState('');
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successResponse, setSuccessResponse] = useState<{ message: string; leadId: string } | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const verticalsList = [
-    'Games & MMORPG',
-    'Webcam & Live Streams',
-    'iGaming & Casino',
-    'Casual Dating',
-    'Video-on-Demand',
-    'Betting & Sportsbook',
-    'Nutra & Sweepstakes'
+  const categoriesList = [
+    'Productivity & Web Apps',
+    'Mobile Utilities & Tools',
+    'Developer Tooling & APIs',
+    'Micro-SaaS Platforms',
+    'Creative & Media Tools',
+    'Open Source Frameworks'
   ];
 
-  const handleVerticalToggle = (vert: string) => {
-    setSelectedVerticals(prev =>
-      prev.includes(vert) ? prev.filter(v => v !== vert) : [...prev, vert]
+  const handleCategoryToggle = (cat: string) => {
+    setSelectedCategories(prev =>
+      prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
     );
   };
 
@@ -43,9 +41,8 @@ export const ContactForm: React.FC = () => {
           fullName,
           email,
           companyName,
-          role,
-          monthlyVolume,
-          verticals: selectedVerticals,
+          inquiryType,
+          categories: selectedCategories,
           message
         })
       });
@@ -62,7 +59,7 @@ export const ContactForm: React.FC = () => {
       }
     } catch (err) {
       setSuccessResponse({
-        message: 'Thank you for reaching out! Your inquiry has been logged successfully and our team will get back to you shortly.',
+        message: 'Thank you for reaching out! Your inquiry has been logged successfully and our leadership team will respond shortly.',
         leadId: `LEAD-${Math.floor(100000 + Math.random() * 900000)}`
       });
     } finally {
@@ -90,13 +87,13 @@ export const ContactForm: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-3">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Get In Touch With Seekolabs</span>
+            <span>App Publishing & Collaboration</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-            Partner With <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">Seekolabs</span> Today
+            Connect With <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">Seekolabs</span> Publishing House
           </h2>
           <p className="mt-3 text-slate-400 text-sm sm:text-base leading-relaxed">
-            Whether you are an advertiser seeking scalable performance traffic or a media buyer looking for direct high-payout CPA offers, submit your details below to connect with our partnership team.
+            Whether you are interested in app distribution partnerships, strategic co-publishing, technical integration, or product inquiries, reach out directly to our leadership team.
           </p>
         </div>
 
@@ -107,8 +104,8 @@ export const ContactForm: React.FC = () => {
               <Mail className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-xs font-mono uppercase text-cyan-400 font-bold block">Direct Partnership Contacts</span>
-              <p className="text-xs text-slate-300">Reach our main leadership team anytime directly via email:</p>
+              <span className="text-xs font-mono uppercase text-cyan-400 font-bold block">Direct Leadership Contacts</span>
+              <p className="text-xs text-slate-300">Email our founders and engineering leads directly:</p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
@@ -138,7 +135,7 @@ export const ContactForm: React.FC = () => {
                 <CheckCircle2 className="w-10 h-10" />
               </div>
               <div>
-                <h3 className="text-2xl font-black text-white">Inquiry Received!</h3>
+                <h3 className="text-2xl font-black text-white">Inquiry Submitted!</h3>
                 <p className="text-slate-300 text-sm mt-2 leading-relaxed">
                   {successResponse.message}
                 </p>
@@ -152,7 +149,7 @@ export const ContactForm: React.FC = () => {
                   onClick={handleReset}
                   className="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl text-xs transition-colors"
                 >
-                  Submit Another Inquiry
+                  Send Another Message
                 </button>
               </div>
             </div>
@@ -185,31 +182,31 @@ export const ContactForm: React.FC = () => {
                 <div>
                   <label className="block font-medium text-slate-200 mb-1.5 flex items-center gap-1.5">
                     <Mail className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>Work Email Address *</span>
+                    <span>Email Address *</span>
                   </label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="alex@company.com"
+                    placeholder="alex@example.com"
                     className="w-full bg-slate-950 border border-slate-800 focus:border-cyan-400 rounded-xl px-4 py-3 text-white text-xs placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400"
                   />
                 </div>
               </div>
 
-              {/* Row 2: Company & Role */}
+              {/* Row 2: Company & Inquiry Type */}
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block font-medium text-slate-200 mb-1.5 flex items-center gap-1.5">
                     <Building className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>Company / Brand Name</span>
+                    <span>Company / Organization (Optional)</span>
                   </label>
                   <input
                     type="text"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    placeholder="e.g. Nexus Media Group"
+                    placeholder="e.g. Software House / Platform"
                     className="w-full bg-slate-950 border border-slate-800 focus:border-cyan-400 rounded-xl px-4 py-3 text-white text-xs placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400"
                   />
                 </div>
@@ -217,76 +214,59 @@ export const ContactForm: React.FC = () => {
                 <div>
                   <label className="block font-medium text-slate-200 mb-1.5 flex items-center gap-1.5">
                     <Layers className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>I am joining as:</span>
+                    <span>Nature of Collaboration:</span>
                   </label>
                   <select
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
+                    value={inquiryType}
+                    onChange={(e) => setInquiryType(e.target.value)}
                     className="w-full bg-slate-950 border border-slate-800 focus:border-cyan-400 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:ring-1 focus:ring-cyan-400"
                   >
-                    <option value="Advertiser / Brand">Direct Advertiser / Brand</option>
-                    <option value="Publisher / Affiliate Network">Affiliate Network / Publisher</option>
-                    <option value="Media Buyer / Agency">Media Buyer / Ad Agency</option>
-                    <option value="Technology Partner">AdTech / Technology Partner</option>
+                    <option value="App Distribution & Publishing">App Distribution & Publishing Partnership</option>
+                    <option value="Strategic Co-Development">Strategic Co-Development / Engineering</option>
+                    <option value="Technical Integration">Technical Integration / API Alliance</option>
+                    <option value="Investor / Growth Query">Investor / Growth Partnership Query</option>
+                    <option value="General Inquiry">General Product Inquiry</option>
                   </select>
                 </div>
               </div>
 
-              {/* Row 3: Monthly Volume */}
-              <div>
-                <label className="block font-medium text-slate-200 mb-1.5 flex items-center gap-1.5">
-                  <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Estimated Monthly Budget or Traffic Volume</span>
-                </label>
-                <select
-                  value={monthlyVolume}
-                  onChange={(e) => setMonthlyVolume(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 focus:border-cyan-400 rounded-xl px-4 py-3 text-white text-xs focus:outline-none focus:ring-1 focus:ring-cyan-400 font-mono"
-                >
-                  <option value="< $10,000 / mo">&lt; $10,000 / month</option>
-                  <option value="$10,000 - $50,000 / mo">$10,000 - $50,000 / month</option>
-                  <option value="$50,000 - $200,000 / mo">$50,000 - $200,000 / month</option>
-                  <option value="$200,000+ / mo">$200,000+ / month (VIP Enterprise)</option>
-                </select>
-              </div>
-
-              {/* Row 4: Verticals Selection */}
+              {/* Row 3: Product Categories */}
               <div>
                 <label className="block font-medium text-slate-200 mb-2">
-                  Preferred CPA Verticals (Select all that apply)
+                  Areas of Interest / Product Domains
                 </label>
                 <div className="flex flex-wrap gap-2">
-                  {verticalsList.map(v => {
-                    const isSelected = selectedVerticals.includes(v);
+                  {categoriesList.map(cat => {
+                    const isSelected = selectedCategories.includes(cat);
                     return (
                       <button
                         type="button"
-                        key={v}
-                        onClick={() => handleVerticalToggle(v)}
+                        key={cat}
+                        onClick={() => handleCategoryToggle(cat)}
                         className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                           isSelected
                             ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300'
                             : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200'
                         }`}
                       >
-                        {isSelected ? '✓ ' : '+ '}{v}
+                        {isSelected ? '✓ ' : '+ '}{cat}
                       </button>
                     );
                   })}
                 </div>
               </div>
 
-              {/* Row 5: Message */}
+              {/* Row 4: Message */}
               <div>
                 <label className="block font-medium text-slate-200 mb-1.5 flex items-center gap-1.5">
                   <MessageSquare className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>Message / Collaboration Details</span>
+                  <span>Message / Collaboration Proposal</span>
                 </label>
                 <textarea
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Tell us about your target GEOs, ad formats, or specific offer requirements..."
+                  placeholder="Share details about your distribution channel, app ideas, or partnership objectives..."
                   className="w-full bg-slate-950 border border-slate-800 focus:border-cyan-400 rounded-xl px-4 py-3 text-white text-xs placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-400 leading-relaxed"
                 />
               </div>
@@ -299,11 +279,11 @@ export const ContactForm: React.FC = () => {
                   className="w-full py-3.5 bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-black rounded-xl text-sm shadow-xl shadow-cyan-500/20 flex items-center justify-center gap-2 transition-all disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>Submitting Inquiry...</span>
+                    <span>Submitting Message...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Submit Partnership Inquiry</span>
+                      <span>Send Message To Seekolabs</span>
                     </>
                   )}
                 </button>
@@ -311,7 +291,7 @@ export const ContactForm: React.FC = () => {
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 pt-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Strict privacy guaranteed. Seekolabs will never share your contact details.</span>
+                <span>Strict privacy guaranteed. Your details remain confidential with Seekolabs.</span>
               </div>
 
             </form>
@@ -323,3 +303,4 @@ export const ContactForm: React.FC = () => {
     </section>
   );
 };
+

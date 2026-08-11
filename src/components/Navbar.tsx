@@ -2,9 +2,8 @@ import React from 'react';
 import { 
   Globe, 
   Cpu, 
-  Mail,
   Send,
-  Sparkles
+  Code2
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -19,8 +18,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection }) => {
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
           <div className="flex items-center gap-2 text-indigo-300 font-medium text-[11px]">
             <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span className="text-emerald-400 font-semibold uppercase tracking-wider text-[10px]">SEEKOLABS PERFORMANCE ADTECH:</span>
-            <span>Scalable CPA Traffic Engine & Direct Advertiser Offers</span>
+            <span className="text-emerald-400 font-semibold uppercase tracking-wider text-[10px]">SEEKOLABS PUBLISHING HOUSE:</span>
+            <span>House of Developers • In-House Software Products & Applications</span>
           </div>
 
           <div className="hidden md:flex items-center gap-4 text-slate-400 text-[11px]">
@@ -43,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection }) => {
           >
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-cyan-400 p-0.5 shadow-lg shadow-indigo-500/30 group-hover:shadow-cyan-500/50 transition-all duration-300">
               <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <Cpu className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" />
+                <Code2 className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" />
               </div>
             </div>
             <div>
@@ -55,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection }) => {
                   TECH
                 </span>
               </div>
-              <p className="text-[10px] text-slate-400 tracking-tight font-mono">Performance CPA & Traffic Engine</p>
+              <p className="text-[10px] text-slate-400 tracking-tight font-mono">App Publishing House</p>
             </div>
           </div>
 
@@ -65,13 +64,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection }) => {
               onClick={() => onScrollToSection('about')}
               className="hover:text-cyan-400 transition-colors"
             >
-              Company Brief
+              About Our House
             </button>
             <button 
               onClick={() => onScrollToSection('solutions')}
               className="hover:text-cyan-400 transition-colors"
             >
-              AdTech Solutions
+              App Ecosystem
             </button>
             <button 
               onClick={() => onScrollToSection('contact')}
@@ -88,7 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection }) => {
               className="px-4 py-2 bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
             >
               <Send className="w-3.5 h-3.5" />
-              <span>Partner With Us</span>
+              <span>Connect With Us</span>
             </button>
           </div>
 
@@ -97,4 +96,5 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection }) => {
     </header>
   );
 };
+
 
