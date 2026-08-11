@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
-import { NicheGrid } from './components/NicheGrid';
+import { SolutionsSection } from './components/SolutionsSection';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 
@@ -33,8 +33,8 @@ export default function App() {
           onScrollToContact={() => scrollToSection('contact')}
         />
 
-        {/* CPA Industry Verticals */}
-        <NicheGrid 
+        {/* AdTech Infrastructure & Solutions Section */}
+        <SolutionsSection 
           onScrollToContact={() => scrollToSection('contact')}
         />
 

@@ -68,10 +68,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection }) => {
               Company Brief
             </button>
             <button 
-              onClick={() => onScrollToSection('verticals')}
+              onClick={() => onScrollToSection('solutions')}
               className="hover:text-cyan-400 transition-colors"
             >
-              Top Verticals
+              AdTech Solutions
             </button>
             <button 
               onClick={() => onScrollToSection('contact')}

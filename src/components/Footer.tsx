@@ -50,20 +50,20 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">Quick Navigation</h4>
             <ul className="space-y-2 font-medium">
               <li onClick={() => onScrollToSection('about')} className="hover:text-cyan-400 cursor-pointer">Company Brief</li>
-              <li onClick={() => onScrollToSection('verticals')} className="hover:text-cyan-400 cursor-pointer">CPA Verticals</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">AdTech Solutions</li>
               <li onClick={() => onScrollToSection('contact')} className="hover:text-cyan-400 cursor-pointer text-cyan-400 font-bold">Partner Inquiry Form</li>
             </ul>
           </div>
 
-          {/* Col 3: Verticals */}
+          {/* Col 3: AdTech Solutions */}
           <div className="space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider">CPA Verticals</h4>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider">Capabilities</h4>
             <ul className="space-y-2 font-medium">
-              <li onClick={() => onScrollToSection('verticals')} className="hover:text-cyan-400 cursor-pointer">Games & MMORPG</li>
-              <li onClick={() => onScrollToSection('verticals')} className="hover:text-cyan-400 cursor-pointer">Live Webcam Streams</li>
-              <li onClick={() => onScrollToSection('verticals')} className="hover:text-cyan-400 cursor-pointer">iGaming & Casino</li>
-              <li onClick={() => onScrollToSection('verticals')} className="hover:text-cyan-400 cursor-pointer">Casual Dating</li>
-              <li onClick={() => onScrollToSection('verticals')} className="hover:text-cyan-400 cursor-pointer">Video-on-Demand</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Direct Advertiser Supply</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Real-Time S2S Telemetry</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">AI Anti-Fraud Protection</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Conversion Pre-Landers</li>
+              <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">Global Traffic Reach</li>
             </ul>
           </div>
 
