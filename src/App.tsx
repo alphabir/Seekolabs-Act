@@ -23,8 +23,8 @@ export default function App() {
   const isDark = theme === 'dark';
 
   return (
-    <div className={`min-h-screen font-sans selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-300 ${
-      isDark ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'
+    <div className={`min-h-screen font-sans selection:bg-[#FFE600] selection:text-black transition-colors duration-300 ${
+      isDark ? 'bg-[#0B0C0E] text-slate-100' : 'bg-slate-100 text-slate-900'
     }`}>
       
       {/* Navbar Header */}
