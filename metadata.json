@@ -1,0 +1,6 @@
+{
+  "name": "SeekoLabs",
+  "description": "Next-Gen Performance Marketing & Traffic Tech Engine for High-Payout CPA Offers at seekolabs.tech",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
