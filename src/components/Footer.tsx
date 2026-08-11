@@ -31,12 +31,17 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
 
             <div className="flex items-center gap-2 text-slate-300 text-xs">
               <MapPin className="w-4 h-4 text-indigo-400 shrink-0" />
-              <span>Georgia • Tbilisi • Global Operations</span>
+              <span>Kolkata, India • Global Operations</span>
             </div>
 
-            <div className="flex items-center gap-2 text-slate-300 text-xs">
-              <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
-              <span>partners@seekolabs.tech</span>
+            <div className="space-y-1.5 text-slate-300 text-xs">
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
+                <a href="mailto:abir@seekolabs.tech" className="hover:text-cyan-300 font-mono font-medium">abir@seekolabs.tech</a>
+              </div>
+              <div className="flex items-center gap-2 pl-6">
+                <a href="mailto:aditya@seekolabs.tech" className="hover:text-cyan-300 font-mono font-medium">aditya@seekolabs.tech</a>
+              </div>
             </div>
           </div>
 

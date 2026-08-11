@@ -27,7 +27,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact })
             </h2>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-              <strong className="text-white font-semibold">Seekolabs</strong> (`seekolabs.tech`) is a premier ad technology company and performance marketing network headquartered in Georgia, operating across tier-1, tier-2, and emerging global markets.
+              <strong className="text-white font-semibold">Seekolabs</strong> (`seekolabs.tech`) is a premier ad technology company and performance marketing network headquartered in Kolkata, India, operating across tier-1, tier-2, and emerging global markets.
             </p>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
@@ -123,9 +123,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact })
                   </li>
                 </ul>
 
-                <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-center">
-                  <span className="text-slate-400 text-[10px] uppercase font-mono block">Official Contact</span>
-                  <span className="text-cyan-400 font-bold font-mono text-xs mt-0.5 block">partners@seekolabs.tech</span>
+                <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 text-center space-y-1">
+                  <span className="text-slate-400 text-[10px] uppercase font-mono block">Main Partnership Contacts</span>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-1 font-mono text-xs">
+                    <a href="mailto:abir@seekolabs.tech" className="text-cyan-400 font-bold hover:underline">
+                      abir@seekolabs.tech
+                    </a>
+                    <span className="text-slate-600 hidden sm:inline">•</span>
+                    <a href="mailto:aditya@seekolabs.tech" className="text-cyan-400 font-bold hover:underline">
+                      aditya@seekolabs.tech
+                    </a>
+                  </div>
                 </div>
               </div>
 

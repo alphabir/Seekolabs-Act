@@ -100,6 +100,35 @@ export const ContactForm: React.FC = () => {
           </p>
         </div>
 
+        {/* Direct Email Contact Cards */}
+        <div className="mb-8 p-5 bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-indigo-500/30 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+              <Mail className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="text-xs font-mono uppercase text-cyan-400 font-bold block">Direct Partnership Contacts</span>
+              <p className="text-xs text-slate-300">Reach our main leadership team anytime directly via email:</p>
+            </div>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+            <a 
+              href="mailto:abir@seekolabs.tech"
+              className="px-3.5 py-2 rounded-xl bg-slate-950 border border-cyan-500/40 text-cyan-300 hover:text-white hover:border-cyan-400 font-bold transition-all shadow-md flex items-center gap-1.5"
+            >
+              <Mail className="w-3.5 h-3.5 text-cyan-400" />
+              <span>abir@seekolabs.tech</span>
+            </a>
+            <a 
+              href="mailto:aditya@seekolabs.tech"
+              className="px-3.5 py-2 rounded-xl bg-slate-950 border border-cyan-500/40 text-cyan-300 hover:text-white hover:border-cyan-400 font-bold transition-all shadow-md flex items-center gap-1.5"
+            >
+              <Mail className="w-3.5 h-3.5 text-cyan-400" />
+              <span>aditya@seekolabs.tech</span>
+            </a>
+          </div>
+        </div>
+
         {/* Main Card */}
         <div className="bg-slate-900 border border-indigo-900/50 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
           
