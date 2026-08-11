@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Main Banner Header - TrafficStars / SeekoLabs Style Banner */}
+        {/* Main Banner Header - Seekolabs Style Banner */}
         <div className="relative rounded-3xl bg-gradient-to-b from-slate-900/90 via-blue-950/80 to-slate-900/90 border border-indigo-500/30 p-6 md:p-12 shadow-2xl shadow-indigo-950/50 backdrop-blur-2xl overflow-hidden mb-12">
           
           {/* Background Decorative 3D Glowing Elements */}
