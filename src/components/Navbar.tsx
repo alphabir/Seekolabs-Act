@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onScrollToSection }) => {
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-black text-xl tracking-wider text-white font-sans">
-                  SEEKOLABS
+                  SeekoLabs
                 </span>
                 <span className="text-[9px] uppercase tracking-widest px-1.5 py-0.5 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded font-semibold">
                   TECH

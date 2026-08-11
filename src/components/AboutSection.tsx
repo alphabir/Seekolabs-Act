@@ -27,11 +27,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact })
             </h2>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-              <strong className="text-white font-semibold">Seekolabs</strong> (`seekolabs.tech`) is an independent software publishing house based in Kolkata, India. We are <strong className="text-cyan-300 font-medium">not a client services agency</strong> — we are a collective of product builders and software engineers who build, launch, scale, and publish our own ecosystem of digital products, mobile tools, and web applications.
+              <strong className="text-white font-semibold">SeekoLabs</strong> (`seekolabs.tech`) is an independent software publishing house based in Kolkata, India. We are <strong className="text-cyan-300 font-medium">not a client services agency</strong> — we are a collective of product builders and software engineers who build, launch, scale, and publish our own ecosystem of digital products, mobile tools, and web applications.
             </p>
 
             <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-              By controlling the entire lifecycle from initial architectural concept to code execution, user experience design, and global app store distribution, Seekolabs crafts high-quality software that solves real user needs.
+              By controlling the entire lifecycle from initial architectural concept to code execution, user experience design, and global app store distribution, SeekoLabs crafts high-quality software that solves real user needs.
             </p>
 
             {/* Core Values / Pillars */}
@@ -96,7 +96,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact })
 
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase text-cyan-400 font-bold">Seekolabs House Manifesto</span>
+                  <span className="text-xs font-mono uppercase text-cyan-400 font-bold">SeekoLabs House Manifesto</span>
                   <span className="px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[10px] rounded-full font-bold">
                     IN-HOUSE PRODUCT STUDIO
                   </span>

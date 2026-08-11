@@ -58,7 +58,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Subtitle */}
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-              Seekolabs is an independent app publishing house and product studio powered by a collective of passionate software engineers. Based in Kolkata, India, we build, scale, and publish our own ecosystem of high-performance web applications, mobile software, utilities, and developer tools.
+              SeekoLabs is an independent app publishing house and product studio powered by a collective of passionate software engineers. Based in Kolkata, India, we build, scale, and publish our own ecosystem of high-performance web applications, mobile software, utilities, and developer tools.
             </p>
 
             {/* Bullet Highlights */}

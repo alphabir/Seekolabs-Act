@@ -21,12 +21,12 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
                 </div>
               </div>
               <span className="font-black text-xl tracking-wider text-white">
-                SEEKO<span className="text-cyan-400">LABS</span>
+                SEEKO<span className="text-cyan-400">Labs</span>
               </span>
             </div>
 
             <p className="text-slate-300 text-xs leading-relaxed">
-              Seekolabs (<code className="text-cyan-300">seekolabs.tech</code>) is a digital app publishing house and product studio. We engineer, launch, and scale our own ecosystem of software products.
+              SeekoLabs (<code className="text-cyan-300">seekolabs.tech</code>) is a digital app publishing house and product studio. We engineer, launch, and scale our own ecosystem of software products.
             </p>
 
             <div className="flex items-center gap-2 text-slate-300 text-xs">
@@ -70,7 +70,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider">Connect</h4>
             <p className="text-slate-400 text-xs">
-              Collaborate with Seekolabs for app co-publishing, distribution, or technical alliances.
+              Collaborate with SeekoLabs for app co-publishing, distribution, or technical alliances.
             </p>
 
             <button
@@ -78,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
               className="w-full py-2.5 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md"
             >
               <Send className="w-3.5 h-3.5" />
-              <span>Contact Seekolabs</span>
+              <span>Contact SeekoLabs</span>
             </button>
           </div>
 
@@ -87,7 +87,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
         {/* Bottom copyright */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-400">
           <div>
-            © {new Date().getFullYear()} <span className="font-bold text-slate-200">Seekolabs Tech</span> (seekolabs.tech). All rights reserved.
+            © {new Date().getFullYear()} <span className="font-bold text-slate-200">SeekoLabs Tech</span> (seekolabs.tech). All rights reserved.
           </div>
           <div className="flex items-center gap-6">
             <span className="hover:text-slate-200 cursor-pointer">Privacy Policy</span>

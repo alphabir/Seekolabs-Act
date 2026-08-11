@@ -109,7 +109,7 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
               </span>
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed font-light">
-              At Seekolabs, we combine modern software engineering, product design, and distribution capabilities to build and publish first-party digital applications.
+              At SeekoLabs, we combine modern software engineering, product design, and distribution capabilities to build and publish first-party digital applications.
             </p>
           </div>
 
@@ -225,7 +225,7 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
           <div className="space-y-1 text-center sm:text-left">
             <h4 className="text-xl font-bold text-white">Interested in Co-Publishing or Strategic Alliances?</h4>
             <p className="text-xs text-slate-300 max-w-xl">
-              Seekolabs collaborates with distribution partners, platform creators, and tech innovators. Connect with our engineering and publishing team today.
+              SeekoLabs collaborates with distribution partners, platform creators, and tech innovators. Connect with our engineering and publishing team today.
             </p>
           </div>
 
@@ -233,7 +233,7 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
             onClick={onScrollToContact}
             className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shrink-0 flex items-center gap-2 transition-all"
           >
-            <span>Reach Out To Seekolabs</span>
+            <span>Reach Out To SeekoLabs</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
