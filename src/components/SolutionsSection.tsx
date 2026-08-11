@@ -1,26 +1,24 @@
 import React from 'react';
 import { 
-  Cpu, 
-  Code2, 
   AppWindow, 
   Smartphone, 
   Rocket, 
-  Globe2, 
   Layers, 
   CheckCircle2, 
   ArrowRight, 
   Send,
-  Database,
   Terminal,
-  Sparkles,
-  Workflow
+  Code2
 } from 'lucide-react';
 
 interface SolutionsSectionProps {
   onScrollToContact: () => void;
+  theme: 'dark' | 'light';
 }
 
-export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToContact }) => {
+export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToContact, theme }) => {
+  const isDark = theme === 'dark';
+
   const publishingPillars = [
     {
       icon: AppWindow,
@@ -92,23 +90,33 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
   ];
 
   return (
-    <section id="solutions" className="py-16 md:py-24 bg-slate-950 border-b border-indigo-900/40 relative">
+    <section id="solutions" className={`py-16 md:py-24 border-b relative transition-colors duration-300 ${
+      isDark ? 'bg-slate-950 border-indigo-900/40 text-slate-100' : 'bg-slate-50 border-slate-200 text-slate-900'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-3">
+            <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-xs uppercase tracking-widest mb-3 border ${
+              isDark 
+                ? 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400' 
+                : 'bg-cyan-50 border-cyan-200 text-cyan-700'
+            }`}>
               <Layers className="w-3.5 h-3.5" />
               <span>App Publishing Ecosystem</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            <h2 className={`text-3xl sm:text-5xl font-black tracking-tight leading-tight ${
+              isDark ? 'text-white' : 'text-slate-900'
+            }`}>
               Our Publishing House <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-300">
                 Product Pillars & Software Engineering
               </span>
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed font-light">
+            <p className={`text-sm sm:text-base mt-3 leading-relaxed font-normal ${
+              isDark ? 'text-slate-300' : 'text-slate-600'
+            }`}>
               At SeekoLabs, we combine modern software engineering, product design, and distribution capabilities to build and publish first-party digital applications.
             </p>
           </div>
@@ -131,33 +139,47 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
             return (
               <div 
                 key={idx}
-                className="bg-slate-900/90 border border-indigo-900/50 hover:border-cyan-400/50 rounded-3xl p-8 transition-all duration-300 shadow-xl relative overflow-hidden group flex flex-col justify-between"
+                className={`border rounded-3xl p-8 transition-all duration-300 shadow-xl relative overflow-hidden group flex flex-col justify-between ${
+                  isDark
+                    ? 'bg-slate-900/90 border-indigo-900/50 hover:border-cyan-400/50'
+                    : 'bg-white border-slate-200/80 shadow-slate-200/60 hover:border-cyan-400'
+                }`}
               >
                 <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-xl pointer-events-none group-hover:bg-cyan-500/10 transition-all" />
 
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-cyan-400">
+                    <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-cyan-500 dark:text-cyan-400">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-950 text-cyan-300 border border-cyan-500/30">
+                    <span className={`px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border ${
+                      isDark 
+                        ? 'bg-slate-950 text-cyan-300 border-cyan-500/30' 
+                        : 'bg-slate-100 text-cyan-700 border-cyan-200'
+                    }`}>
                       {pillar.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-black text-white mb-3 group-hover:text-cyan-300 transition-colors">
+                  <h3 className={`text-2xl font-black mb-3 group-hover:text-cyan-500 transition-colors ${
+                    isDark ? 'text-white' : 'text-slate-900'
+                  }`}>
                     {pillar.title}
                   </h3>
 
-                  <p className="text-sm text-slate-300 leading-relaxed mb-6 font-light">
+                  <p className={`text-sm leading-relaxed mb-6 font-normal ${
+                    isDark ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     {pillar.description}
                   </p>
                 </div>
 
-                <ul className="space-y-2.5 pt-4 border-t border-slate-800 text-xs text-slate-300">
+                <ul className={`space-y-2.5 pt-4 border-t text-xs ${
+                  isDark ? 'border-slate-800 text-slate-300' : 'border-slate-200 text-slate-700'
+                }`}>
                   {pillar.points.map((pt, pIdx) => (
                     <li key={pIdx} className="flex items-center gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-cyan-500 shrink-0" />
                       <span>{pt}</span>
                     </li>
                   ))}
@@ -168,49 +190,61 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
         </div>
 
         {/* Product Studio Capabilities Grid */}
-        <div className="bg-slate-900 border border-indigo-500/20 rounded-3xl p-8 sm:p-12 relative overflow-hidden">
+        <div className={`border rounded-3xl p-8 sm:p-12 relative overflow-hidden transition-all ${
+          isDark 
+            ? 'bg-slate-900 border-indigo-500/20' 
+            : 'bg-white border-slate-200 shadow-xl shadow-slate-200/50'
+        }`}>
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-5 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs uppercase tracking-widest">
+              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-xs uppercase tracking-widest border ${
+                isDark 
+                  ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' 
+                  : 'bg-emerald-50 border-emerald-200 text-emerald-700'
+              }`}>
                 <Code2 className="w-3.5 h-3.5" />
                 <span>House Stack & Infrastructure</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-black text-white">
+              <h3 className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
                 Engineered In-House From Concept to Code
               </h3>
 
-              <p className="text-sm text-slate-300 leading-relaxed font-light">
+              <p className={`text-sm leading-relaxed font-normal ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
                 Our house of developers maintains full control over product architecture, performance optimization, and release schedules to ensure consistent software standards across our app portfolio.
               </p>
 
-              <div className="p-4 bg-slate-950 rounded-2xl border border-slate-800 space-y-2 font-mono text-xs">
-                <div className="flex justify-between items-center text-slate-300">
+              <div className={`p-4 rounded-2xl border space-y-2 font-mono text-xs ${
+                isDark ? 'bg-slate-950 border-slate-800' : 'bg-slate-50 border-slate-200'
+              }`}>
+                <div className={`flex justify-between items-center ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   <span>Development Model:</span>
-                  <span className="text-cyan-400 font-bold">In-House Publishing</span>
+                  <span className="text-cyan-500 dark:text-cyan-400 font-bold">In-House Publishing</span>
                 </div>
-                <div className="flex justify-between items-center text-slate-300">
+                <div className={`flex justify-between items-center ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   <span>Client Work:</span>
-                  <span className="text-emerald-400 font-bold">None (100% First-Party)</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">None (100% First-Party)</span>
                 </div>
-                <div className="flex justify-between items-center text-slate-300">
+                <div className={`flex justify-between items-center ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   <span>Development Hub:</span>
-                  <span className="text-indigo-300 font-bold">Kolkata, India</span>
+                  <span className="text-indigo-600 dark:text-indigo-300 font-bold">Kolkata, India</span>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
               {houseCapabilities.map((cap, cIdx) => (
-                <div key={cIdx} className="p-5 bg-slate-950/80 border border-slate-800 rounded-2xl space-y-2">
+                <div key={cIdx} className={`p-5 border rounded-2xl space-y-2 ${
+                  isDark ? 'bg-slate-950/80 border-slate-800' : 'bg-slate-50 border-slate-200'
+                }`}>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-white">{cap.title}</span>
+                    <span className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{cap.title}</span>
                   </div>
-                  <span className="inline-block px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-mono text-[10px] font-bold">
+                  <span className="inline-block px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-mono text-[10px] font-bold">
                     {cap.category}
                   </span>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                     {cap.desc}
                   </p>
                 </div>
@@ -221,10 +255,14 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
         </div>
 
         {/* Partnership Callout Banner */}
-        <div className="mt-12 p-8 bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 border border-indigo-500/30 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className={`mt-12 p-8 border rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6 ${
+          isDark 
+            ? 'bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 border-indigo-500/30' 
+            : 'bg-gradient-to-r from-indigo-50 via-white to-blue-50 border-slate-200 shadow-md'
+        }`}>
           <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-xl font-bold text-white">Interested in Co-Publishing or Strategic Alliances?</h4>
-            <p className="text-xs text-slate-300 max-w-xl">
+            <h4 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Interested in Co-Publishing or Strategic Alliances?</h4>
+            <p className={`text-xs max-w-xl ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
               SeekoLabs collaborates with distribution partners, platform creators, and tech innovators. Connect with our engineering and publishing team today.
             </p>
           </div>
@@ -242,4 +280,3 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
     </section>
   );
 };
-

@@ -1,13 +1,20 @@
 import React from 'react';
-import { Code2, Mail, MapPin, Sparkles, Send } from 'lucide-react';
+import { Code2, Mail, MapPin, Send } from 'lucide-react';
 
 interface FooterProps {
   onScrollToSection: (sectionId: string) => void;
+  theme?: 'dark' | 'light';
 }
 
-export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
+export const Footer: React.FC<FooterProps> = ({ onScrollToSection, theme = 'dark' }) => {
+  const isDark = theme === 'dark';
+
   return (
-    <footer className="bg-slate-950 border-t border-indigo-900/40 text-slate-400 text-xs py-12">
+    <footer className={`border-t text-xs py-12 transition-colors duration-300 ${
+      isDark 
+        ? 'bg-slate-950 border-indigo-900/40 text-slate-400' 
+        : 'bg-slate-900 border-slate-800 text-slate-300'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
@@ -51,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
             <ul className="space-y-2 font-medium">
               <li onClick={() => onScrollToSection('about')} className="hover:text-cyan-400 cursor-pointer">About Our House</li>
               <li onClick={() => onScrollToSection('solutions')} className="hover:text-cyan-400 cursor-pointer">App Ecosystem</li>
-              <li onClick={() => onScrollToSection('contact')} className="hover:text-cyan-400 cursor-pointer text-cyan-400 font-bold">Contact Leadership</li>
+              <li onClick={() => onScrollToSection('contact')} className="hover:text-cyan-400 cursor-pointer text-cyan-400 font-bold">Contact Us</li>
             </ul>
           </div>
 
@@ -90,9 +97,9 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
             © {new Date().getFullYear()} <span className="font-bold text-slate-200">SeekoLabs Tech</span> (seekolabs.tech). All rights reserved.
           </div>
           <div className="flex items-center gap-6">
-            <span className="hover:text-slate-200 cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-slate-200 cursor-pointer">Terms of Service</span>
-            <span className="hover:text-slate-200 cursor-pointer">Contact Us</span>
+            <span className="hover:text-slate-200 cursor-pointer" onClick={() => onScrollToSection('contact')}>Privacy Policy</span>
+            <span className="hover:text-slate-200 cursor-pointer" onClick={() => onScrollToSection('contact')}>Terms of Service</span>
+            <span className="hover:text-slate-200 cursor-pointer" onClick={() => onScrollToSection('contact')}>Contact Us</span>
           </div>
         </div>
 
@@ -100,5 +107,3 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection }) => {
     </footer>
   );
 };
-
-

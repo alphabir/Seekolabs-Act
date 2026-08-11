@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -7,6 +7,12 @@ import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 
 export default function App() {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
   const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId);
     if (el) {
@@ -14,11 +20,19 @@ export default function App() {
     }
   };
 
+  const isDark = theme === 'dark';
+
   return (
-    <div className="min-h-screen bg-slate-950 font-sans text-slate-100 selection:bg-cyan-500 selection:text-slate-950">
+    <div className={`min-h-screen font-sans selection:bg-cyan-500 selection:text-slate-950 transition-colors duration-300 ${
+      isDark ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'
+    }`}>
       
       {/* Navbar Header */}
-      <Navbar onScrollToSection={scrollToSection} />
+      <Navbar 
+        onScrollToSection={scrollToSection} 
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
 
       {/* Main Single Page Sections */}
       <main>
@@ -26,27 +40,33 @@ export default function App() {
         <Hero 
           onScrollToContact={() => scrollToSection('contact')}
           onScrollToAbout={() => scrollToSection('about')}
+          theme={theme}
         />
 
         {/* Company Brief & Overview */}
         <AboutSection 
           onScrollToContact={() => scrollToSection('contact')}
+          theme={theme}
         />
 
-        {/* AdTech Infrastructure & Solutions Section */}
+        {/* Product Ecosystem & Infrastructure Section */}
         <SolutionsSection 
           onScrollToContact={() => scrollToSection('contact')}
+          theme={theme}
         />
 
-        {/* Lead Collection Form (Primary Goal) */}
-        <ContactForm />
+        {/* Contact Us Section */}
+        <ContactForm 
+          theme={theme}
+        />
       </main>
 
       {/* Footer */}
-      <Footer onScrollToSection={scrollToSection} />
+      <Footer 
+        onScrollToSection={scrollToSection} 
+        theme={theme}
+      />
 
     </div>
   );
 }
-
-
