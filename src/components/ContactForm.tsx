@@ -20,16 +20,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({ theme = 'dark' }) => {
 
   const contactList = [
     {
-      name: "Abir Mukherjee",
-      role: "Engineering & Operations Lead",
-      email: "abir@seekolabs.tech",
-      focus: "App Co-Publishing, Architecture & Strategic Alliances"
+      name: "Partnerships & Publishing",
+      role: "Strategic Alliances & App Publishing",
+      email: "connect@seekolabs.tech",
+      focus: "App Co-Publishing, Distribution Partnerships, Media Inquiries & Business Alliances"
     },
     {
-      name: "Aditya",
-      role: "Product & Growth Lead",
-      email: "aditya@seekolabs.tech",
-      focus: "Distribution Channels, Monetization & Product Partnerships"
+      name: "Product & Technical Support",
+      role: "Developer Relations & Support Desk",
+      email: "support@seekolabs.tech",
+      focus: "App Support, Technical Integrations, Bug Reporting & User Assistance"
     }
   ];
 
@@ -59,7 +59,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ theme = 'dark' }) => {
             Connect With <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500">SeekoLabs</span>
           </h2>
           <p className={`mt-3 text-sm sm:text-base leading-relaxed ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-            Reach out directly to our founders and engineering leads for app publishing opportunities, strategic partnerships, or technical inquiries.
+            Reach out directly for app publishing opportunities, strategic co-development, product assistance, or technical inquiries.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ theme = 'dark' }) => {
                       ? 'bg-zinc-950 text-yellow-400 border-yellow-400/30' 
                       : 'bg-zinc-100 text-zinc-900 border-zinc-200'
                   }`}>
-                    Direct Contact
+                    Official Channel
                   </span>
                 </div>
 
@@ -139,7 +139,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ theme = 'dark' }) => {
                   className="w-full py-3 bg-[#FFE600] hover:bg-yellow-300 text-[#0B0C0E] font-black rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg border border-yellow-300 transition-all"
                 >
                   <Mail className="w-4 h-4" />
-                  <span>Send Email To {contact.name.split(' ')[0]}</span>
+                  <span>Send Email ({contact.email.split('@')[0]})</span>
                 </a>
               </div>
 

@@ -158,14 +158,14 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact, t
                 <div className={`p-4 rounded-2xl border text-center space-y-1 ${
                   isDark ? 'bg-zinc-950 border-zinc-800' : 'bg-zinc-50 border-zinc-200'
                 }`}>
-                  <span className={`text-[10px] uppercase font-mono block ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>Direct Leadership Contacts</span>
+                  <span className={`text-[10px] uppercase font-mono block ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>Official Contact Channels</span>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-1 font-mono text-xs">
-                    <a href="mailto:abir@seekolabs.tech" className="text-yellow-400 font-bold hover:underline">
-                      abir@seekolabs.tech
+                    <a href="mailto:connect@seekolabs.tech" className="text-yellow-400 font-bold hover:underline">
+                      connect@seekolabs.tech
                     </a>
                     <span className="text-zinc-500 hidden sm:inline">•</span>
-                    <a href="mailto:aditya@seekolabs.tech" className="text-yellow-400 font-bold hover:underline">
-                      aditya@seekolabs.tech
+                    <a href="mailto:support@seekolabs.tech" className="text-yellow-400 font-bold hover:underline">
+                      support@seekolabs.tech
                     </a>
                   </div>
                 </div>

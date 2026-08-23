@@ -38,10 +38,11 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, theme = 'dark
             <div className="space-y-1.5 text-zinc-300 text-xs">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-yellow-400 shrink-0" />
-                <a href="mailto:abir@seekolabs.tech" className="hover:text-yellow-400 font-mono font-medium">abir@seekolabs.tech</a>
+                <a href="mailto:connect@seekolabs.tech" className="hover:text-yellow-400 font-mono font-medium">connect@seekolabs.tech</a>
               </div>
-              <div className="flex items-center gap-2 pl-6">
-                <a href="mailto:aditya@seekolabs.tech" className="hover:text-yellow-400 font-mono font-medium">aditya@seekolabs.tech</a>
+              <div className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-yellow-400 shrink-0" />
+                <a href="mailto:support@seekolabs.tech" className="hover:text-yellow-400 font-mono font-medium">support@seekolabs.tech</a>
               </div>
             </div>
           </div>
