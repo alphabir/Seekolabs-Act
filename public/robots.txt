@@ -1,0 +1,5 @@
+# https://www.seekolabs.tech
+User-agent: *
+Allow: /
+
+Sitemap: https://www.seekolabs.tech/sitemap.xml

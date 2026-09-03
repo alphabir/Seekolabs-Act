@@ -1,1 +1,54 @@
 @import "tailwindcss";
+
+/*
+  Base page colours are driven by the data-theme attribute that the inline script
+  in index.html sets before first paint, and that src/App.tsx keeps in sync.
+  Components still receive an explicit `theme` prop; this only paints the page
+  behind them so overscroll and the pre-hydration frame match the chosen theme.
+*/
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] body {
+  background-color: #0b0c0e;
+  color: #f1f5f9;
+}
+
+:root[data-theme="light"] body {
+  background-color: #f4f4f5;
+  color: #18181b;
+}
+
+/*
+  The header is sticky (h-16, h-20 from the sm breakpoint up), so without a
+  scroll margin every in-page jump lands with the section heading tucked
+  underneath it. Keep these in sync with the header height in Navbar.tsx.
+*/
+section[id] {
+  scroll-margin-top: 4rem;
+}
+
+@media (min-width: 640px) {
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

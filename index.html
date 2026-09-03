@@ -2,13 +2,106 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SeekoLabs — Digital App Publishing House & Product Studio</title>
+
+    <title>SeekoLabs — Digital App Publishing House &amp; Product Studio</title>
+    <meta
+      name="description"
+      content="SeekoLabs is an independent app publishing house and product studio in Kolkata, India. We engineer, launch, and scale our own ecosystem of web applications, mobile utilities, and developer tools."
+    />
+    <link rel="canonical" href="https://www.seekolabs.tech/" />
+    <meta name="author" content="SeekoLabs" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0C0E" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F5" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SeekoLabs" />
+    <meta property="og:url" content="https://www.seekolabs.tech/" />
+    <meta property="og:title" content="SeekoLabs — Digital App Publishing House &amp; Product Studio" />
+    <meta
+      property="og:description"
+      content="An independent app publishing house and product studio in Kolkata, India. We engineer, launch, and scale our own ecosystem of web, mobile, and developer software."
+    />
+    <meta property="og:image" content="https://www.seekolabs.tech/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="SeekoLabs — independent app publishing house and product studio" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SeekoLabs — Digital App Publishing House &amp; Product Studio" />
+    <meta
+      name="twitter:description"
+      content="An independent app publishing house and product studio in Kolkata, India. We engineer, launch, and scale our own ecosystem of web, mobile, and developer software."
+    />
+    <meta name="twitter:image" content="https://www.seekolabs.tech/og-image.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SeekoLabs",
+        "alternateName": "SeekoLabs Tech",
+        "url": "https://www.seekolabs.tech/",
+        "logo": "https://www.seekolabs.tech/logo.svg",
+        "description": "An independent digital app publishing house and product studio that engineers, launches, and scales its own ecosystem of web applications, mobile utilities, and developer tools.",
+        "foundingLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kolkata",
+            "addressCountry": "IN"
+          }
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "business partnerships",
+            "email": "connect@seekolabs.tech",
+            "availableLanguage": ["English"]
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "technical support",
+            "email": "support@seekolabs.tech",
+            "availableLanguage": ["English"]
+          }
+        ]
+      }
+    </script>
+
+    <!--
+      Resolve the theme before first paint so a light-mode visitor never sees a
+      flash of the dark palette. Kept in sync with the React state in src/App.tsx.
+    -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('seekolabs-theme');
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark';
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
   </head>
-  <body class="bg-[#0B0C0E] text-slate-100 antialiased selection:bg-[#FFE600] selection:text-black">
+  <body class="antialiased selection:bg-[#FFE600] selection:text-black">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

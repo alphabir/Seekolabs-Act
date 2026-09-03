@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="0%" r="75%">
+      <stop offset="0%" stop-color="#FFE600" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#FFB800" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#0B0C0E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rule" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFE600"/>
+      <stop offset="50%" stop-color="#FFD24A"/>
+      <stop offset="100%" stop-color="#FFE600" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0B0C0E"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="0" y="0" width="1200" height="8" fill="url(#rule)"/>
+
+  <!-- Icon mark -->
+  <g transform="translate(96, 150)">
+    <rect x="0" y="0" width="132" height="132" rx="26" fill="#FFE600"/>
+    <g transform="translate(16, 16) scale(1.0)">
+      <path d="M 24 24 L 40 40 M 40 24 L 24 40" stroke="#0B0C0E" stroke-width="9" stroke-linecap="round"/>
+      <rect x="58" y="24" width="18" height="18" rx="2" fill="#0B0C0E"/>
+      <rect x="32" y="66" width="36" height="7" rx="3.5" fill="#0B0C0E"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="262" y="248" font-family="Arial Black, Arial Bold, Arial, Helvetica, sans-serif" font-weight="900" font-size="104" fill="#FFFFFF" letter-spacing="-4">seekolabs</text>
+  <rect x="836" y="180" width="122" height="48" rx="9" fill="#FFE600"/>
+  <text x="856" y="214" font-family="Arial Black, Arial Bold, Arial, Helvetica, sans-serif" font-weight="900" font-size="27" fill="#0B0C0E" letter-spacing="3">TECH</text>
+
+  <!-- Tagline -->
+  <text x="96" y="356" font-family="Consolas, Courier New, monospace" font-size="27" fill="#FFE600" letter-spacing="6">INDEPENDENT APP PUBLISHING HOUSE</text>
+
+  <!-- Headline -->
+  <text x="96" y="440" font-family="Arial Black, Arial Bold, Arial, Helvetica, sans-serif" font-weight="900" font-size="52" fill="#FFFFFF" letter-spacing="-1">We engineer &amp; publish</text>
+  <text x="96" y="504" font-family="Arial Black, Arial Bold, Arial, Helvetica, sans-serif" font-weight="900" font-size="52" fill="#FFE600" letter-spacing="-1">next-gen software &amp; apps</text>
+
+  <!-- Footer strip -->
+  <rect x="96" y="548" width="1008" height="1" fill="#27272A"/>
+  <text x="96" y="592" font-family="Consolas, Courier New, monospace" font-size="24" fill="#A1A1AA" letter-spacing="1">seekolabs.tech</text>
+  <text x="1104" y="592" text-anchor="end" font-family="Consolas, Courier New, monospace" font-size="24" fill="#A1A1AA" letter-spacing="1">Kolkata, India</text>
+</svg>
