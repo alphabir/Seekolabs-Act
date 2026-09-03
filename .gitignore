@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Local npm lockfile — this project is locked with bun.lock.
+package-lock.json
