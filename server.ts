@@ -1,6 +1,5 @@
 import express from "express";
 import path from "path";
-import { createServer as createViteServer } from "vite";
 
 interface LeadSubmission {
   id: string;
@@ -8,82 +7,94 @@ interface LeadSubmission {
   email: string;
   companyName: string;
   role: string;
-  monthlyVolume: string;
-  verticals: string[];
   message: string;
   createdAt: string;
 }
 
+// Production is opted into explicitly so the same command works on every OS.
+// `npm run dev` runs this file through tsx; `npm start` runs the esbuild bundle
+// with --production. NODE_ENV is still honoured for hosts that set it.
+const IS_PRODUCTION =
+  process.env.NODE_ENV === "production" || process.argv.includes("--production");
+
+// Cloud Run and most PaaS hosts inject the port they expect us to listen on.
+const PORT = Number(process.env.PORT) || 3000;
+
 async function startServer() {
   const app = express();
-  const PORT = 3000;
 
   app.use(express.json());
 
-  // In-memory leads store
+  // In-memory leads store. Resets on restart — swap for a real datastore
+  // before this endpoint is wired up to the contact section.
   const leads: LeadSubmission[] = [];
 
   // --- API ROUTES ---
 
-  // Health check
   app.get("/api/health", (_req, res) => {
-    res.json({ status: "ok", service: "seekolabs.tech engine", timestamp: new Date().toISOString() });
+    res.json({
+      status: "ok",
+      service: "seekolabs.tech",
+      timestamp: new Date().toISOString(),
+    });
   });
 
-  // Lead Collection Form Endpoint
   app.post("/api/contact", (req, res) => {
-    const { fullName, email, companyName, role, monthlyVolume, verticals, message } = req.body;
+    const { fullName, email, companyName, role, message } = req.body ?? {};
 
     if (!fullName || !email) {
-      return res.status(400).json({ error: "Name and Email are required fields." });
+      return res.status(400).json({ error: "Name and email are required fields." });
     }
 
     const newLead: LeadSubmission = {
       id: `LEAD-${Math.floor(100000 + Math.random() * 900000)}`,
       fullName,
       email,
-      companyName: companyName || 'N/A',
-      role: role || 'Advertiser / Partner',
-      monthlyVolume: monthlyVolume || 'Not Specified',
-      verticals: Array.isArray(verticals) ? verticals : [],
-      message: message || '',
-      createdAt: new Date().toISOString()
+      companyName: companyName || "N/A",
+      role: role || "Not specified",
+      message: message || "",
+      createdAt: new Date().toISOString(),
     };
 
     leads.push(newLead);
-    console.log("New Lead Collected for Seekolabs:", newLead);
+    console.log("New lead collected:", newLead.id, newLead.email);
 
     res.status(201).json({
       success: true,
-      message: "Thank you for contacting Seekolabs! Our partnership team will review your details and respond within 24 hours.",
-      leadId: newLead.id
+      message:
+        "Thank you for contacting SeekoLabs. Our team will review your details and respond within 24 hours.",
+      leadId: newLead.id,
     });
   });
 
-  // Optional endpoint to retrieve lead count (internal)
   app.get("/api/leads/count", (_req, res) => {
     res.json({ count: leads.length });
   });
 
   // --- VITE / PRODUCTION SERVING ---
-  if (process.env.NODE_ENV !== "production") {
+  if (!IS_PRODUCTION) {
+    // Imported lazily so Vite stays a devDependency and is never required in production.
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: "spa"
+      appType: "spa",
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
-    app.get('*all', (_req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+    // Express 4 catch-all. "*all" is Express 5 syntax and silently matches only
+    // paths ending in "all" here, which 404s every deep link.
+    app.get("*", (_req, res) => {
+      res.sendFile(path.join(distPath, "index.html"));
     });
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Seekolabs Engine running at http://0.0.0.0:${PORT}`);
+    console.log(
+      `SeekoLabs ${IS_PRODUCTION ? "production" : "dev"} server running at http://0.0.0.0:${PORT}`,
+    );
   });
 }
 
 startServer();
-
