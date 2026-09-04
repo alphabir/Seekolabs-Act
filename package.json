@@ -6,7 +6,7 @@
   "description": "Marketing site for SeekoLabs — an independent digital app publishing house and product studio.",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs && node scripts/generate-sitemap.mjs",
     "start": "node dist/server.cjs --production",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
