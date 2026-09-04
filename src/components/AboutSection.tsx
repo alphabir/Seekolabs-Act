@@ -41,7 +41,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact, t
             <p className={`text-sm sm:text-base leading-relaxed font-normal ${
               isDark ? 'text-zinc-300' : 'text-zinc-700'
             }`}>
-              <strong className="text-yellow-400 font-bold">SeekoLabs</strong> (<code className="text-yellow-400">seekolabs.tech</code>) is an independent software publishing house based in Kolkata, India. We are <strong className="text-yellow-400 font-semibold">not a client services agency</strong> — we are a collective of product builders and software engineers who build, launch, scale, and publish our own ecosystem of digital products, mobile tools, and web applications.
+              <strong className="text-yellow-400 font-bold">SeekoLabs</strong> (<code className="text-yellow-400">seekolabs.tech</code>) is an independent software publishing house based in Kolkata, India. We build, launch and publish <strong className="text-yellow-400 font-semibold">our own ecosystem</strong> of digital products, mobile tools and web applications — and we take on a small number of partner products each year, taken end to end and shipped to the store.
             </p>
 
             <p className={`text-sm sm:text-base leading-relaxed font-normal ${
@@ -139,7 +139,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact, t
                 <ul className={`space-y-3 text-xs ${isDark ? 'text-zinc-300' : 'text-zinc-700'}`}>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
-                    <span><strong>Product Autonomy:</strong> No client specs or agency constraints — we build software we believe in.</span>
+                    <span><strong>Product Autonomy:</strong> Our own products set our roadmap, so partner work is chosen, never chased.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />

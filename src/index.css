@@ -52,3 +52,19 @@ section[id] {
     transition-duration: 0.01ms !important;
   }
 }
+
+/*
+  Gold that is READ, not just seen.
+
+  yellow-400 is about 11:1 on the dark ground and about 1.5:1 on the light one, so every
+  small label drawn in it fails WCAG AA the moment the theme flips — measured across 29
+  elements on the homepage. The deeper amber below is 6.6:1 on white and still reads as
+  gold rather than brown.
+
+  Scoped to header and main deliberately: the FOOTER is dark in both themes (zinc-900 on
+  a light page), so darkening its gold would break the one place the bright value is
+  correct. Headline gradients are background-image, not color, so they are untouched.
+*/
+:root[data-theme="light"] :is(header, main) .text-yellow-400 {
+  color: #854d0e;
+}

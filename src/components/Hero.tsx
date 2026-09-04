@@ -11,22 +11,23 @@ import {
   Terminal
 } from 'lucide-react';
 import { SeekoLabsLogo } from './SeekoLabsLogo';
+import { LudoBoard } from './LudoBoard';
 
 interface HeroProps {
   onScrollToContact: () => void;
-  onScrollToAbout: () => void;
+  onScrollToSolutions: () => void;
   theme: 'dark' | 'light';
 }
 
 export const Hero: React.FC<HeroProps> = ({
   onScrollToContact,
-  onScrollToAbout,
+  onScrollToSolutions,
   theme
 }) => {
   const isDark = theme === 'dark';
 
   return (
-    <section id="hero" className={`relative overflow-hidden pt-8 pb-20 border-b transition-colors duration-300 ${
+    <section id="hero" className={`relative overflow-hidden pt-8 pb-12 border-b transition-colors duration-300 ${
       isDark ? 'bg-[#0B0C0E] border-zinc-800' : 'bg-zinc-100 border-zinc-200'
     }`}>
       
@@ -104,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
-                  <span>Publishing House Model — Not an Agency</span>
+                  <span>We Publish Our Own, And Build For A Few</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
@@ -123,12 +124,12 @@ export const Hero: React.FC<HeroProps> = ({
                   className="px-7 py-4 rounded-xl bg-[#FFE600] hover:bg-yellow-300 text-[#0B0C0E] font-black text-sm shadow-xl shadow-yellow-500/25 border border-yellow-300 flex items-center gap-2.5 transition-all transform hover:-translate-y-0.5"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Get In Touch With Us</span>
+                  <span>Start A Project</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <button
-                  onClick={onScrollToAbout}
+                  onClick={onScrollToSolutions}
                   className={`px-6 py-4 rounded-xl font-bold text-sm flex items-center gap-2 transition-all border ${
                     isDark
                       ? 'bg-zinc-900 hover:bg-zinc-800 border-zinc-700 text-zinc-200 hover:border-yellow-400/50'
@@ -136,49 +137,66 @@ export const Hero: React.FC<HeroProps> = ({
                   }`}
                 >
                   <Globe2 className="w-4 h-4 text-yellow-400" />
-                  <span>Read About Our House</span>
+                  <span>See Our Apps</span>
                 </button>
               </div>
 
             </div>
 
-            {/* Right Display Card - Prominent Logo & Brand Badge */}
+            {/*
+              Our first product, running, in the first screen. This replaced a card that
+              showed the logo for the third time on one viewport — the header has it, the
+              hero wordmark has it, and it had it again. Proof beats repetition.
+
+              Measured before the change: the hero ran 1106px and the spotlight below began
+              at 1187 on an 860px viewport, so the board sat 327px under the fold. Lifting
+              it by shrinking the hero would have cost ~450px, which is the headline, the
+              claims and the CTAs. Moving the board up here costs nothing.
+
+              The ONLY board on the page. Each instance is its own WebGL context.
+            */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className={`relative w-full max-w-md rounded-3xl border p-8 shadow-2xl flex flex-col items-center text-center space-y-6 ${
-                isDark 
-                  ? 'bg-zinc-950/90 border-yellow-500/30' 
+              <div className={`relative w-full max-w-md rounded-3xl border p-6 shadow-2xl flex flex-col space-y-5 ${
+                isDark
+                  ? 'bg-zinc-950/90 border-yellow-500/30'
                   : 'bg-white border-zinc-200 shadow-xl'
               }`}>
-                {/* Yellow Accent Top Glow */}
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-yellow-500 via-amber-300 to-yellow-500 rounded-t-3xl" />
+                {/*
+                  The gold accent bar that used to cap this card is gone. It framed a
+                  header the card no longer has: with the board starting immediately
+                  below it, it read as a stray line across the top of the artwork rather
+                  than as trim. The board's own thin gold border does that job now.
+                */}
+                <LudoBoard className="aspect-square w-full border border-yellow-400/30" />
 
-                {/* Big Prominent Logo Display Image */}
-                <div className="p-4 bg-[#0B0C0E] rounded-2xl border border-yellow-400/30 w-full flex flex-col items-center shadow-inner">
-                  <img 
-                    src="/logo.svg" 
-                    alt="SeekoLabs Logo" 
-                    className="h-28 sm:h-32 object-contain filter drop-shadow-[0_0_15px_rgba(255,230,0,0.3)] my-2" 
-                  />
-                  <span className="text-[11px] font-mono uppercase font-bold text-yellow-400 tracking-widest pt-2 border-t border-zinc-800 w-full text-center">
-                    Official Brand Identity
+                {/*
+                  Not a heading. The page already goes h1 -> h2 for the spotlight below, and
+                  an h3 here would both skip a level and repeat that section's title
+                  verbatim. This is a card label, so it is marked up as one.
+                */}
+                <div className="space-y-1.5">
+                  <span className="text-[11px] font-mono uppercase font-bold text-yellow-400 tracking-widest">
+                    Now Playing
                   </span>
-                </div>
-
-                <div className="space-y-2">
-                  <h3 className={`text-xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>
-                    seekolabs.tech
-                  </h3>
+                  <p className={`text-xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>
+                    Ludo Apex
+                  </p>
                   <p className={`text-xs leading-relaxed ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                    Independent software publishing house focused on engineering, scaling, and distributing first-party digital applications worldwide.
+                    Our first release, running right here. Roll the die.
                   </p>
                 </div>
 
-                <div className={`w-full p-3.5 rounded-xl border font-mono text-xs flex justify-between items-center ${
-                  isDark ? 'bg-zinc-900 border-zinc-800 text-zinc-300' : 'bg-zinc-50 border-zinc-200 text-zinc-700'
-                }`}>
-                  <span className="text-yellow-400 font-bold">STATUS:</span>
-                  <span className="font-semibold">GLOBAL APP PUBLISHING</span>
-                </div>
+                <a
+                  href="/ludo-apex/"
+                  className={`w-full p-3.5 rounded-xl border font-mono text-xs flex justify-between items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 ${
+                    isDark
+                      ? 'bg-zinc-900 border-zinc-800 text-zinc-300 hover:border-yellow-400/50'
+                      : 'bg-zinc-50 border-zinc-200 text-zinc-700 hover:border-yellow-500'
+                  }`}
+                >
+                  <span className="text-yellow-400 font-bold">EXPLORE:</span>
+                  <span className="font-semibold">LUDO APEX &rarr;</span>
+                </a>
               </div>
             </div>
 
@@ -215,7 +233,7 @@ export const Hero: React.FC<HeroProps> = ({
               <Rocket className="w-4 h-4" />
               <span className="text-xs font-mono uppercase font-bold">Business Model</span>
             </div>
-            <div className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>App Publishing</div>
+            <div className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>Publish &amp; Build</div>
           </div>
 
           <div className={`p-5 rounded-2xl border backdrop-blur-md transition-all ${
