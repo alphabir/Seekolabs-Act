@@ -23,6 +23,27 @@
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0C0E" />
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F5" />
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "SeekoLabs",
+      "item": "https://www.seekolabs.tech/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Privacy",
+      "item": "https://www.seekolabs.tech/privacy.html"
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/site.css" />
 
 <!--
@@ -50,24 +71,30 @@
 
 <header class="site-header">
   <div class="wrap hrow">
-    <a class="brand" href="/" aria-label="SeekoLabs — home">
-      <span class="tile">
-        <svg viewBox="0 0 100 100" aria-hidden="true">
-          <path d="M 24 24 L 40 40 M 40 24 L 24 40" stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"/>
-          <rect x="58" y="24" width="18" height="18" rx="2" fill="currentColor"/>
-          <rect x="32" y="66" width="36" height="7" rx="3.5" fill="currentColor"/>
-        </svg>
-      </span>
-      <span>
-        <span style="display:flex;align-items:center;gap:.375rem;flex-wrap:wrap">
-          <span class="wordmark">seekolabs</span>
-          <span class="chip-tech">tech</span>
-          <span class="crumb only-wide">/&nbsp; <b>Privacy</b></span>
+    <nav class="brand-nav" aria-label="Breadcrumb">
+      <ol class="crumbs">
+        <li>
+          <a class="brand" href="/">
+        <span class="tile">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M 24 24 L 40 40 M 40 24 L 24 40" stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <rect x="58" y="24" width="18" height="18" rx="2" fill="currentColor"/>
+            <rect x="32" y="66" width="36" height="7" rx="3.5" fill="currentColor"/>
+          </svg>
         </span>
-        <span class="sub-line only-wide">App Publishing House</span>
-        <span class="sub-line only-narrow" style="color:var(--text);font-weight:700">Privacy</span>
-      </span>
-    </a>
+            <span>
+              <span style="display:flex;align-items:center;gap:.375rem">
+                <span class="wordmark">seekolabs</span>
+                <span class="chip-tech">tech</span>
+              </span>
+              <span class="sub-line only-wide">App Publishing House</span>
+              <span class="sub-line only-narrow" style="color:var(--text);font-weight:700">Privacy</span>
+            </span>
+          </a>
+        </li>
+          <li><span class="crumb-sep" aria-hidden="true">/</span><span aria-current="page">Privacy</span></li>
+      </ol>
+    </nav>
 
     <div class="hctl">
       <a class="btn sm ghost" href="/terms.html"><span>Terms</span></a>

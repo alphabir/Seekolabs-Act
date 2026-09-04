@@ -44,6 +44,11 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
                "Liberation Mono", "Courier New", monospace;
 
+  /* The colour the hero scrim fades into. Raw channels, because the gradient needs
+     partial alphas of it and rgb(var(--x) / .5) only works with a channel list. */
+  --ink: 11 12 14;
+  --stage: #05070F;                 /* the poster ground behind the board */
+
   --r-sm: .5rem; --r-md: .75rem; --r-lg: 1rem; --r-xl: 1.5rem;
   --shadow: 0 25px 50px -12px rgb(0 0 0 / .8);
   color-scheme: dark;
@@ -62,6 +67,8 @@
   --card-solid:  #ffffff;
   --gold-ink:    #854d0e;   /* amber-800, 6.6:1 on white */
   --focus:       #b45309;   /* amber-700, 4.6:1 on zinc-100 */
+  --ink:         244 244 245;
+  --stage:       #E8E9EE;
   --gold-line:   #e4e4e7;
   --tint:        #fef9c3;   /* yellow-100 */
   --shadow:      0 25px 50px -12px rgb(161 161 170 / .4);
@@ -179,11 +186,7 @@ p { margin: 0; }
 :root[data-theme="light"] .grad {
   background-image: linear-gradient(to right, #b45309, #9a4a0b, #82400d);
 }
-/* The hero stage is dark in both themes, so its headline keeps the brand yellows. */
-.hero .grad,
-:root[data-theme="light"] .hero .grad {
-  background-image: linear-gradient(to right, #fde047, #facc15, #f59e0b);
-}
+
 
 .lede { font-size: 1rem; line-height: 1.625; color: var(--text-2); }   /* text-base/lg leading-relaxed */
 @media (min-width: 640px) { .lede { font-size: 1.125rem; } }
@@ -274,8 +277,21 @@ p { margin: 0; }
   background: var(--brand); color: var(--brand-ink);
   font-size: .625rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
 }
-.crumb { color: var(--text-3); font-weight: 700; }
-.crumb b { color: var(--text); font-weight: 900; letter-spacing: -.02em; }
+/* The trail used to be decoration inside the home link, which made the current page a
+   link to somewhere else and gave screen readers one anchor containing both. It is a real
+   ordered list now; the separators are aria-hidden so they are not read out. */
+.brand-nav { min-width: 0; }
+.crumbs { display: flex; align-items: center; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.crumbs li { display: flex; align-items: center; gap: .5rem; min-width: 0; }
+.crumbs li + li { font-size: .9375rem; font-weight: 700; color: var(--text); }
+.crumbs a:not(.brand) { color: var(--text-3); text-decoration: none; }
+.crumbs a:not(.brand):hover { color: var(--gold-ink); }
+.crumbs [aria-current="page"] { color: var(--text); }
+.crumb-sep { color: var(--text-3); font-weight: 400; }
+/* Below 640px the logo plus the trail will not fit, so the trail collapses and the second
+   line of the logo block carries the page name instead. */
+.crumbs li + li { display: none; }
+@media (min-width: 640px) { .crumbs li + li { display: flex; } }
 .sub-line { font-family: var(--font-mono); font-size: .6875rem; color: var(--text-3); letter-spacing: -.01em; }
 
 /* Under 640px the wordmark, the TECH chip, the breadcrumb, the theme toggle and the
@@ -346,9 +362,10 @@ p { margin: 0; }
    solid ink well before the headline starts. The board occupies the top of the
    frame and sinks into the page. Nothing readable ever sits on top of it.
 
-   The stage stays dark in BOTH themes, like the site's own brand display card.
-   A light scrim under a four-colour board goes muddy and the gold rim stops
-   reading, so the page turns light only below the fold.                        */
+   The stage FOLLOWS the theme, like the landing page hero. It was pinned dark once;
+   a visitor arriving in light mode then met a dark first screen and reasonably
+   concluded the page had no light mode at all. The board carries its own dark face
+   and gold rim, so it reads on either ground.                                  */
 .hero {
   position: relative;
   overflow: hidden;
@@ -363,9 +380,9 @@ p { margin: 0; }
      the very top of the section — on top of the board. The hero simply grows instead. */
   padding-top: clamp(11rem, 38svh, 22rem);
   padding-bottom: 3.5rem;
-  background: #0B0C0E;
+  background: var(--page);
   border-bottom: 1px solid var(--line);
-  color: #f1f5f9;                    /* fixed: the stage is dark in both themes */
+  color: var(--text);
 }
 @media (min-width: 640px) { .hero { min-height: calc(100svh - 5rem); padding-bottom: 4.5rem; } }
 
@@ -376,6 +393,11 @@ p { margin: 0; }
           background: linear-gradient(to bottom, rgb(234 179 8 / .22), rgb(245 158 11 / .12), transparent); }
 .glow-b { top: 2rem; right: -4rem; width: 26rem; height: 26rem; background: rgb(250 204 21 / .10); }
 .glow-c { top: 6rem; left: -4rem; width: 22rem; height: 22rem; background: rgb(245 158 11 / .10); }
+:root[data-theme="light"] .glow-a {
+  background: linear-gradient(to bottom, rgb(253 224 71 / .45), rgb(252 211 77 / .25), transparent);
+}
+:root[data-theme="light"] .glow-b { background: rgb(253 224 71 / .45); }
+:root[data-theme="light"] .glow-c { background: rgb(252 211 77 / .45); }
 
 #stage { position: absolute; inset: 0; z-index: 1; }
 #stage canvas { width: 100% !important; height: 100% !important; display: block; }
@@ -390,12 +412,12 @@ p { margin: 0; }
   --stop: var(--scrim-stop, 46%);
   background:
     linear-gradient(to bottom,
-      rgb(11 12 14 / 0)   0%,
-      rgb(11 12 14 / 0)   var(--from),
-      rgb(11 12 14 / .62) calc((var(--from) + var(--stop)) / 2),
-      rgb(11 12 14 / .94) calc(var(--stop) - 1.5%),
-      #0B0C0E             var(--stop)),
-    radial-gradient(130% 70% at 50% 6%, transparent 62%, rgb(11 12 14 / .55) 100%);
+      rgb(var(--ink) / 0)   0%,
+      rgb(var(--ink) / 0)   var(--from),
+      rgb(var(--ink) / .62) calc((var(--from) + var(--stop)) / 2),
+      rgb(var(--ink) / .94) calc(var(--stop) - 1.5%),
+      rgb(var(--ink) / 1)   var(--stop)),
+    radial-gradient(130% 70% at 50% 6%, transparent 62%, rgb(var(--ink) / .55) 100%);
 }
 
 /* Shown until the scene paints, and left standing for good if WebGL is absent.
@@ -404,7 +426,7 @@ p { margin: 0; }
   position: absolute; inset: 0; z-index: 1;
   display: flex; flex-direction: column; align-items: center; gap: 1rem;
   padding-top: 14vh;
-  background: radial-gradient(80% 55% at 50% 26%, #141B33 0%, #0B0C0E 72%);
+  background: radial-gradient(80% 55% at 50% 26%, var(--stage) 0%, rgb(var(--ink) / 1) 72%);
   transition: opacity .6s;
 }
 #poster.gone { opacity: 0; }
@@ -416,16 +438,16 @@ p { margin: 0; }
 #poster .cap {
   margin-top: .75rem;
   font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .18em;
-  text-transform: uppercase; color: #9AA1B2;      /* 7.5:1 on the poster ground */
+  text-transform: uppercase; color: var(--text-3);
 }
 
 /* the "live 3D" marker, top-right of the stage */
 .stage-tag {
   position: absolute; z-index: 3; top: 1.25rem; right: 1rem;
   font-family: var(--font-mono); font-size: .625rem; letter-spacing: .14em;
-  text-transform: uppercase; color: #A8AEBD;
-  border: 1px solid rgb(255 255 255 / .12); border-radius: 9999px;
-  padding: .32rem .7rem; background: rgb(11 12 14 / .55); backdrop-filter: blur(6px);
+  text-transform: uppercase; color: var(--text-3);
+  border: 1px solid var(--line); border-radius: 9999px;
+  padding: .32rem .7rem; background: rgb(var(--ink) / .55); backdrop-filter: blur(6px);
 }
 @media (min-width: 640px) { .stage-tag { top: 1.75rem; right: 1.5rem; } }
 @media (min-width: 1024px) { .stage-tag { right: 2rem; } }
@@ -440,23 +462,15 @@ p { margin: 0; }
 @media (min-width: 640px) { .hero-copy { gap: 1.5rem; } }
 
 /* On the stage these are fixed light values, not theme tokens. */
-/* The stage is dark in BOTH themes, so its text is pinned to fixed light values rather
-   than tokens that flip. Each rule is repeated under [data-theme="light"] because the
-   light overrides elsewhere in this file are more specific than a bare `.hero x` and
-   would otherwise win — that is how the eyebrow ended up near-black on the dark stage,
-   measured at 1.08:1. Specificity, not colour, was the bug. */
-.hero h1, :root[data-theme="light"] .hero h1 { color: #fff; }
-.hero .lede, :root[data-theme="light"] .hero .lede { color: #d4d4d8; }
-.hero .ticks, :root[data-theme="light"] .hero .ticks { color: #d4d4d8; }
-.hero .cta-note, :root[data-theme="light"] .hero .cta-note { color: #a1a1aa; }
-.hero .eyebrow,
-:root[data-theme="light"] .hero .eyebrow {
-  color: #facc15;                       /* 9.8:1 on the tinted stage */
-  border-color: rgb(234 179 8 / .30);
-  background: rgb(250 204 21 / .10);
-}
-.hero .btn.ghost { background: rgb(24 24 27 / .85); border-color: #3f3f46; color: #e4e4e7; }
-.hero .btn.ghost:hover { background: #27272a; border-color: var(--gold-line); }
+/* The hero now inherits the page tokens like every other section, so there is nothing to
+   pin. What is left is the one place a fixed value is still right: on a dark ground the
+   headline is pure white rather than slate-100, which the rest of the page uses. */
+:root:not([data-theme="light"]) .hero h1 { color: #fff; }
+.hero .lede { color: var(--text-2); }
+.hero .ticks { color: var(--text-2); }
+/* Slightly more opaque than a normal ghost button: it sits over the scrim, where a
+   translucent panel would show the board through the label. */
+.hero .btn.ghost { background: color-mix(in srgb, var(--surface) 92%, transparent); }
 
 /* Hidden on phones. Every one of these four claims is restated in the "Why Ludo Apex"
    section below, and on a short screen the 120px they cost comes straight out of the
@@ -477,7 +491,7 @@ p { margin: 0; }
   position: absolute; z-index: 3; left: 50%; bottom: 1rem; transform: translateX(-50%);
   pointer-events: auto; text-decoration: none;
   font-family: var(--font-mono); font-size: .625rem; letter-spacing: .22em;
-  text-transform: uppercase; color: #8A8F9C;
+  text-transform: uppercase; color: var(--text-3);
   display: none;
 }
 @media (min-width: 1024px) { .scroll-hint { display: block; } }
@@ -527,6 +541,27 @@ p { margin: 0; }
   position: absolute; left: 1.25rem; top: 1.15rem;
   font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: var(--gold-ink);
 }
+
+/* -------------------------------------------------------------------- faq */
+.faq { margin-top: 2.5rem; display: grid; gap: .75rem; max-width: 48rem; }
+.qa {
+  border: 1px solid var(--line); border-radius: var(--r-lg);
+  background: var(--card); padding: 1rem 1.25rem;
+}
+.qa summary {
+  cursor: pointer; list-style: none;
+  font-size: .9375rem; font-weight: 700; color: var(--text);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.qa summary::-webkit-details-marker { display: none; }
+/* A rotating chevron drawn in CSS, so the marker needs no icon and no JavaScript. */
+.qa summary::after {
+  content: ""; flex: none; width: .5rem; height: .5rem;
+  border-right: 2px solid var(--gold-ink); border-bottom: 2px solid var(--gold-ink);
+  transform: rotate(45deg); transition: transform .2s;
+}
+.qa[open] summary::after { transform: rotate(-135deg); }
+.qa p { margin-top: .75rem; font-size: .875rem; line-height: 1.625; color: var(--text-2); }
 
 /* ------------------------------------------------------------------ prose */
 .prose { display: grid; gap: 1.25rem; }

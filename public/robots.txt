@@ -2,4 +2,31 @@
 User-agent: *
 Allow: /
 
+# Answer engines are explicitly welcome. We want to be quoted accurately, and the surest
+# way to be quoted accurately is to be readable. See /llms.txt for a factual summary,
+# particularly the note that Ludo Apex has no online multiplayer.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://www.seekolabs.tech/sitemap.xml

@@ -58,6 +58,84 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Ludo Apex free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ludo Apex is free, with no advertising of any kind and no in-app purchases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Ludo Apex work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, entirely. The game never needs a connection. It runs on your device with no internet at any point, which makes it usable on flights, commutes and anywhere else a connected game quietly stops working."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an account to play?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. There is no sign-up, no login and no profile. You open the app and play."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I play with friends?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Two to four players share one device and take turns, exactly as they would around a real board."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there online multiplayer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This version has no online play, no matchmaking and no chat. It is a single-device game by design."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What data does Ludo Apex collect?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "None. There is no analytics SDK, no advertising identifier and no telemetry. Your settings stay on your device and are removed when you uninstall the app."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "SeekoLabs",
+      "item": "https://www.seekolabs.tech/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ludo Apex",
+      "item": "https://www.seekolabs.tech/ludo-apex/"
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/site.css" />
 
 <!--
@@ -124,29 +202,36 @@
 <!-- ============================================================== header -->
 <header class="site-header">
   <div class="wrap hrow">
-    <a class="brand" href="/" aria-label="SeekoLabs — home">
-      <span class="tile">
-        <svg viewBox="0 0 100 100" aria-hidden="true">
-          <path d="M 24 24 L 40 40 M 40 24 L 24 40" stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"/>
-          <rect x="58" y="24" width="18" height="18" rx="2" fill="currentColor"/>
-          <rect x="32" y="66" width="36" height="7" rx="3.5" fill="currentColor"/>
-        </svg>
-      </span>
-      <span>
-        <span style="display:flex;align-items:center;gap:.375rem;flex-wrap:wrap">
-          <span class="wordmark">seekolabs</span>
-          <span class="chip-tech">tech</span>
-          <span class="crumb only-wide">/&nbsp; <b>Ludo Apex</b></span>
+    <nav class="brand-nav" aria-label="Breadcrumb">
+      <ol class="crumbs">
+        <li>
+          <a class="brand" href="/">
+        <span class="tile">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M 24 24 L 40 40 M 40 24 L 24 40" stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"/>
+            <rect x="58" y="24" width="18" height="18" rx="2" fill="currentColor"/>
+            <rect x="32" y="66" width="36" height="7" rx="3.5" fill="currentColor"/>
+          </svg>
         </span>
-        <span class="sub-line only-wide">App Publishing House</span>
-        <span class="sub-line only-narrow" style="color:var(--text);font-weight:700">Ludo Apex</span>
-      </span>
-    </a>
+            <span>
+              <span style="display:flex;align-items:center;gap:.375rem">
+                <span class="wordmark">seekolabs</span>
+                <span class="chip-tech">tech</span>
+              </span>
+              <span class="sub-line only-wide">App Publishing House</span>
+              <span class="sub-line only-narrow" style="color:var(--text);font-weight:700">Ludo Apex</span>
+            </span>
+          </a>
+        </li>
+          <li><span class="crumb-sep" aria-hidden="true">/</span><span aria-current="page">Ludo Apex</span></li>
+      </ol>
+    </nav>
 
     <nav class="hnav" aria-label="Page sections">
       <a href="#modes">Modes</a>
       <a href="#why">Why Apex</a>
       <a href="#rules">How to play</a>
+      <a href="#faq">FAQ</a>
       <a href="./privacy.html">Privacy</a>
     </nav>
 
@@ -172,6 +257,7 @@
       <a href="#modes">Modes</a>
       <a href="#why">Why Apex</a>
       <a href="#rules">How to play</a>
+      <a href="#faq">FAQ</a>
       <a href="./privacy.html">Privacy Policy</a>
       <a class="cta" href="#get">Get the game</a>
     </div>
@@ -208,7 +294,7 @@
       <h1>The Classic Board Game,<br /><span class="grad">Engineered Properly</span></h1>
 
       <p class="lede">
-        <strong style="color:#facc15;font-weight:700">Ludo Apex</strong> is the Ludo you grew
+        <strong style="color:var(--gold-ink);font-weight:700">Ludo Apex</strong> is the Ludo you grew
         up with, rebuilt as a real board game rather than a slot machine with dice on it. Four
         players on one device, three tiers of AI, and a rule set tested to be fair. It runs entirely
         offline, collects nothing, and shows you no ads.
@@ -430,6 +516,49 @@
       <li>Safe squares protect a token from capture. Learn where they are.</li>
       <li>The first player to get all four tokens home wins the match.</li>
     </ol>
+  </div>
+</section>
+
+<!-- ================================================================= faq
+     Real, visible questions. FAQPage structured data is only legitimate when the answers
+     are on the page, so the section exists first and the markup below describes it.
+     It also does the AEO job directly: an answer engine gets clean question-and-answer
+     pairs rather than having to infer them from marketing copy. -->
+<section class="band" id="faq">
+  <div class="wrap reveal">
+    <span class="eyebrow">
+      <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+      <span>Questions</span>
+    </span>
+    <h2 style="margin-top:.75rem">Straight answers</h2>
+    <p class="sub">The things people ask before they install a free Ludo game.</p>
+
+    <div class="faq">
+      <details class="qa">
+        <summary>Is Ludo Apex free?</summary>
+        <p>Yes. Ludo Apex is free, with no advertising of any kind and no in-app purchases.</p>
+      </details>
+      <details class="qa">
+        <summary>Does Ludo Apex work offline?</summary>
+        <p>Yes, entirely. The game never needs a connection. It runs on your device with no internet at any point, which makes it usable on flights, commutes and anywhere else a connected game quietly stops working.</p>
+      </details>
+      <details class="qa">
+        <summary>Do I need an account to play?</summary>
+        <p>No. There is no sign-up, no login and no profile. You open the app and play.</p>
+      </details>
+      <details class="qa">
+        <summary>Can I play with friends?</summary>
+        <p>Yes. Two to four players share one device and take turns, exactly as they would around a real board.</p>
+      </details>
+      <details class="qa">
+        <summary>Is there online multiplayer?</summary>
+        <p>No. This version has no online play, no matchmaking and no chat. It is a single-device game by design.</p>
+      </details>
+      <details class="qa">
+        <summary>What data does Ludo Apex collect?</summary>
+        <p>None. There is no analytics SDK, no advertising identifier and no telemetry. Your settings stay on your device and are removed when you uninstall the app.</p>
+      </details>
+    </div>
   </div>
 </section>
 

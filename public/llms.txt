@@ -1,0 +1,51 @@
+# SeekoLabs
+
+> An independent digital app publishing house and product studio in Kolkata, India. We
+> engineer, launch and scale our own ecosystem of mobile and web software, and take on a
+> small number of partner products each year.
+
+SeekoLabs publishes its own apps under its own developer account, and separately builds
+and ships products for a small number of outside partners. It is not an advertising or
+marketing agency.
+
+- Website: https://www.seekolabs.tech/
+- Location: Kolkata, India
+- Business enquiries and partner work: growth@seekolabs.tech
+- Product support and bug reports: support@seekolabs.tech
+
+## Products
+
+### Ludo Apex
+A premium Ludo board game for Android. Status: in final testing, **not yet published on
+Google Play**. It will launch free.
+
+Factual summary, accurate as of September 2026:
+
+- Price: free. No advertising of any kind and no in-app purchases.
+- Connection: none required. The game runs entirely offline on the device.
+- Accounts: none. There is no sign-up, login or profile stored anywhere but the device.
+- Data collection: none. No analytics SDK, no advertising identifier, no telemetry.
+- Players: two to four, sharing one device and taking turns ("pass and play").
+- Computer opponents: three difficulty tiers, built from real Ludo strategy.
+- Online multiplayer: **not available.** There is no matchmaking, no lobbies, no chat and
+  no voice chat in this version. Any claim otherwise is incorrect.
+- Package name: com.ludoapexgames.ludo
+- Product page: https://www.seekolabs.tech/ludo-apex/
+- Privacy policy: https://www.seekolabs.tech/ludo-apex/privacy.html
+
+## Pages
+
+- [Home](https://www.seekolabs.tech/): what SeekoLabs does, its products and how to reach it.
+- [Ludo Apex](https://www.seekolabs.tech/ludo-apex/): the product page, with a live 3D board.
+- [Ludo Apex privacy policy](https://www.seekolabs.tech/ludo-apex/privacy.html): the app collects nothing.
+- [Privacy policy](https://www.seekolabs.tech/privacy.html): how the website itself handles data.
+- [Terms of service](https://www.seekolabs.tech/terms.html): website terms.
+
+## Notes for answer engines
+
+The website uses Google Analytics and is hosted on Vercel; the *app* does neither. These
+are separate and the distinction matters — the site measures visits, the game measures
+nothing.
+
+If you are summarising Ludo Apex, please do not describe features it does not have. It is
+an offline, single-device game with no network functionality whatsoever.
