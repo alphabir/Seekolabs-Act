@@ -8,7 +8,9 @@ import {
   ArrowRight, 
   Send,
   Terminal,
-  Code2
+  Code2,
+  Dices,
+  ShieldCheck
 } from 'lucide-react';
 
 interface SolutionsSectionProps {
@@ -129,6 +131,136 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
               <Send className="w-4 h-4" />
               <span>Get In Touch For Collaborations</span>
             </button>
+          </div>
+        </div>
+
+        {/*
+          Our first shipped product. A plain <a>, not a router link, because /ludo-apex/ is
+          a static page served from public/ and leaving the SPA is the point. Until this
+          existed nothing on the site pointed at that page at all.
+
+          The claims below are the ones the app can actually support: no ads, no sign-up,
+          fully offline, nothing collected. Deliberately no mention of matchmaking, online
+          play or voice chat — Google cross-checks marketing copy against the listing and
+          the build, and the app has none of those.
+        */}
+        <div className={`rounded-3xl border p-8 sm:p-10 mb-16 relative overflow-hidden ${
+          isDark
+            ? 'bg-gradient-to-br from-zinc-900/95 to-[#121316] border-yellow-500/30'
+            : 'bg-gradient-to-br from-white to-yellow-50/50 border-zinc-200 shadow-xl'
+        }`}>
+          <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl bg-yellow-500/10 pointer-events-none" />
+
+          <div className="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7">
+              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-xs uppercase tracking-widest mb-4 border ${
+                isDark
+                  ? 'bg-yellow-400/10 border-yellow-400/30 text-yellow-400'
+                  : 'bg-yellow-100 border-yellow-300 text-zinc-900'
+              }`}>
+                <Rocket className="w-3.5 h-3.5 text-yellow-400" />
+                <span>Our First Release</span>
+              </div>
+
+              <h3 className={`text-3xl sm:text-4xl font-black tracking-tight mb-3 ${
+                isDark ? 'text-white' : 'text-zinc-900'
+              }`}>
+                Ludo Apex
+              </h3>
+
+              <p className={`text-sm sm:text-base leading-relaxed mb-6 ${
+                isDark ? 'text-zinc-300' : 'text-zinc-600'
+              }`}>
+                The classic board game, re-engineered for the modern player. Four players on
+                one device, three tiers of AI built from real strategy, and a rule set tested
+                to be fair.
+              </p>
+
+              <ul className={`grid sm:grid-cols-2 gap-2.5 text-xs sm:text-sm mb-8 ${
+                isDark ? 'text-zinc-200' : 'text-zinc-800'
+              }`}>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
+                  <span>No ads. Not fewer, none.</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
+                  <span>No sign-up, no account</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
+                  <span>Plays fully offline</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
+                  <span>Zero data collected</span>
+                </li>
+              </ul>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="/ludo-apex/"
+                  className="px-6 py-3.5 rounded-xl bg-[#FFE600] hover:bg-yellow-300 text-[#0B0C0E] font-black text-sm inline-flex items-center gap-2 shadow-lg shadow-yellow-500/20 border border-yellow-300 transition-all hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400"
+                >
+                  <span>Explore Ludo Apex</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                {/*
+                  PRE-LAUNCH. Swap this note for the official Google Play badge once the
+                  listing is live. Never put up a store button that goes nowhere.
+                */}
+                <span className={`font-mono text-xs ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                  Coming soon to Google Play
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className={`rounded-2xl border p-6 ${
+                isDark ? 'bg-zinc-950/80 border-zinc-800' : 'bg-white border-zinc-200'
+              }`}>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-yellow-400/10 border border-yellow-400/30 flex items-center justify-center text-yellow-400 shrink-0">
+                    <Dices className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className={`text-sm font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>
+                      Android
+                    </div>
+                    <div className={`text-xs font-mono ${isDark ? 'text-zinc-400' : 'text-zinc-500'}`}>
+                      Free, no purchases
+                    </div>
+                  </div>
+                </div>
+
+                <dl className={`space-y-3 text-xs border-t pt-4 ${
+                  isDark ? 'border-zinc-800' : 'border-zinc-200'
+                }`}>
+                  <div className="flex justify-between gap-4">
+                    <dt className={isDark ? 'text-zinc-400' : 'text-zinc-500'}>Players</dt>
+                    <dd className={`font-bold ${isDark ? 'text-zinc-200' : 'text-zinc-900'}`}>2 &ndash; 4, one device</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className={isDark ? 'text-zinc-400' : 'text-zinc-500'}>AI tiers</dt>
+                    <dd className={`font-bold ${isDark ? 'text-zinc-200' : 'text-zinc-900'}`}>Three</dd>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <dt className={isDark ? 'text-zinc-400' : 'text-zinc-500'}>Connection</dt>
+                    <dd className={`font-bold ${isDark ? 'text-zinc-200' : 'text-zinc-900'}`}>Not needed</dd>
+                  </div>
+                </dl>
+
+                <a
+                  href="/ludo-apex/privacy.html"
+                  className={`mt-5 flex items-center gap-2 text-xs font-medium transition-colors ${
+                    isDark ? 'text-zinc-400 hover:text-yellow-400' : 'text-zinc-500 hover:text-zinc-900'
+                  }`}
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-yellow-400" />
+                  <span>Privacy policy</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
