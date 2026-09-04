@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PS6HSKCTQ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PS6HSKCTQ5');
+</script>
+
+
+<title>Ludo Apex — Classic Board Game by SeekoLabs</title>
+<meta name="description" content="Ludo Apex is a premium offline Ludo board game by SeekoLabs. Pass and play with up to four players on one device, or take on three levels of AI. No ads, no sign-up, no internet needed." />
+<link rel="canonical" href="https://www.seekolabs.tech/ludo-apex/" />
+<meta name="author" content="SeekoLabs" />
+<meta name="robots" content="index, follow" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0C0E" />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F5" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="SeekoLabs" />
+<meta property="og:url" content="https://www.seekolabs.tech/ludo-apex/" />
+<meta property="og:title" content="Ludo Apex — Classic Board Game by SeekoLabs" />
+<meta property="og:description" content="A premium offline Ludo board game. Pass and play with up to four players on one device, or take on three levels of AI. No ads, no sign-up, no internet needed." />
+<meta property="og:image" content="https://www.seekolabs.tech/ludo-apex/icon.png" />
+<!-- icon.png really is 256x256. Declaring it stops crawlers guessing, and the card type
+     below is `summary` for the same reason: summary_large_image expects a wide crop and
+     letterboxes a square mark. Change both together if a 1200x630 hero is ever added. -->
+<meta property="og:image:width" content="256" />
+<meta property="og:image:height" content="256" />
+<meta property="og:image:alt" content="Ludo Apex app icon" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Ludo Apex — Classic Board Game by SeekoLabs" />
+<meta name="twitter:description" content="A premium offline Ludo board game. Pass and play, or take on three levels of AI. No ads, no sign-up, no internet needed." />
+<meta name="twitter:image" content="https://www.seekolabs.tech/ludo-apex/icon.png" />
+<meta name="twitter:image:alt" content="Ludo Apex app icon" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Ludo Apex",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "url": "https://www.seekolabs.tech/ludo-apex/",
+  "description": "A premium offline Ludo board game. Pass and play with up to four players on one device, or take on AI opponents across three difficulty levels.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "SeekoLabs", "url": "https://www.seekolabs.tech/" }
+}
+</script>
+
+<link rel="stylesheet" href="/site.css" />
+
+<!--
+  Resolve the theme before first paint, exactly as index.html does for the React
+  site, and against THE SAME storage key — so a visitor who chose light mode on
+  seekolabs.tech lands here already in light mode.
+-->
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('seekolabs-theme');
+      document.documentElement.dataset.theme =
+        (stored === 'light' || stored === 'dark') ? stored
+          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    } catch (e) { document.documentElement.dataset.theme = 'dark'; }
+    // Marks that scripting is live. The reveal-on-scroll styles hang off this, so with
+    // JavaScript disabled the sections are simply visible instead of stuck at opacity 0.
+    document.documentElement.classList.add('js');
+  })();
+</script>
+
+<!--
+  Opened straight off disk (file:// or a data: preview), NOTHING relative resolves: no
+  stylesheet, no scene.js, no three.js. The page then looks simply broken, with no clue why.
+  This banner is deliberately styled INLINE, because in exactly that situation style.css is
+  one of the things that did not load. Classic inline scripts still run, so it always shows.
+-->
+<script>
+  (function () {
+    var p = location.protocol;
+    if (p === 'http:' || p === 'https:') return;
+    document.addEventListener('DOMContentLoaded', function () {
+      var d = document.createElement('div');
+      d.setAttribute('role', 'alert');
+      d.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;' +
+        'justify-content:center;padding:24px;background:#0B0C0E;color:#f1f5f9;' +
+        'font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif';
+      d.innerHTML =
+        '<div style="max-width:34rem;text-align:left">' +
+        '<div style="display:inline-block;padding:4px 12px;border-radius:999px;background:#FFE600;' +
+        'color:#0B0C0E;font-size:12px;font-weight:900;letter-spacing:.08em">NEEDS A WEB SERVER</div>' +
+        '<h1 style="margin:16px 0 12px;font-size:28px;font-weight:900;letter-spacing:-.02em">' +
+        'This page cannot run from a file</h1>' +
+        '<p style="margin:0 0 16px;color:#d4d4d8">It was opened as <code style="color:#facc15">' +
+        p + '</code>, so the browser refuses to load its stylesheet and its JavaScript modules. ' +
+        'Serve the folder over HTTP instead:</p>' +
+        '<pre style="margin:0 0 16px;padding:14px 16px;border-radius:12px;background:#18181b;' +
+        'border:1px solid #27272a;color:#e4e4e7;font-size:13px;overflow-x:auto">' +
+        'cd ludo-apex-site' + String.fromCharCode(10) + 'python -m http.server 8899</pre>' +
+        '<p style="margin:0;color:#d4d4d8">Then open ' +
+        '<b style="color:#FFE600">http://localhost:8899/ludo-apex/</b></p>' +
+        '<p style="margin:16px 0 0;font-size:13px;color:#a1a1aa">Once deployed under ' +
+        'seekolabs.tech this never applies &mdash; the site is already served over HTTPS.</p>' +
+        '</div>';
+      document.body.appendChild(d);
+    });
+  })();
+</script>
+</head>
+
+<body>
+<a class="sr-only skip" href="#main">Skip to main content</a>
+
+<!-- ============================================================== header -->
+<header class="site-header">
+  <div class="wrap hrow">
+    <a class="brand" href="/" aria-label="SeekoLabs — home">
+      <span class="tile">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M 24 24 L 40 40 M 40 24 L 24 40" stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"/>
+          <rect x="58" y="24" width="18" height="18" rx="2" fill="currentColor"/>
+          <rect x="32" y="66" width="36" height="7" rx="3.5" fill="currentColor"/>
+        </svg>
+      </span>
+      <span>
+        <span style="display:flex;align-items:center;gap:.375rem;flex-wrap:wrap">
+          <span class="wordmark">seekolabs</span>
+          <span class="chip-tech">tech</span>
+          <span class="crumb only-wide">/&nbsp; <b>Ludo Apex</b></span>
+        </span>
+        <span class="sub-line only-wide">App Publishing House</span>
+        <span class="sub-line only-narrow" style="color:var(--text);font-weight:700">Ludo Apex</span>
+      </span>
+    </a>
+
+    <nav class="hnav" aria-label="Page sections">
+      <a href="#modes">Modes</a>
+      <a href="#why">Why Apex</a>
+      <a href="#rules">How to play</a>
+      <a href="./privacy.html">Privacy</a>
+    </nav>
+
+    <div class="hctl">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme">
+        <svg class="i" id="theme-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+        <span id="theme-word">Light</span>
+      </button>
+      <a class="btn sm hcta" href="#get">
+        <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        <span>Get the game</span>
+      </a>
+
+      <button class="icon-btn menu-btn" id="menu-btn" type="button"
+              aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu">
+        <svg class="i" id="menu-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-nav" aria-label="Page sections" hidden>
+    <div class="wrap">
+      <a href="#modes">Modes</a>
+      <a href="#why">Why Apex</a>
+      <a href="#rules">How to play</a>
+      <a href="./privacy.html">Privacy Policy</a>
+      <a class="cta" href="#get">Get the game</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ================================================================ hero
+     Full-bleed stage. Layer order matters and is set in CSS, not here:
+       glows (0) -> canvas (1) -> scrim (2) -> copy (3)
+     The canvas is transparent everywhere the board is not, so the glows bleed
+     around it, and the scrim reaches solid ink before the headline begins.  -->
+<section class="hero" id="top">
+  <span class="glow glow-a" aria-hidden="true"></span>
+  <span class="glow glow-b" aria-hidden="true"></span>
+  <span class="glow glow-c" aria-hidden="true"></span>
+
+  <div id="poster">
+    <span class="diamond" role="img" aria-label="Ludo Apex mark"></span>
+    <span class="cap">Ludo Apex</span>
+  </div>
+  <div id="stage" aria-hidden="true"></div>
+  <div id="scrim" aria-hidden="true"></div>
+  <span class="stage-tag" id="stage-tag" hidden>Live 3D board</span>
+
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">
+        <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+        <span>A SeekoLabs Game</span>
+      </span>
+
+      <h1>The Classic Board Game,<br /><span class="grad">Engineered Properly</span></h1>
+
+      <p class="lede">
+        <strong style="color:#facc15;font-weight:700">Ludo Apex</strong> is the Ludo you grew
+        up with, rebuilt as a real board game rather than a slot machine with dice on it. Four
+        players on one device, three tiers of AI, and a rule set tested to be fair. It runs entirely
+        offline, collects nothing, and shows you no ads.
+      </p>
+
+      <ul class="ticks">
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.34"/><path d="m9 11 3 3L22 4"/></svg><span>100% offline play</span></li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.34"/><path d="m9 11 3 3L22 4"/></svg><span>No ads, ever</span></li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.34"/><path d="m9 11 3 3L22 4"/></svg><span>No sign-up, no account</span></li>
+        <li><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8 10A10 10 0 1 1 17 3.34"/><path d="m9 11 3 3L22 4"/></svg><span>Zero data collected</span></li>
+      </ul>
+
+      <div class="cta-row" id="get">
+        <!--
+          PRE-LAUNCH STATE. The app is not published yet, so this scrolls instead of
+          linking. Once the listing is live, swap href for the Play URL and delete the
+          note below. Never ship a dead Play link, the first cohort bounces.
+        -->
+        <a class="btn" id="cta" href="#modes">
+          <span>See what's inside</span>
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <button class="btn ghost" id="roll" type="button" hidden>
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--yellow)"><rect width="12" height="12" x="2" y="10" rx="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path d="M6 18h.01"/><path d="M10 14h.01"/><path d="M15 6h.01"/><path d="M18 9h.01"/></svg>
+          <span>Roll the die</span>
+        </button>
+        <a class="btn ghost" href="./privacy.html">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--yellow)"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Privacy Policy</span>
+        </a>
+      </div>
+      <p class="cta-note">Coming soon to Google Play</p>
+    </div>
+  </div>
+
+  <a class="scroll-hint" href="#modes">scroll</a>
+</section>
+
+<!-- the metric ribbon, in its own band under the stage -->
+<section class="band ribbon-band">
+  <div class="wrap grid g4">
+      <div class="stat">
+        <span class="mono-label">
+          <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Players</span>
+        </span>
+        <div class="v">2 &ndash; 4</div>
+      </div>
+      <div class="stat">
+        <span class="mono-label">
+          <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>
+          <span>AI Tiers</span>
+        </span>
+        <div class="v">Three</div>
+      </div>
+      <div class="stat">
+        <span class="mono-label">
+          <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h.01"/><path d="M8.5 16.43a5 5 0 0 1 7 0"/><path d="M5 12.86a10 10 0 0 1 5.17-2.69"/><path d="M19 12.86a10 10 0 0 0-2-1.52"/><path d="M2 8.82a15 15 0 0 1 4.18-2.64"/><path d="M22 8.82a15 15 0 0 0-11.29-3.76"/><path d="m2 2 20 20"/></svg>
+          <span>Connection</span>
+        </span>
+        <div class="v">Not needed</div>
+      </div>
+      <div class="stat">
+        <span class="mono-label">
+          <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Data Collected</span>
+        </span>
+        <div class="v">None</div>
+      </div>
+  </div>
+</section>
+
+<!-- =============================================================== modes -->
+<section class="band" id="modes">
+  <div class="wrap reveal">
+    <span class="eyebrow">
+      <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+      <span>Game Modes</span>
+    </span>
+    <h2 style="margin-top:.75rem">Two ways to play,<br /><span class="grad">both of them offline</span></h2>
+    <p class="sub">
+      No lobby to wait for, no account to make, no connection to lose halfway through a match.
+      Open the app and the game is already there.
+    </p>
+
+    <div class="grid g2" style="margin-top:2.5rem">
+      <article class="card pillar">
+        <div class="pillar-top">
+          <span class="pillar-icon">
+            <svg class="i i-lg" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
+          </span>
+          <span class="badge">2 &ndash; 4 Players</span>
+        </div>
+        <h3>Pass &amp; Play</h3>
+        <p>
+          Grab a friend, or three. Two to four players share a single device and take turns
+          exactly as they would around a real board. The best version of Ludo is still the one
+          played by people in the same room.
+        </p>
+        <ul>
+          <li><svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Hot-seat turns with a clear active-player marker</span></li>
+          <li><svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Left- and right-handed board layouts</span></li>
+          <li><svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Resume a match exactly where it stopped</span></li>
+        </ul>
+      </article>
+
+      <article class="card pillar">
+        <div class="pillar-top">
+          <span class="pillar-icon">
+            <svg class="i i-lg" viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>
+          </span>
+          <span class="badge">Three Tiers</span>
+        </div>
+        <h3>Versus Computer</h3>
+        <p>
+          Play against AI opponents built from real Ludo strategy, not a random-move stub.
+          Easy is a gentle warm-up. Medium plays a solid blocking game. Hard punishes every
+          loose move you make.
+        </p>
+        <ul>
+          <li><svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Opponents that guard, block and hunt captures</span></li>
+          <li><svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>One, two or three computer players</span></li>
+          <li><svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>The same engine drives every player, so it is never rigged</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================= why -->
+<section class="band" id="why">
+  <div class="wrap reveal">
+    <span class="eyebrow">
+      <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+      <span>Why Ludo Apex</span>
+    </span>
+    <h2 style="margin-top:.75rem">Built as a board game,<br /><span class="grad">not as an ad slot</span></h2>
+    <p class="sub">
+      Most free Ludo apps are a delivery mechanism for interstitials and coin bundles. This one
+      is a game. Every decision below follows from that.
+    </p>
+
+    <div class="grid g2" style="margin-top:2.5rem">
+      <article class="card pillar">
+        <div class="pillar-top">
+          <span class="pillar-icon">
+            <svg class="i i-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h.01"/><path d="M8.5 16.43a5 5 0 0 1 7 0"/><path d="M5 12.86a10 10 0 0 1 5.17-2.69"/><path d="M19 12.86a10 10 0 0 0-2-1.52"/><path d="M2 8.82a15 15 0 0 1 4.18-2.64"/><path d="M22 8.82a15 15 0 0 0-11.29-3.76"/><path d="m2 2 20 20"/></svg>
+          </span>
+          <span class="badge">Offline First</span>
+        </div>
+        <h3>Plays anywhere</h3>
+        <p>
+          No Wi-Fi, no mobile data, no sign-up. Built for flights, commutes, basements and every
+          other place a connected game quietly stops working.
+        </p>
+      </article>
+
+      <article class="card pillar">
+        <div class="pillar-top">
+          <span class="pillar-icon">
+            <svg class="i i-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <span class="badge">Zero Telemetry</span>
+        </div>
+        <h3>Respects your device</h3>
+        <p>
+          No ads, no tracking, no analytics SDK, no background activity, and nothing about you
+          leaves the phone. There is no account, so there is nothing to leak.
+        </p>
+      </article>
+
+      <article class="card pillar">
+        <div class="pillar-top">
+          <span class="pillar-icon">
+            <svg class="i i-lg" viewBox="0 0 24 24" aria-hidden="true"><rect width="12" height="12" x="2" y="10" rx="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path d="M6 18h.01"/><path d="M10 14h.01"/><path d="M15 6h.01"/><path d="M18 9h.01"/></svg>
+          </span>
+          <span class="badge">Fair Rules</span>
+        </div>
+        <h3>Competitive, not lucky</h3>
+        <p>
+          A faithful, well-tested rule set with a deterministic engine underneath. Dice are rolled
+          the same way for every player, human or AI, and the code path is identical for both.
+        </p>
+      </article>
+
+      <article class="card pillar">
+        <div class="pillar-top">
+          <span class="pillar-icon">
+            <svg class="i i-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+          </span>
+          <span class="badge">Dark &amp; Gold</span>
+        </div>
+        <h3>Designed, not assembled</h3>
+        <p>
+          A dark theme with gold bezels, hand-tuned token art, fluid hops and captures, and a
+          light theme for daytime. Every screen was drawn for this game rather than bought
+          from a template pack.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================================== rules -->
+<section class="band" id="rules">
+  <div class="wrap reveal">
+    <span class="eyebrow">
+      <svg class="i i-sm" viewBox="0 0 24 24" aria-hidden="true"><rect width="12" height="12" x="2" y="10" rx="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path d="M6 18h.01"/><path d="M10 14h.01"/><path d="M15 6h.01"/><path d="M18 9h.01"/></svg>
+      <span>How It Plays</span>
+    </span>
+    <h2 style="margin-top:.75rem">Five minutes to learn,<br /><span class="grad">a long time to master</span></h2>
+    <p class="sub">The Ludo you already know, implemented without shortcuts.</p>
+
+    <ol class="steps">
+      <li>Roll a six to bring a token out of your yard and onto the track.</li>
+      <li>Move your tokens around the board, racing all four toward the centre.</li>
+      <li>Land on an opponent to capture it. Their token goes all the way back home.</li>
+      <li>Sixes, captures and finishes earn another roll, so a good turn keeps going.</li>
+      <li>Safe squares protect a token from capture. Learn where they are.</li>
+      <li>The first player to get all four tokens home wins the match.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================================================================= cta -->
+<section class="band" style="border-bottom:0">
+  <div class="wrap reveal" style="text-align:center;display:grid;gap:1.25rem;justify-items:center">
+    <h2>Ready when you are</h2>
+    <p class="sub" style="text-align:center;margin-top:0">
+      Ludo Apex is in final testing before its Google Play release. It will launch free, with no
+      ads and no in-app purchases.
+    </p>
+    <div class="cta-row" style="justify-content:center;margin-top:.5rem">
+      <a class="btn ghost" href="mailto:support@seekolabs.tech">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--yellow)"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span>Ask us anything</span>
+      </a>
+      <a class="btn ghost" href="/">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--yellow)"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        <span>More from SeekoLabs</span>
+      </a>
+    </div>
+    <p class="cta-note">Coming soon to Google Play</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================== footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="brand" href="/" aria-label="SeekoLabs — home">
+          <span class="tile">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M 24 24 L 40 40 M 40 24 L 24 40" stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"/>
+              <rect x="58" y="24" width="18" height="18" rx="2" fill="currentColor"/>
+              <rect x="32" y="66" width="36" height="7" rx="3.5" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>
+            <span style="display:flex;align-items:center;gap:.375rem">
+              <span class="wordmark" style="color:#fff">seekolabs</span>
+              <span class="chip-tech">tech</span>
+            </span>
+            <span class="sub-line">App Publishing House</span>
+          </span>
+        </a>
+        <p style="margin-top:1rem;line-height:1.7;max-width:32rem">
+          Ludo Apex is published by SeekoLabs (<code>seekolabs.tech</code>), an independent app
+          publishing house and product studio in Kolkata, India.
+        </p>
+        <div class="fline" style="margin-top:1rem">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <!-- This mailbox is shown publicly on the Play listing and must be monitored. -->
+          <a href="mailto:support@seekolabs.tech" style="font-family:var(--font-mono)">support@seekolabs.tech</a>
+        </div>
+      </div>
+
+      <nav aria-labelledby="f-game">
+        <h4 id="f-game">The Game</h4>
+        <ul>
+          <li><a href="#modes">Game modes</a></li>
+          <li><a href="#why">Why Ludo Apex</a></li>
+          <li><a href="#rules">How to play</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="f-legal">
+        <h4 id="f-legal">Legal &amp; Support</h4>
+        <ul>
+          <li><a href="./privacy.html">Privacy Policy</a></li>
+          <li><a href="mailto:support@seekolabs.tech">Contact support</a></li>
+          <li><a href="/">SeekoLabs home</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="fbot">
+      <div>&copy; <span id="year">2026</span> <strong style="color:#e4e4e7">SeekoLabs Tech</strong> (seekolabs.tech). All rights reserved.</div>
+      <nav aria-label="Legal">
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="mailto:support@seekolabs.tech">Support</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js", "three/": "./vendor/" } }
+</script>
+
+<script type="module">
+  /* ------------------------------------------------------------ theme
+     Same storage key as the React site, so the choice follows the visitor
+     in both directions. */
+  const KEY = 'seekolabs-theme';
+  const root = document.documentElement;
+  const icon = document.getElementById('theme-icon');
+  const word = document.getElementById('theme-word');
+  const SUN  = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>';
+  const MOON = '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>';
+
+  function paintToggle() {
+    const dark = root.dataset.theme !== 'light';
+    icon.innerHTML = dark ? SUN : MOON;   // the icon shows what you SWITCH TO
+    word.textContent = dark ? 'Light' : 'Dark';
+    document.getElementById('theme-toggle')
+      .setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    return dark;
+  }
+  let isDark = paintToggle();
+
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    root.dataset.theme = isDark ? 'light' : 'dark';
+    try { localStorage.setItem(KEY, root.dataset.theme); } catch (e) { /* private window */ }
+    isDark = paintToggle();
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { dark: isDark } }));
+  });
+
+  /* ------------------------------------------------------ mobile nav
+     Under 768px the header nav is hidden, so without this there is no way to
+     reach any section from the top of the page. Mirrors the React site's drawer. */
+  const menuBtn = document.getElementById('menu-btn');
+  const menuIcon = document.getElementById('menu-icon');
+  const drawer = document.getElementById('mobile-nav');
+  const MENU = '<path d="M4 6h16M4 12h16M4 18h16"/>';
+  const CLOSE = '<path d="M18 6 6 18M6 6l12 12"/>';
+
+  function setMenu(open) {
+    drawer.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    menuIcon.innerHTML = open ? CLOSE : MENU;
+  }
+  menuBtn.addEventListener('click', () => setMenu(drawer.hidden));
+  drawer.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  // Escape closes it and hands focus back to the button that opened it.
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !drawer.hidden) { setMenu(false); menuBtn.focus(); }
+  });
+  // Widening past the breakpoint reveals the desktop nav, so drop the drawer.
+  matchMedia('(min-width: 768px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ------------------------------------------------------------ reveal */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ------------------------------------------------------------ the 3D
+     A LAZY import: never fetched on a device that will not run it.
+     deviceMemory / hardwareConcurrency pick the quality TIER — they do not
+     block. A 3D page that shows its own audience a still image has failed at
+     the one thing it exists to do. */
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const gl = (() => {
+    try { const c = document.createElement('canvas');
+          return !!(c.getContext('webgl2') || c.getContext('webgl')); }
+    catch (e) { return false; }
+  })();
+
+  // Reduced motion still gets the board — it is simply not animated. Only a missing WebGL
+  // context leaves the poster standing, because then there is genuinely nothing to draw.
+  if (gl) {
+    const mem = navigator.deviceMemory || 4;
+    const cpu = navigator.hardwareConcurrency || 4;
+    const tier = (mem <= 2 || cpu <= 4) ? 'low' : (mem <= 4 ? 'mid' : 'high');
+    import('./scene.js')
+      .then(m => m.start(document.getElementById('stage'), tier, !reduced))
+      .then(() => {
+        document.getElementById('poster').classList.add('gone');
+        document.getElementById('roll').hidden = false;
+        document.getElementById('stage-tag').hidden = false;
+      })
+      .catch(err => console.warn('[ludo-apex] 3D unavailable, poster stands:', err));
+  }
+</script>
+</body>
+</html>

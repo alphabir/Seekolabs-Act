@@ -1,0 +1,581 @@
+/* ============================================================================
+   Ludo Apex — product page styles.
+
+   These are HAND-WRITTEN CSS, not Tailwind, on purpose: this page lives in
+   public/ and is copied to the build root verbatim, so Tailwind never scans it
+   and the React bundle's hashed CSS is not available to it. The token values
+   below were lifted from the site's own compiled stylesheet so the two render
+   identically — see dist/assets/index-*.css.
+
+   Palette is declared twice: hex first for any engine without oklch(), then the
+   site's exact oklch() values inside @supports. On a wide-gamut display this
+   page is then the same colour as the React site, to the digit.
+   ========================================================================== */
+
+:root {
+  --brand:        #FFE600;   /* the SeekoLabs accent — CTAs and the logo tile */
+  --brand-hover:  #fde047;   /* yellow-300 */
+  --brand-ink:    #0B0C0E;   /* text ON the accent */
+  --yellow:       #facc15;   /* yellow-400 — icons, labels, links */
+  --amber:        #f59e0b;   /* amber-500 — end of the headline gradient */
+  --amber-300:    #fcd34d;
+
+  --page:         #0B0C0E;
+  --surface:      #18181b;   /* zinc-900 */
+  --surface-2:    #09090b;   /* zinc-950 */
+  --line:         #27272a;   /* zinc-800 */
+  --line-strong:  #3f3f46;   /* zinc-700 */
+  --text:         #f1f5f9;   /* slate-100 */
+  --text-2:       #d4d4d8;   /* zinc-300 */
+  --text-3:       #a1a1aa;   /* zinc-400 */
+  --card:         rgb(24 24 27 / 0.80);
+  --card-solid:   #18181b;
+  --gold-line:    rgb(234 179 8 / 0.30);   /* yellow-500/30 */
+  --tint:         rgb(250 204 21 / 0.10);  /* yellow-400/10 */
+  /* Gold that is READ, not just seen. yellow-400 is 11:1 on the dark ground but only
+     1.5:1 on the light one, so small text and focus rings need a deeper gold in light
+     mode. The headline gradient deliberately keeps the brand yellow in both. */
+  --gold-ink:     #facc15;
+  --focus:        #facc15;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+               "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+               "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Courier New", monospace;
+
+  --r-sm: .5rem; --r-md: .75rem; --r-lg: 1rem; --r-xl: 1.5rem;
+  --shadow: 0 25px 50px -12px rgb(0 0 0 / .8);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --page:        #f4f4f5;   /* zinc-100 */
+  --surface:     #ffffff;
+  --surface-2:   #fafafa;
+  --line:        #e4e4e7;   /* zinc-200 */
+  --line-strong: #d4d4d8;
+  --text:        #18181b;
+  --text-2:      #3f3f46;
+  --text-3:      #52525b;
+  --card:        rgb(255 255 255 / 0.80);
+  --card-solid:  #ffffff;
+  --gold-ink:    #854d0e;   /* amber-800, 6.6:1 on white */
+  --focus:       #b45309;   /* amber-700, 4.6:1 on zinc-100 */
+  --gold-line:   #e4e4e7;
+  --tint:        #fef9c3;   /* yellow-100 */
+  --shadow:      0 25px 50px -12px rgb(161 161 170 / .4);
+  color-scheme: light;
+}
+
+@supports (color: oklch(50% 0.1 100)) {
+  :root {
+    --brand-hover: oklch(90.5% .182 98.111);
+    --yellow:      oklch(85.2% .199 91.936);
+    --amber:       oklch(76.9% .188 70.08);
+    --amber-300:   oklch(87.9% .169 91.605);
+    --surface:     oklch(21% .006 285.885);
+    --surface-2:   oklch(14.1% .005 285.823);
+    --line:        oklch(27.4% .006 286.033);
+    --line-strong: oklch(37% .013 285.805);
+    --text:        oklch(96.8% .007 247.896);
+    --text-2:      oklch(87.1% .006 286.286);
+    --text-3:      oklch(70.5% .015 286.067);
+    --card:        oklch(21% .006 285.885 / 0.8);
+    --card-solid:  oklch(21% .006 285.885);
+  }
+  :root[data-theme="light"] {
+    --page:        oklch(96.7% .001 286.375);
+    --surface:     #fff;
+    --line:        oklch(92% .004 286.32);
+    --line-strong: oklch(87.1% .006 286.286);
+    --text:        oklch(21% .006 285.885);
+    --text-2:      oklch(37% .013 285.805);
+    --text-3:      oklch(44.2% .017 285.786);
+    --card:        rgb(255 255 255 / .8);
+    --card-solid:  #fff;
+    --tint:        oklch(97.3% .071 103.193);
+  }
+}
+
+/* -------------------------------------------------------------- foundation */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;              /* Tailwind's default, which the React site inherits */
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .3s, color .3s;
+}
+
+::selection { background: var(--brand); color: #000; }
+
+/* Every jump target, not just sections. #get is a div and #main is the <main>; scoping
+   this to section[id] dropped both under the sticky header when linked to. */
+[id] { scroll-margin-top: 5rem; }
+
+img, canvas { display: block; max-width: 100%; }
+
+a { color: inherit; }
+
+:where(a, button, summary):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip:focus {
+  position: fixed; left: 1rem; top: 1rem; z-index: 100;
+  width: auto; height: auto; margin: 0; overflow: visible; clip: auto;
+  padding: .625rem 1rem; border-radius: var(--r-md);
+  background: var(--brand); color: var(--brand-ink);
+  font-size: .75rem; font-weight: 900;
+}
+
+/* ------------------------------------------------------------------ layout */
+.wrap {
+  max-width: 80rem;          /* max-w-7xl */
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+@media (min-width: 640px) { .wrap { padding-inline: 1.5rem; } }
+@media (min-width: 1024px) { .wrap { padding-inline: 2rem; } }
+
+.band { padding-block: 4rem; border-bottom: 1px solid var(--line); position: relative; }
+@media (min-width: 768px) { .band { padding-block: 6rem; } }
+
+/* -------------------------------------------------------------------- type */
+/* Measured off the running React site rather than eyeballed, so the two pages set type
+   identically. The site uses Tailwind's scale with `font-black tracking-tight
+   leading-tight` on headings and a hard step at the 640px breakpoint — not a fluid
+   clamp, which is what made these read a size too large on a narrow window. */
+h1, h2, h3, h4 { margin: 0; font-weight: 900; letter-spacing: -.025em; line-height: 1.25; }
+
+h1, h2 { font-size: 1.875rem; }                        /* text-3xl */
+@media (min-width: 640px) { h1, h2 { font-size: 3rem; } }   /* sm:text-5xl */
+
+h3 { font-size: 1.5rem; letter-spacing: normal; line-height: 1.333; }  /* text-2xl */
+
+p { margin: 0; }
+
+/* The signature headline gradient. On the dark ground the brand yellows run 10:1 and
+   stay exactly as the site draws them. On the light ground they run about 2:1, well
+   under the 3:1 WCAG asks of large text, so light mode uses a deepened amber that
+   still reads as gold. Measured: 4.6:1 at the lightest stop, 6.4:1 at the darkest. */
+.grad {
+  background-image: linear-gradient(to right, var(--brand-hover), var(--yellow), var(--amber));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+:root[data-theme="light"] .grad {
+  background-image: linear-gradient(to right, #b45309, #9a4a0b, #82400d);
+}
+/* The hero stage is dark in both themes, so its headline keeps the brand yellows. */
+.hero .grad,
+:root[data-theme="light"] .hero .grad {
+  background-image: linear-gradient(to right, #fde047, #facc15, #f59e0b);
+}
+
+.lede { font-size: 1rem; line-height: 1.625; color: var(--text-2); }   /* text-base/lg leading-relaxed */
+@media (min-width: 640px) { .lede { font-size: 1.125rem; } }
+
+.sub { margin-top: .75rem; font-size: .875rem; line-height: 1.625; color: var(--text-3); max-width: 46rem; }
+@media (min-width: 640px) { .sub { font-size: 1rem; } }
+
+/* The site's signature small label: mono, uppercase, wide-tracked, yellow. */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .25rem .75rem; border-radius: 9999px;
+  border: 1px solid var(--gold-line); background: var(--tint);
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 400;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--yellow);
+}
+:root[data-theme="light"] .eyebrow { color: #18181b; border-color: var(--amber-300); }
+
+.mono-label {
+  display: flex; align-items: center; gap: .5rem;
+  font-family: var(--font-mono); font-size: .75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--gold-ink);
+}
+
+/* ----------------------------------------------------------------- buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .625rem;
+  padding: 1rem 1.75rem; border-radius: var(--r-md);
+  font-size: .875rem; font-weight: 900; text-decoration: none;
+  border: 1px solid var(--brand-hover); background: var(--brand); color: var(--brand-ink);
+  box-shadow: 0 20px 25px -5px rgb(234 179 8 / .25);
+  cursor: pointer; transition: transform .2s, background-color .2s, box-shadow .2s;
+}
+.btn:hover { background: var(--brand-hover); transform: translateY(-2px); }
+.btn:disabled, .btn[aria-disabled="true"] { cursor: default; }
+.btn:disabled:hover, .btn[aria-disabled="true"]:hover { transform: none; }
+
+.btn.ghost {
+  background: var(--surface); color: var(--text-2);
+  border: 1px solid var(--line-strong); box-shadow: none;
+}
+.btn.ghost:hover { border-color: var(--gold-line); background: var(--card-solid); transform: translateY(-2px); }
+
+.btn.sm { padding: .625rem 1rem; font-size: .75rem; }
+
+/* ------------------------------------------------------------------- cards */
+.card {
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: var(--gold-line); }
+
+.grid { display: grid; gap: 1rem; }
+.g2 { grid-template-columns: 1fr; }
+.g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 768px) {
+  .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ------------------------------------------------------------------ header */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--page) 90%, transparent);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--line);
+}
+.hrow { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+@media (min-width: 640px) { .hrow { height: 5rem; } }
+
+.brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+.tile {
+  width: 2.5rem; height: 2.5rem; border-radius: var(--r-md);
+  background: var(--brand); padding: .375rem; flex: none;
+  box-shadow: 0 10px 15px -3px rgb(234 179 8 / .2);
+  transition: transform .3s;
+}
+.brand:hover .tile { transform: scale(1.05); }
+.tile svg { width: 100%; height: 100%; color: var(--brand-ink); }
+
+.wordmark { font-size: 1.375rem; font-weight: 900; letter-spacing: -.05em; text-transform: lowercase; }
+:root[data-theme="light"] .wordmark { color: #0f172a; }
+.chip-tech {
+  padding: .0625rem .375rem; border-radius: var(--r-sm);
+  background: var(--brand); color: var(--brand-ink);
+  font-size: .625rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
+}
+.crumb { color: var(--text-3); font-weight: 700; }
+.crumb b { color: var(--text); font-weight: 900; letter-spacing: -.02em; }
+.sub-line { font-family: var(--font-mono); font-size: .6875rem; color: var(--text-3); letter-spacing: -.01em; }
+
+/* Under 640px the wordmark, the TECH chip, the breadcrumb, the theme toggle and the
+   menu button do not fit on one line. Drop the inline breadcrumb and let the second
+   line carry the page name instead — the header still says exactly where you are. */
+.only-wide { display: none; }
+.only-narrow { display: inline; }
+@media (min-width: 640px) {
+  .only-wide { display: inline; }
+  .only-narrow { display: none; }
+}
+
+.hnav { display: none; align-items: center; gap: 2rem; }
+@media (min-width: 768px) { .hnav { display: flex; } }
+.hnav a {
+  font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--text-2); text-decoration: none; transition: color .2s;
+}
+.hnav a:hover { color: var(--yellow); }
+
+.hctl { display: flex; align-items: center; gap: .5rem; }
+.icon-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .375rem;
+  padding: .625rem; border-radius: var(--r-md);
+  border: 1px solid var(--line); background: var(--surface); color: var(--yellow);
+  font-size: .6875rem; font-weight: 700; cursor: pointer; transition: all .2s;
+}
+.icon-btn:hover { border-color: var(--gold-line); }
+.icon-btn span { display: none; color: var(--text-2); }
+@media (min-width: 640px) { .icon-btn span { display: inline; } }
+:root[data-theme="light"] .icon-btn { color: #18181b; background: var(--page); }
+
+.hcta { display: none; }
+@media (min-width: 640px) { .hcta { display: inline-flex; } }
+
+.menu-btn { display: inline-flex; }
+@media (min-width: 768px) { .menu-btn { display: none; } }
+
+/* Mobile navigation panel — the site's own pattern: a bordered drawer under the header. */
+#mobile-nav { border-top: 1px solid var(--line); background: var(--page); }
+#mobile-nav[hidden] { display: none; }
+@media (min-width: 768px) { #mobile-nav { display: none; } }
+#mobile-nav .wrap { display: flex; flex-direction: column; gap: .5rem; padding-block: 1rem; }
+#mobile-nav a {
+  padding: .75rem 1rem; border-radius: var(--r-md);
+  border: 1px solid var(--line); background: var(--card-solid); color: var(--text-2);
+  font-size: .875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  text-decoration: none; transition: border-color .2s, color .2s;
+}
+#mobile-nav a:hover { border-color: var(--gold-line); color: var(--yellow); }
+#mobile-nav a.cta {
+  justify-content: center; text-align: center;
+  background: var(--brand); color: var(--brand-ink); border-color: var(--brand-hover);
+}
+
+/* --------------------------------------------------------------------- svg */
+.i { width: 1rem; height: 1rem; flex: none; stroke: currentColor; fill: none;
+     stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.i-sm { width: .875rem; height: .875rem; }
+.i-lg { width: 1.5rem; height: 1.5rem; }
+
+/* -------------------------------------------------------------------- hero
+   A FULL-BLEED STAGE. The board is the first thing on the page, at full width,
+   with the copy sitting below it on a scrim.
+
+   The scrim is the whole trick. A four-colour Ludo board behind body text is
+   unreadable at any opacity that still shows the board, so the gradient reaches
+   solid ink well before the headline starts. The board occupies the top of the
+   frame and sinks into the page. Nothing readable ever sits on top of it.
+
+   The stage stays dark in BOTH themes, like the site's own brand display card.
+   A light scrim under a four-colour board goes muddy and the gold rim stops
+   reading, so the page turns light only below the fold.                        */
+.hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* svh, not vh: on mobile, vh is the height WITHOUT browser chrome, so a 100vh
+     hero is always taller than the screen and the CTA starts below the fold. */
+  min-height: calc(100svh - 4rem);
+  /* Reserves the board's band. Without it, a short viewport lets the copy outgrow the
+     hero, `justify-content: flex-end` stops meaning anything, and the headline starts at
+     the very top of the section — on top of the board. The hero simply grows instead. */
+  padding-top: clamp(11rem, 38svh, 22rem);
+  padding-bottom: 3.5rem;
+  background: #0B0C0E;
+  border-bottom: 1px solid var(--line);
+  color: #f1f5f9;                    /* fixed: the stage is dark in both themes */
+}
+@media (min-width: 640px) { .hero { min-height: calc(100svh - 5rem); padding-bottom: 4.5rem; } }
+
+/* The site's blurred yellow/amber glows. They sit BEHIND the canvas, which is
+   transparent everywhere the board is not, so the gold bleeds around it. */
+.glow { position: absolute; border-radius: 9999px; filter: blur(64px); pointer-events: none; z-index: 0; }
+.glow-a { top: -8rem; left: 50%; transform: translateX(-50%); width: 100%; max-width: 70rem; height: 640px;
+          background: linear-gradient(to bottom, rgb(234 179 8 / .22), rgb(245 158 11 / .12), transparent); }
+.glow-b { top: 2rem; right: -4rem; width: 26rem; height: 26rem; background: rgb(250 204 21 / .10); }
+.glow-c { top: 6rem; left: -4rem; width: 22rem; height: 22rem; background: rgb(245 158 11 / .10); }
+
+#stage { position: absolute; inset: 0; z-index: 1; }
+#stage canvas { width: 100% !important; height: 100% !important; display: block; }
+
+/* Reaches FULL ink exactly where the copy begins, so every pixel of text sits on solid
+   #0B0C0E and measures the same contrast as anywhere else on the page. --scrim-stop is
+   set by scene.js from the copy block's real measured position; the 46% here is the
+   fallback for the moments before that runs, and for a page with no WebGL at all. */
+#scrim {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  --from: var(--scrim-from, 34%);
+  --stop: var(--scrim-stop, 46%);
+  background:
+    linear-gradient(to bottom,
+      rgb(11 12 14 / 0)   0%,
+      rgb(11 12 14 / 0)   var(--from),
+      rgb(11 12 14 / .62) calc((var(--from) + var(--stop)) / 2),
+      rgb(11 12 14 / .94) calc(var(--stop) - 1.5%),
+      #0B0C0E             var(--stop)),
+    radial-gradient(130% 70% at 50% 6%, transparent 62%, rgb(11 12 14 / .55) 100%);
+}
+
+/* Shown until the scene paints, and left standing for good if WebGL is absent.
+   It sits BELOW the scrim, so a failed 3D load costs the board, never the copy. */
+#poster {
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  padding-top: 14vh;
+  background: radial-gradient(80% 55% at 50% 26%, #141B33 0%, #0B0C0E 72%);
+  transition: opacity .6s;
+}
+#poster.gone { opacity: 0; }
+#poster .diamond {
+  width: 88px; height: 88px; transform: rotate(45deg);
+  border-radius: 15px; border: 3px solid var(--brand);
+  box-shadow: 0 0 44px rgb(247 181 0 / .35), inset 0 0 30px rgb(247 181 0 / .15);
+}
+#poster .cap {
+  margin-top: .75rem;
+  font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .18em;
+  text-transform: uppercase; color: #9AA1B2;      /* 7.5:1 on the poster ground */
+}
+
+/* the "live 3D" marker, top-right of the stage */
+.stage-tag {
+  position: absolute; z-index: 3; top: 1.25rem; right: 1rem;
+  font-family: var(--font-mono); font-size: .625rem; letter-spacing: .14em;
+  text-transform: uppercase; color: #A8AEBD;
+  border: 1px solid rgb(255 255 255 / .12); border-radius: 9999px;
+  padding: .32rem .7rem; background: rgb(11 12 14 / .55); backdrop-filter: blur(6px);
+}
+@media (min-width: 640px) { .stage-tag { top: 1.75rem; right: 1.5rem; } }
+@media (min-width: 1024px) { .stage-tag { right: 2rem; } }
+
+/* The copy. pointer-events are off on the wrapper and back on for its controls, so
+   a click that lands on empty scrim reaches the board and rolls the die. */
+.hero-inner { position: relative; z-index: 3; pointer-events: none; }
+.hero-inner a, .hero-inner button { pointer-events: auto; }
+
+.hero-copy { display: flex; flex-direction: column; gap: 1.25rem; align-items: flex-start; max-width: 44rem; }
+.hero-copy > * { margin: 0; }
+@media (min-width: 640px) { .hero-copy { gap: 1.5rem; } }
+
+/* On the stage these are fixed light values, not theme tokens. */
+/* The stage is dark in BOTH themes, so its text is pinned to fixed light values rather
+   than tokens that flip. Each rule is repeated under [data-theme="light"] because the
+   light overrides elsewhere in this file are more specific than a bare `.hero x` and
+   would otherwise win — that is how the eyebrow ended up near-black on the dark stage,
+   measured at 1.08:1. Specificity, not colour, was the bug. */
+.hero h1, :root[data-theme="light"] .hero h1 { color: #fff; }
+.hero .lede, :root[data-theme="light"] .hero .lede { color: #d4d4d8; }
+.hero .ticks, :root[data-theme="light"] .hero .ticks { color: #d4d4d8; }
+.hero .cta-note, :root[data-theme="light"] .hero .cta-note { color: #a1a1aa; }
+.hero .eyebrow,
+:root[data-theme="light"] .hero .eyebrow {
+  color: #facc15;                       /* 9.8:1 on the tinted stage */
+  border-color: rgb(234 179 8 / .30);
+  background: rgb(250 204 21 / .10);
+}
+.hero .btn.ghost { background: rgb(24 24 27 / .85); border-color: #3f3f46; color: #e4e4e7; }
+.hero .btn.ghost:hover { background: #27272a; border-color: var(--gold-line); }
+
+/* Hidden on phones. Every one of these four claims is restated in the "Why Ludo Apex"
+   section below, and on a short screen the 120px they cost comes straight out of the
+   board's band — the hero's whole job. */
+.ticks { display: none; gap: .625rem; font-size: .75rem; font-weight: 500; color: var(--text-2);
+         list-style: none; margin: 0; padding: 0; }   /* text-xs -> sm:text-sm, font-medium */
+@media (min-width: 640px) {
+  .ticks { display: grid; grid-template-columns: 1fr 1fr; font-size: .875rem; column-gap: 2rem; }
+}
+@media (min-width: 1024px) { .ticks { display: flex; flex-wrap: wrap; column-gap: 1.75rem; } }
+.ticks li { display: flex; align-items: center; gap: .5rem; }
+.ticks .i { color: var(--yellow); }
+
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: .875rem; }
+.cta-note { font-family: var(--font-mono); font-size: .75rem; color: var(--text-3); }
+
+.scroll-hint {
+  position: absolute; z-index: 3; left: 50%; bottom: 1rem; transform: translateX(-50%);
+  pointer-events: auto; text-decoration: none;
+  font-family: var(--font-mono); font-size: .625rem; letter-spacing: .22em;
+  text-transform: uppercase; color: #8A8F9C;
+  display: none;
+}
+@media (min-width: 1024px) { .scroll-hint { display: block; } }
+.scroll-hint:hover { color: var(--yellow); }
+
+/* ---------------------------------------------------------- metric ribbon */
+.ribbon-band { padding-block: 2.5rem; }
+.stat { padding: 1.25rem; border-radius: var(--r-lg); border: 1px solid var(--line);
+        background: var(--card); backdrop-filter: blur(12px); transition: border-color .2s; }
+.stat:hover { border-color: var(--gold-line); }
+.stat .v { margin-top: .25rem; font-size: 1.5rem; font-weight: 900; color: var(--text); }
+@media (min-width: 640px) { .stat .v { font-size: 1.875rem; } }   /* text-2xl -> sm:text-3xl */
+
+/* ------------------------------------------------------------- pillar card */
+.pillar { display: flex; flex-direction: column; gap: .875rem; padding: 1.75rem; }
+.pillar-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.pillar-icon {
+  width: 3rem; height: 3rem; border-radius: var(--r-md); flex: none;
+  display: grid; place-items: center;
+  background: var(--tint); border: 1px solid var(--gold-line); color: var(--yellow);
+}
+:root[data-theme="light"] .pillar-icon { color: #a16207; border-color: var(--amber-300); }
+.badge {
+  font-family: var(--font-mono); font-size: .625rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--yellow);
+  border: 1px solid var(--gold-line); border-radius: 9999px; padding: .25rem .625rem;
+  white-space: nowrap;
+}
+:root[data-theme="light"] .badge { color: #854d0e; border-color: var(--amber-300); background: var(--tint); }
+.pillar p { font-size: .875rem; color: var(--text-3); line-height: 1.625; }
+.pillar ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem;
+             border-top: 1px solid var(--line); padding-top: .875rem; }
+.pillar li { display: flex; gap: .5rem; font-size: .8125rem; color: var(--text-2); }
+.pillar li .i { color: var(--yellow); margin-top: .2rem; }
+
+/* -------------------------------------------------------------- rule steps */
+.steps { counter-reset: s; margin: 2.5rem 0 0; padding: 0; list-style: none; display: grid; gap: 1rem; }
+@media (min-width: 768px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; } }
+.steps li {
+  counter-increment: s; position: relative;
+  padding: 1.25rem 1.25rem 1.25rem 4rem;
+  border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--card);
+  font-size: .875rem; line-height: 1.625; color: var(--text-2);
+}
+.steps li::before {
+  content: counter(s, decimal-leading-zero);
+  position: absolute; left: 1.25rem; top: 1.15rem;
+  font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: var(--gold-ink);
+}
+
+/* ------------------------------------------------------------------ prose */
+.prose { display: grid; gap: 1.25rem; }
+.prose h2 { font-size: 1.5rem; line-height: 1.333; margin-top: 1.25rem; }
+.prose h3 { font-size: 1.125rem; margin-top: .5rem; }
+.prose p, .prose li { font-size: .875rem; line-height: 1.625; color: var(--text-2); }
+.prose ul { margin: 0; padding-left: 1.25rem; display: grid; gap: .5rem; }
+.prose a { color: var(--gold-ink); font-weight: 600; }
+.prose strong { color: var(--text); }
+.prose .updated { font-family: var(--font-mono); font-size: .75rem; color: var(--text-3); }
+
+/* ----------------------------------------------------------------- footer
+   The site's footer is dark in BOTH themes — zinc-900 on light, #0B0C0E on dark.
+   Matching that is most of why this page reads as the same site on a light screen. */
+.site-footer {
+  background: #0B0C0E; color: #a1a1aa; border-top: 1px solid #27272a;
+  padding-block: 3rem; font-size: .75rem;
+}
+:root[data-theme="light"] .site-footer { background: #18181b; color: #d4d4d8; }
+.fgrid { display: grid; gap: 2rem; padding-bottom: 3rem; border-bottom: 1px solid #27272a; }
+@media (min-width: 768px) { .fgrid { grid-template-columns: 2fr 1fr 1fr; } }
+.site-footer h4 { font-size: .875rem; font-weight: 700; color: #fff;
+                  text-transform: uppercase; letter-spacing: .05em; }
+.site-footer ul { list-style: none; margin: .75rem 0 0; padding: 0; display: grid; gap: .5rem; }
+.site-footer a { color: #d4d4d8; text-decoration: none; font-weight: 500; transition: color .2s; }
+.site-footer a:hover { color: var(--yellow); }
+.site-footer .fline { display: flex; align-items: center; gap: .5rem; color: #d4d4d8; }
+/* The footer stays dark in BOTH themes, so anything inside it must use fixed light values.
+   --text-3 and --gold-ink both flip dark on a light page and disappear here. */
+.site-footer .sub-line { color: #a1a1aa; }
+.site-footer .fline .i { color: #facc15; }
+.site-footer code { color: #facc15; font-family: var(--font-mono); }
+.fbot { padding-top: 2rem; display: flex; flex-direction: column; gap: 1rem;
+        align-items: center; justify-content: space-between; font-size: .6875rem; color: #a1a1aa; }
+@media (min-width: 640px) { .fbot { flex-direction: row; } }
+.fbot nav { display: flex; gap: 1.5rem; }
+
+/* ----------------------------------------------------------------- reveal */
+/* Scoped to .js, which the head script sets. Without that scope a visitor with JavaScript
+   off — or one whose module script simply failed to load — gets four of the five sections
+   stuck at opacity 0 and a page that looks empty. Content first, animation second. */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

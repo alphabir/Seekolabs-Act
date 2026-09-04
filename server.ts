@@ -73,6 +73,14 @@ async function startServer() {
 
   // --- VITE / PRODUCTION SERVING ---
   if (!IS_PRODUCTION) {
+    // Serve public/ ourselves, BEFORE Vite. Vite's own public-dir middleware does not
+    // resolve a directory to its index.html, so a standalone page like
+    // public/ludo-apex/index.html is reachable in dev only at its full filename —
+    // "/ludo-apex/" falls through to the SPA catch-all and silently returns the React
+    // shell instead. Production is fine (express.static resolves the index), so without
+    // this, dev and production disagree about a URL that works. Same bytes either way.
+    app.use(express.static(path.join(process.cwd(), "public")));
+
     // Imported lazily so Vite stays a devDependency and is never required in production.
     const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
