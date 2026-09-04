@@ -105,8 +105,13 @@ function boardTexture(px) {
   cell(1, 6, hex(C.red)); cell(8, 1, hex(C.green));
   cell(13, 8, hex(C.yellow)); cell(6, 13, hex(C.blue));
 
-  // centre: four triangles meeting
-  const cx = 7 * u, cy = 7 * u, s3 = 3 * u, mx = cx + s3 / 2, my = cy + s3 / 2;
+  /* The centre: four triangles meeting.
+     On a 15x15 board the centre is cells 6, 7 and 8 — so the block starts at 6 * u,
+     not 7 * u. Starting a cell late left column 6 unpainted, showing through as a dark
+     navy strip beside the triangles, and pushed the block onto column 9, which belongs
+     to the track. The white cross below already skips exactly 6..8, which is what this
+     has to line up with. */
+  const cx = 6 * u, cy = 6 * u, s3 = 3 * u, mx = cx + s3 / 2, my = cy + s3 / 2;
   const tri = (p, col) => {
     g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(p[2], p[3]); g.lineTo(p[4], p[5]); g.closePath();
     g.fillStyle = hex(col); g.fill();
