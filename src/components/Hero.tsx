@@ -188,14 +188,14 @@ export const Hero: React.FC<HeroProps> = ({
 
                 <a
                   href="/ludo-apex/"
-                  className={`w-full p-3.5 rounded-xl border font-mono text-xs flex justify-between items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 ${
+                  className={`w-full px-5 py-3.5 rounded-xl border-2 font-black text-sm flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
                     isDark
-                      ? 'bg-zinc-900 border-zinc-800 text-zinc-300 hover:border-yellow-400/50'
-                      : 'bg-zinc-50 border-zinc-200 text-zinc-700 hover:border-yellow-500'
+                      ? 'bg-yellow-400/10 border-yellow-400/50 text-yellow-400 hover:bg-yellow-400/20 hover:border-yellow-400'
+                      : 'bg-yellow-50 border-amber-700/40 text-amber-800 hover:bg-yellow-100 hover:border-amber-700'
                   }`}
                 >
-                  <span className="text-yellow-400 font-bold">EXPLORE:</span>
-                  <span className="font-semibold">LUDO APEX &rarr;</span>
+                  <span>Explore Ludo Apex</span>
+                  <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
