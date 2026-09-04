@@ -20,9 +20,13 @@ const PUBLISHING_FOCUS_LINKS: ReadonlyArray<string> = [
   'App Incubator & Growth',
 ];
 
-// TODO: these need real pages. They currently scroll to the contact section,
-// which is not what a visitor clicking "Privacy Policy" expects.
-const LEGAL_LINKS: ReadonlyArray<string> = ['Privacy Policy', 'Terms of Service', 'Contact Us'];
+// Real pages now, served as static files from public/. They are plain <a> links rather
+// than router links on purpose: they leave the SPA and hit the file directly, which is
+// what makes them work for a crawler and for anyone with JavaScript disabled.
+const LEGAL_LINKS: ReadonlyArray<{ label: string; href: string }> = [
+  { label: 'Privacy Policy', href: '/privacy.html' },
+  { label: 'Terms of Service', href: '/terms.html' },
+];
 
 // Shared focus ring so every footer control is visible when tabbed to.
 const FOCUS_RING =
@@ -67,10 +71,10 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, theme = 'dark
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-yellow-400 shrink-0" aria-hidden="true" />
                 <a
-                  href="mailto:connect@seekolabs.tech"
+                  href="mailto:growth@seekolabs.tech"
                   className={`hover:text-yellow-400 font-mono font-medium ${FOCUS_RING}`}
                 >
-                  connect@seekolabs.tech
+                  growth@seekolabs.tech
                 </a>
               </div>
               <div className="flex items-center gap-2">
@@ -159,17 +163,25 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, theme = 'dark
             rights reserved.
           </div>
           <ul className="flex items-center gap-6">
-            {LEGAL_LINKS.map((label) => (
-              <li key={label}>
-                <button
-                  type="button"
-                  onClick={() => onScrollToSection('contact')}
+            {LEGAL_LINKS.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
                   className={`hover:text-zinc-200 transition-colors ${FOCUS_RING}`}
                 >
-                  {label}
-                </button>
+                  {link.label}
+                </a>
               </li>
             ))}
+            <li>
+              <button
+                type="button"
+                onClick={() => onScrollToSection('contact')}
+                className={`hover:text-zinc-200 transition-colors ${FOCUS_RING}`}
+              >
+                Contact Us
+              </button>
+            </li>
           </ul>
         </div>
       </div>

@@ -22,7 +22,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ theme = 'dark' }) => {
     {
       name: "Partnerships & Publishing",
       role: "Strategic Alliances & App Publishing",
-      email: "connect@seekolabs.tech",
+      email: "growth@seekolabs.tech",
       focus: "App Co-Publishing, Distribution Partnerships, Media Inquiries & Business Alliances"
     },
     {
