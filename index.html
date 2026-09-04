@@ -36,6 +36,17 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!--
+      Lets the homepage load /ludo-apex/scene.js at runtime and resolve its bare `three`
+      import. The board is then ONE implementation shared by the Ludo page and the
+      spotlight below, rather than three.js bundled a second time into this app.
+      An import map must appear before the first module script; Vite injects its entry at
+      the end of <body>, so head is safe.
+    -->
+    <script type="importmap">
+      { "imports": { "three": "/ludo-apex/vendor/three.module.js", "three/": "/ludo-apex/vendor/" } }
+    </script>
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0B0C0E" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F4F5" />
 
@@ -64,6 +75,50 @@
     <meta name="twitter:image" content="https://www.seekolabs.tech/og-image.png" />
 
     <!-- Structured data -->
+    <!--
+      WebSite names the site itself, which is what search engines use for sitelinks and
+      the name shown beside a result. The MobileApplication block mirrors the product
+      the homepage now features; deliberately NO aggregateRating, because the app has no
+      ratings yet and inventing one is both a policy violation and a lie.
+    -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SeekoLabs",
+  "alternateName": "SeekoLabs Tech",
+  "url": "https://www.seekolabs.tech/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SeekoLabs",
+    "url": "https://www.seekolabs.tech/"
+  },
+  "inLanguage": "en"
+}
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Ludo Apex",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "url": "https://www.seekolabs.tech/ludo-apex/",
+  "description": "A premium offline Ludo board game. Two to four players on one device, three tiers of AI, no ads, no sign-up and no data collected.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SeekoLabs",
+    "url": "https://www.seekolabs.tech/"
+  }
+}
+    </script>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",

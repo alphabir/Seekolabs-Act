@@ -211,6 +211,16 @@ export async function start(host, tier = 'high', motion = true) {
   });
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, Q.dpr));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  /* setSize(w, h, false) below writes only the canvas's width/height ATTRIBUTES, which are
+     host pixels times the device pixel ratio. Without a CSS size the browser lays a canvas
+     out at its attribute size in CSS pixels, so on any display with dpr > 1 it renders
+     dpr times too large and its host clips it — the visitor sees the top-left corner of
+     the board, magnified. The standalone Ludo page never showed this because site.css
+     carries an `#stage canvas { width:100%!important; height:100%!important }` rule; a
+     React host has no such rule. Setting it here fixes every consumer at once. */
+  Object.assign(renderer.domElement.style, { width: '100%', height: '100%', display: 'block' });
+
   host.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
@@ -347,10 +357,17 @@ export async function start(host, tier = 'high', motion = true) {
      exact NDC translation, and leaves the perspective untouched. */
   let LIFT = .4;
 
-  /* Where the copy block starts, as a fraction of the hero's height. MEASURED, because
+  /* HERO mode has copy below the board to stay clear of; CONTAINED mode is a plain box
+     with nothing in it, so the board simply fills the frame. Detected from the DOM rather
+     than passed in, so the same file drives the Ludo hero and the homepage spotlight with
+     no caller having to know which it is. */
+  const heroMode = !!(host.closest('.hero') && document.querySelector('.hero-copy'));
+
+  /* Where the copy block starts, as a fraction of the host's height. MEASURED, because
      the headline wraps to three lines on a phone and two on a desktop, and a guessed
      constant puts the board through the text on whichever one it was not tuned for. */
   function copyTop() {
+    if (!heroMode) return 1;                 // nothing to avoid: use the whole box
     const r = host.getBoundingClientRect();
     const el = document.querySelector('.hero-copy');
     if (!el || !r.height) return .55;
@@ -382,16 +399,22 @@ export async function start(host, tier = 'high', motion = true) {
     // isolation and simply looked broken in place: you saw a horizontal slice of a board
     // and could not tell what it was. A shade under 1 leaves the sway a little headroom,
     // since a swaying corner rides slightly higher than the resting one.
-    const yTop = .93;
+    // Contained mode centres instead of hugging the top: there is no copy underneath to
+    // make room for, so a top-pinned board would just leave a gap below it.
+    const yTop = heroMode ? .93 : .88;
+    // In contained mode `stop` is 1, so this is -1: the whole frame, edge to edge.
     const yBot = 1 - 2 * (stop - .05);       // 5% of the hero as breathing room
     // NO floor here. A floor lets the board grow taller than the gap above the copy, and
     // since the scrim goes solid at the copy's top edge the overflow is not merely
     // overlapped, it is painted over — the board vanishes completely. If the window is
     // short the board is small; that is the honest answer, and it stays visible.
-    const wantSpan = Math.max(.08, yTop - yBot);
+    // Contained mode fills the panel with a small margin; hero mode uses the measured gap.
+    const wantSpan = !heroMode ? 1.88 : Math.max(.08, yTop - yBot);
     // Sideways the board MAY run past the edges — that is what makes it read as big —
     // but not without limit, and a narrow screen tolerates more of it than a wide one.
-    const xBleed = camera.aspect < 1 ? 1.5 : 1.18;
+    // Contained mode gets NO bleed: a panel has visible borders, so a board running past
+    // them reads as broken rather than bold.
+    const xBleed = !heroMode ? 1 : (camera.aspect < 1 ? 1.5 : 1.18);
 
     // Solve the distance for that vertical span. Measure with no lift: shifting the aim
     // moves the board bodily, so the SPAN is independent of it and the two solve cleanly
@@ -423,7 +446,10 @@ export async function start(host, tier = 'high', motion = true) {
     measure();                               // final pass, so `hi` matches the final d
 
     radius = d;
-    LIFT = yTop - hi;                        // put the board's top edge exactly at yTop
+    // Hero mode pins the board's top edge to yTop so the copy below has room. Contained
+    // mode has nothing to make room for, so it centres: pinning the top there just left a
+    // gap under the board.
+    LIFT = heroMode ? yTop - hi : -(hi + lo) / 2;
     // y is measured downward from the top of the virtual frame, so a positive offset
     // reveals a lower slice of the scene and the board rides up by exactly LIFT.
     camera.setViewOffset(w, h, 0, LIFT * h / 2, w, h);
@@ -434,11 +460,13 @@ export async function start(host, tier = 'high', motion = true) {
     //   --scrim-stop  where it is fully solid: exactly where the copy begins.
     // Starting the fade higher than the board's bottom is what turned the board into a
     // washed-out horizontal band with the die lost inside it.
-    const bottom = (1 - (lo + LIFT)) / 2;    // board's lowest point, as a page fraction
-    const from = Math.max(.10, Math.min(stop - .02, bottom - .01));
-    const st = document.documentElement.style;
-    st.setProperty('--scrim-from', (from * 100).toFixed(1) + '%');
-    st.setProperty('--scrim-stop', (stop * 100).toFixed(1) + '%');
+    if (heroMode) {
+      const bottom = (1 - (lo + LIFT)) / 2;  // board's lowest point, as a page fraction
+      const from = Math.max(.10, Math.min(stop - .02, bottom - .01));
+      const st = document.documentElement.style;
+      st.setProperty('--scrim-from', (from * 100).toFixed(1) + '%');
+      st.setProperty('--scrim-stop', (stop * 100).toFixed(1) + '%');
+    }
 
     dirty = true;
   }
@@ -476,8 +504,11 @@ export async function start(host, tier = 'high', motion = true) {
 
     // Camera: interpolate the two keyframes by scroll, then add pointer parallax, then
     // ease toward it so nothing ever snaps.
-    DIR.copy(DIR_A).lerp(DIR_B, scrollT).normalize();
-    const d = radius * (1 - scrollT * .10);            // creep in slightly as you scroll
+    // Contained mode holds DIR_A. fit() solves the framing for DIR_A alone, and contained
+    // mode allows no horizontal bleed, so swinging the camera toward DIR_B on scroll would
+    // push the board past the panel edge that the fit was built to respect.
+    DIR.copy(DIR_A).lerp(DIR_B, heroMode ? scrollT : 0).normalize();
+    const d = radius * (1 - (heroMode ? scrollT : 0) * .10);   // creep in as you scroll
     const target = DIR.clone()
       .applyAxisAngle(UP, motion ? pointer.x * .14 : 0)
       .multiplyScalar(d).add(TARGET);
@@ -558,8 +589,18 @@ export async function start(host, tier = 'high', motion = true) {
     request();
   }
 
-  const btn = document.getElementById('roll');
-  if (btn) btn.addEventListener('click', () => roll(6));
+  // Every listener and observer is captured so dispose() can undo it. A scene that cannot
+  // be torn down leaks a WebGL context on each React unmount, and browsers keep only about
+  // sixteen alive before they start dropping the oldest — which kills a scene somewhere
+  // else on the page, far from the cause.
+  const cleanups = [];
+  const on = (target, type, fn, opts) => {
+    target.addEventListener(type, fn, opts);
+    cleanups.push(() => target.removeEventListener(type, fn, opts));
+  };
+
+  const btn = host.closest('section')?.querySelector('#roll') || document.getElementById('roll');
+  if (btn) on(btn, 'click', () => roll(6));
 
   /* ---------------- input ---------------- */
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
@@ -568,7 +609,7 @@ export async function start(host, tier = 'high', motion = true) {
     return [((e.clientX - r.left) / r.width) * 2 - 1, -(((e.clientY - r.top) / r.height) * 2 - 1)];
   };
 
-  renderer.domElement.addEventListener('pointerdown', e => {
+  on(renderer.domElement, 'pointerdown', e => {
     const [x, y] = localPointer(e);
     ndc.set(x, y);
     ray.setFromCamera(ndc, camera);
@@ -578,7 +619,7 @@ export async function start(host, tier = 'high', motion = true) {
 
   if (matchMedia('(pointer: fine)').matches) {
     // The hand cursor over the die still applies with motion off; only the parallax stops.
-    renderer.domElement.addEventListener('pointermove', e => {
+    on(renderer.domElement, 'pointermove', e => {
       const [x, y] = localPointer(e);
       pointer.set(x, -y);
       // Only the die is clickable, so only the die gets the hand cursor. One raycast
@@ -587,7 +628,7 @@ export async function start(host, tier = 'high', motion = true) {
       ray.setFromCamera(ndc, camera);
       renderer.domElement.style.cursor = ray.intersectObject(die, false).length ? 'pointer' : '';
     }, { passive: true });
-    renderer.domElement.addEventListener('pointerleave', () => pointer.set(0, 0));
+    on(renderer.domElement, 'pointerleave', () => pointer.set(0, 0));
   }
   renderer.domElement.style.touchAction = 'pan-y';   // never eat a vertical scroll
 
@@ -600,7 +641,7 @@ export async function start(host, tier = 'high', motion = true) {
     if (Math.abs(t - scrollT) > .001) { scrollT = t; return true; }
     return false;
   }
-  addEventListener('scroll', () => { if (readScroll()) { dirty = true; if (!running) unstick(); } },
+  on(window, 'scroll', () => { if (readScroll()) { dirty = true; if (!running) unstick(); } },
     { passive: true });
 
   /* ---------------- lifecycle ----------------
@@ -610,10 +651,13 @@ export async function start(host, tier = 'high', motion = true) {
 
   // Always re-arm after a resize. With motion off the loop is asleep even while `running`
   // is true, so testing `running` here would recompute the fit and then never repaint it.
-  new ResizeObserver(() => { fit(); unstick(); }).observe(host);
-  new IntersectionObserver(es => { onScreen = es[0].isIntersecting; sync(); },
-    { threshold: 0 }).observe(host);
-  document.addEventListener('visibilitychange', sync);
+  const ro = new ResizeObserver(() => { fit(); unstick(); });
+  ro.observe(host);
+  const io = new IntersectionObserver(es => { onScreen = es[0].isIntersecting; sync(); },
+    { threshold: 0 });
+  io.observe(host);
+  cleanups.push(() => { ro.disconnect(); io.disconnect(); });
+  on(document, 'visibilitychange', sync);
 
   // `tick` drives one real frame. Verification tools often run where requestAnimationFrame
   // is throttled to nothing, and rendering directly with renderer.render() there measures
@@ -640,5 +684,32 @@ export async function start(host, tier = 'high', motion = true) {
   // A roll they start themselves, by clicking, is still allowed.
   if (motion) setTimeout(() => roll(6), 650);
 
-  return { roll, renderer, scene, camera };
+  /* Free everything. GPU resources are not garbage collected with the JS objects that
+     reference them, so geometries, materials and textures each need an explicit dispose;
+     forceContextLoss() then releases the context itself rather than waiting for the
+     browser to evict it. */
+  let disposed = false;
+  function dispose() {
+    if (disposed) return;
+    disposed = true;
+    setRunning(false);
+    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    anim = null;
+    for (const off of cleanups) off();
+    cleanups.length = 0;
+    scene.traverse(o => {
+      if (o.geometry) o.geometry.dispose();
+      const mats = Array.isArray(o.material) ? o.material : (o.material ? [o.material] : []);
+      for (const m of mats) {
+        for (const k of ['map', 'matcap', 'alphaMap']) if (m[k]) m[k].dispose();
+        m.dispose();
+      }
+    });
+    renderer.dispose();
+    renderer.forceContextLoss();
+    renderer.domElement.remove();
+    if (window.__ludo && window.__ludo.renderer === renderer) delete window.__ludo;
+  }
+
+  return { roll, renderer, scene, camera, dispose };
 }

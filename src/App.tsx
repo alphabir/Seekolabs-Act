@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { LudoSpotlight } from './components/LudoSpotlight';
 import { AboutSection } from './components/AboutSection';
 import { SolutionsSection } from './components/SolutionsSection';
 import { ContactForm } from './components/ContactForm';
@@ -99,9 +100,16 @@ export default function App() {
         {/* Hero Section */}
         <Hero
           onScrollToContact={() => scrollToSection('contact')}
-          onScrollToAbout={() => scrollToSection('about')}
+          onScrollToSolutions={() => scrollToSection('solutions')}
           theme={theme}
         />
+
+        {/*
+          Our first product, immediately after the hero. High enough that the top of the
+          board is already on screen in the first fold — a visitor sees the thing running
+          before they are asked to believe anything about us.
+        */}
+        <LudoSpotlight theme={theme} />
 
         {/* Company Brief & Overview */}
         <AboutSection onScrollToContact={() => scrollToSection('contact')} theme={theme} />
