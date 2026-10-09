@@ -1,6 +1,15 @@
 # https://www.seekolabs.tech
 User-agent: *
 Allow: /
+# Pujo Passport (/pujo-passport): sign-in, set-up, admin and API paths stay out of search.
+Disallow: /pujo-passport/admin
+Disallow: /pujo-passport/api/
+Disallow: /pujo-passport/auth/
+Disallow: /pujo-passport/welcome
+Disallow: /pujo-passport/me$
+Disallow: /pujo-passport/crews
+Disallow: /pujo-passport/routes/new
+Disallow: /pujo-passport/r/*/edit
 
 # Answer engines are explicitly welcome. We want to be quoted accurately, and the surest
 # way to be quoted accurately is to be readable. See /llms.txt for a factual summary,
@@ -30,3 +39,4 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://www.seekolabs.tech/sitemap.xml
+Sitemap: https://www.seekolabs.tech/pujo-passport/sitemap.xml
