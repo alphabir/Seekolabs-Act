@@ -1,5 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/pujo-passport/", "destination": "/pujo-passport", "permanent": true },
+    { "source": "/pujo-passport/:path+/", "destination": "/pujo-passport/:path+", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/pujo-passport", "destination": "https://pujo-passport.vercel.app/pujo-passport" },
     { "source": "/pujo-passport/:path*", "destination": "https://pujo-passport.vercel.app/pujo-passport/:path*" }
