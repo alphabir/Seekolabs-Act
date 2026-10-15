@@ -22,24 +22,24 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
   const publishingPillars = [
     {
       icon: AppWindow,
-      title: "Web Applications & Productivity Studios",
+      title: "Web Apps",
       badge: "In-House Products",
-      description: "We build intuitive, ultra-fast web applications designed for high daily utility, rich user engagement, and clean desktop performance.",
+      description: "Web apps that run in the phone's browser, with nothing to install. Pujo Passport is the first: GPS check-ins, live leaderboards and passports people share.",
       points: [
-        "Modern React & TypeScript frontend architectures",
-        "Sub-second load times & responsive design",
-        "In-house UX design & component systems"
+        "React, Next.js and TypeScript",
+        "Works on any phone, straight from a link",
+        "Designed, built and run in-house"
       ]
     },
     {
       icon: Smartphone,
-      title: "Mobile Tools & Utility Applications",
-      badge: "iOS & Android",
-      description: "Consumer utilities, productivity helpers, and mobile software built for performance, security, and global app store distribution.",
+      title: "Mobile Games & Apps",
+      badge: "Android",
+      description: "Mobile titles built for the device in your hand. Ludo Apex, our first, plays fully offline with no ads and nothing collected.",
       points: [
-        "Cross-platform mobile engineering",
-        "Lightweight offline-first data persistence",
-        "Seamless multi-device synchronization"
+        "Built in Unity for Android",
+        "Offline first, no account needed",
+        "Release signing and store compliance in-house"
       ]
     },
     {
@@ -56,12 +56,12 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
     {
       icon: Rocket,
       title: "Growth & Monetization",
-      badge: "When It Is Earned",
-      description: "We monetize a product when the product has earned it, not before. Ludo Apex ships free with no ads and no purchases because that is what makes it good. When a title genuinely calls for subscriptions or advertising, we build and tune that too.",
+      badge: "Fits The Product",
+      description: "We pick the business model that fits the product. Pujo Passport is free, with ads on some pages. Ludo Apex will launch free with no ads and no purchases, because that is what makes it good. When a title genuinely calls for subscriptions or advertising, we build and tune that too.",
       points: [
         "Store listing and conversion work",
         "Subscription and advertising integration when a title needs it",
-        "Retention measured before monetization is added"
+        "Ads, subscriptions or neither, chosen per title"
       ]
     }
   ];
@@ -83,9 +83,9 @@ export const SolutionsSection: React.FC<SolutionsSectionProps> = ({ onScrollToCo
       desc: "Deploying and managing applications across web domains and app marketplaces."
     },
     {
-      title: "Telemetry & Performance",
+      title: "Measurement Where It Belongs",
       category: "Analytics",
-      desc: "Real-time error logging, performance monitoring, and user conversion insights."
+      desc: "Analytics and performance checks on the web apps that use them, and none at all in Ludo Apex."
     }
   ];
 

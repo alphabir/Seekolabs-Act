@@ -9,8 +9,9 @@ interface NavbarProps {
 }
 
 const NAV_LINKS: ReadonlyArray<{ id: string; label: string }> = [
+  { id: 'apps', label: 'Our Apps' },
   { id: 'about', label: 'About Our House' },
-  { id: 'solutions', label: 'App Ecosystem' },
+  { id: 'solutions', label: 'What We Do' },
   { id: 'contact', label: 'Contact Us' },
 ];
 

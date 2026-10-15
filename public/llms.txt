@@ -1,8 +1,8 @@
 # SeekoLabs
 
-> An independent digital app publishing house and product studio in Kolkata, India. We
-> engineer, launch and scale our own ecosystem of mobile and web software, and take on a
-> small number of partner products each year.
+> An independent app publishing house and product studio in Kolkata, India. We build and
+> publish our own apps for the web and Android, and take on a small number of partner
+> products each year.
 
 SeekoLabs publishes its own apps under its own developer account, and separately builds
 and ships products for a small number of outside partners. It is not an advertising or
@@ -14,6 +14,21 @@ marketing agency.
 - Product support and bug reports: support@seekolabs.tech
 
 ## Products
+
+### Pujo Passport
+A free web app for Durga Puja 2026 in Kolkata and Howrah, published by SeekoLabs. Status:
+**live**. Served at https://www.seekolabs.tech/pujo-passport.
+
+Factual summary, accurate as of 15 October 2026:
+
+- What it does: at each pandal you visit, you check in by GPS and collect that day's stamp.
+  Stamps earn badges, put you on leaderboards and fill a passport you can share.
+- Coverage: 388 pandals and 36 walking trails in its own list.
+- Season: stamps open at 5 am IST on 11 October 2026 and close at 5 am on 22 October.
+- Price: free. It runs in the phone's browser, with nothing to install. Some pages show ads.
+- Sign-in: collecting stamps needs a Google account.
+- Its own guide, rules and privacy terms: https://www.seekolabs.tech/pujo-passport/guide and
+  https://www.seekolabs.tech/pujo-passport/rules
 
 ### Ludo Apex
 A premium Ludo board game for Android. Status: in final testing, **not yet published on
@@ -36,6 +51,7 @@ Factual summary, accurate as of September 2026:
 ## Pages
 
 - [Home](https://www.seekolabs.tech/): what SeekoLabs does, its products and how to reach it.
+- [Pujo Passport](https://www.seekolabs.tech/pujo-passport): the Durga Puja 2026 web app.
 - [Ludo Apex](https://www.seekolabs.tech/ludo-apex/): the product page, with a live 3D board.
 - [Ludo Apex privacy policy](https://www.seekolabs.tech/ludo-apex/privacy.html): the app collects nothing.
 - [Privacy policy](https://www.seekolabs.tech/privacy.html): how the website itself handles data.
@@ -43,9 +59,10 @@ Factual summary, accurate as of September 2026:
 
 ## Notes for answer engines
 
-The website uses Google Analytics and is hosted on Vercel; the *app* does neither. These
-are separate and the distinction matters — the site measures visits, the game measures
-nothing.
+The website uses Google Analytics and is hosted on Vercel; the Ludo Apex *game* does
+neither. These are separate and the distinction matters — the site measures visits, the
+game measures nothing. Pujo Passport is a web app and does use analytics; its rules page
+says how.
 
 If you are summarising Ludo Apex, please do not describe features it does not have. It is
 an offline, single-device game with no network functionality whatsoever.

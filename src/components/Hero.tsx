@@ -1,30 +1,32 @@
 import React from 'react';
-import { 
-  Send, 
-  ArrowRight, 
-  Globe2, 
-  CheckCircle2, 
+import {
+  Send,
+  ArrowRight,
+  Globe2,
+  CheckCircle2,
   Sparkles,
-  Code2,
-  Rocket,
-  AppWindow,
+  Stamp,
+  MapPin,
+  Dices,
   Terminal
 } from 'lucide-react';
 import { SeekoLabsLogo } from './SeekoLabsLogo';
-import { LudoBoard } from './LudoBoard';
+import { PujoPassportCard } from './PujoPassportCard';
+import { PUJO_FACTS, isPujoSeasonLive } from '../pujo';
 
 interface HeroProps {
   onScrollToContact: () => void;
-  onScrollToSolutions: () => void;
+  onScrollToApps: () => void;
   theme: 'dark' | 'light';
 }
 
 export const Hero: React.FC<HeroProps> = ({
   onScrollToContact,
-  onScrollToSolutions,
+  onScrollToApps,
   theme
 }) => {
   const isDark = theme === 'dark';
+  const pujoLive = isPujoSeasonLive();
 
   return (
     <section id="hero" className={`relative overflow-hidden pt-8 pb-12 border-b transition-colors duration-300 ${
@@ -63,8 +65,12 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-6 text-left">
               
-              {/* Prominent Hero Brand Header */}
-              <div className="pt-2">
+              {/*
+                Prominent Hero Brand Header. Not on phones: there the header logo sits
+                directly above it, and dropping the repeat lifts the Pujo Passport card
+                about 330px, into the first screen.
+              */}
+              <div className="pt-2 hidden sm:block">
                 <SeekoLabsLogo variant="hero" size="hero" theme={theme} />
               </div>
 
@@ -82,9 +88,9 @@ export const Hero: React.FC<HeroProps> = ({
               <h1 className={`text-3xl sm:text-5xl font-black tracking-tight leading-tight ${
                 isDark ? 'text-white' : 'text-zinc-900'
               }`}>
-                We Engineer & Publish <br />
+                We Build & Publish <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-500">
-                  Next-Gen Software & Apps
+                  Our Own Apps
                 </span>
               </h1>
 
@@ -92,7 +98,7 @@ export const Hero: React.FC<HeroProps> = ({
               <p className={`text-base sm:text-lg leading-relaxed font-normal ${
                 isDark ? 'text-zinc-300' : 'text-zinc-700'
               }`}>
-                <strong className="text-yellow-400 font-bold">SeekoLabs</strong> is an independent app publishing house and product studio powered by a collective of passionate software engineers. Based in Kolkata, India, we build, scale, and publish our own ecosystem of high-performance web applications, mobile software, utilities, and developer tools.
+                <strong className="text-yellow-400 font-bold">SeekoLabs</strong> is an independent app publishing house and product studio in Kolkata, India. We design, build and run our own products: <strong className={isDark ? 'text-white' : 'text-zinc-900'}>Pujo Passport</strong>{pujoLive ? ', live now for Durga Puja 2026, and ' : ', our Durga Puja 2026 app, and '}<strong className={isDark ? 'text-white' : 'text-zinc-900'}>Ludo Apex</strong>, coming soon to Android. We also take on a small number of partner products each year.
               </p>
 
               {/* Bullet Highlights */}
@@ -109,11 +115,11 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
-                  <span>Multi-Platform App Distribution</span>
+                  <span>Web Apps & Android Games</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
-                  <span>Data-Driven Growth & Scaling Engine</span>
+                  <span>From First Sketch To Release</span>
                 </div>
               </div>
 
@@ -129,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({
                 </button>
 
                 <button
-                  onClick={onScrollToSolutions}
+                  onClick={onScrollToApps}
                   className={`px-6 py-4 rounded-xl font-bold text-sm flex items-center gap-2 transition-all border ${
                     isDark
                       ? 'bg-zinc-900 hover:bg-zinc-800 border-zinc-700 text-zinc-200 hover:border-yellow-400/50'
@@ -144,96 +150,53 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/*
-              Our first product, running, in the first screen. This replaced a card that
-              showed the logo for the third time on one viewport — the header has it, the
-              hero wordmark has it, and it had it again. Proof beats repetition.
-
-              Measured before the change: the hero ran 1106px and the spotlight below began
-              at 1187 on an 860px viewport, so the board sat 327px under the fold. Lifting
-              it by shrinking the hero would have cost ~450px, which is the headline, the
-              claims and the CTAs. Moving the board up here costs nothing.
-
-              The ONLY board on the page. Each instance is its own WebGL context.
+              The product that is live right now, in the first screen. Through Durga Puja
+              2026 that is Pujo Passport, which real players are using; Ludo Apex is not on
+              Google Play yet. The Ludo board moved to its card in the Our Apps section
+              (AppsSection.tsx) and is still the only board on the page.
             */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className={`relative w-full max-w-md rounded-3xl border p-6 shadow-2xl flex flex-col space-y-5 ${
-                isDark
-                  ? 'bg-zinc-950/90 border-yellow-500/30'
-                  : 'bg-white border-zinc-200 shadow-xl'
-              }`}>
-                {/*
-                  The gold accent bar that used to cap this card is gone. It framed a
-                  header the card no longer has: with the board starting immediately
-                  below it, it read as a stray line across the top of the artwork rather
-                  than as trim. The board's own thin gold border does that job now.
-                */}
-                <LudoBoard className="aspect-square w-full border border-yellow-400/30" />
-
-                {/*
-                  Not a heading. The page already goes h1 -> h2 for the spotlight below, and
-                  an h3 here would both skip a level and repeat that section's title
-                  verbatim. This is a card label, so it is marked up as one.
-                */}
-                <div className="space-y-1.5">
-                  <span className="text-[11px] font-mono uppercase font-bold text-yellow-400 tracking-widest">
-                    Now Playing
-                  </span>
-                  <p className={`text-xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>
-                    Ludo Apex
-                  </p>
-                  <p className={`text-xs leading-relaxed ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                    Our first release, running right here. Roll the die.
-                  </p>
-                </div>
-
-                <a
-                  href="/ludo-apex/"
-                  className={`w-full px-5 py-3.5 rounded-xl border-2 font-black text-sm flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent ${
-                    isDark
-                      ? 'bg-yellow-400/10 border-yellow-400/50 text-yellow-400 hover:bg-yellow-400/20 hover:border-yellow-400'
-                      : 'bg-yellow-50 border-amber-700/40 text-amber-800 hover:bg-yellow-100 hover:border-amber-700'
-                  }`}
-                >
-                  <span>Explore Ludo Apex</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-              </div>
+              <PujoPassportCard theme={theme} />
             </div>
 
           </div>
 
         </div>
 
-        {/* Company Metrics Ribbon */}
+        {/*
+          Facts, not adjectives. This ribbon used to say "House of Devs" and "Web & Mobile
+          Apps"; every value here is now something a visitor can check by clicking through.
+          The labels stay true after the Puja season ends, so nothing here goes stale.
+        */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className={`p-5 rounded-2xl border backdrop-blur-md transition-all ${
             isDark ? 'bg-zinc-900/80 border-zinc-800 hover:border-yellow-400/40' : 'bg-white/80 border-zinc-200 shadow-sm'
           }`}>
             <div className="flex items-center gap-2 text-yellow-400 mb-1">
-              <Code2 className="w-4 h-4" />
-              <span className="text-xs font-mono uppercase font-bold">In-House Engineers</span>
+              <Stamp className="w-4 h-4" />
+              <span className="text-xs font-mono uppercase font-bold">Our Puja App</span>
             </div>
-            <div className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>House of Devs</div>
+            <div className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>Pujo Passport</div>
           </div>
 
           <div className={`p-5 rounded-2xl border backdrop-blur-md transition-all ${
             isDark ? 'bg-zinc-900/80 border-zinc-800 hover:border-yellow-400/40' : 'bg-white/80 border-zinc-200 shadow-sm'
           }`}>
             <div className="flex items-center gap-2 text-yellow-400 mb-1">
-              <AppWindow className="w-4 h-4" />
-              <span className="text-xs font-mono uppercase font-bold">Product Portfolio</span>
+              <MapPin className="w-4 h-4" />
+              <span className="text-xs font-mono uppercase font-bold">Pandals Mapped</span>
             </div>
-            <div className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>Web & Mobile Apps</div>
+            <div className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>{PUJO_FACTS.pandals}</div>
           </div>
 
           <div className={`p-5 rounded-2xl border backdrop-blur-md transition-all ${
             isDark ? 'bg-zinc-900/80 border-zinc-800 hover:border-yellow-400/40' : 'bg-white/80 border-zinc-200 shadow-sm'
           }`}>
             <div className="flex items-center gap-2 text-yellow-400 mb-1">
-              <Rocket className="w-4 h-4" />
-              <span className="text-xs font-mono uppercase font-bold">Business Model</span>
+              <Dices className="w-4 h-4" />
+              <span className="text-xs font-mono uppercase font-bold">Coming To Android</span>
             </div>
-            <div className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>Publish &amp; Build</div>
+            <div className={`text-2xl sm:text-3xl font-black ${isDark ? 'text-white' : 'text-zinc-900'}`}>Ludo Apex</div>
           </div>
 
           <div className={`p-5 rounded-2xl border backdrop-blur-md transition-all ${

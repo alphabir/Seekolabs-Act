@@ -8,16 +8,20 @@ interface FooterProps {
 }
 
 const NAVIGATION_LINKS: ReadonlyArray<{ id: string; label: string; emphasised?: boolean }> = [
+  { id: 'apps', label: 'Our Apps' },
   { id: 'about', label: 'About Our House' },
-  { id: 'solutions', label: 'App Ecosystem' },
+  { id: 'solutions', label: 'What We Do' },
   { id: 'contact', label: 'Contact Us', emphasised: true },
 ];
 
-const PUBLISHING_FOCUS_LINKS: ReadonlyArray<string> = [
-  'Web & Productivity Apps',
-  'Mobile Utilities & Tools',
-  'Developer Tools & APIs',
-  'App Incubator & Growth',
+// Real product pages, as plain links for the same reason as the legal links below. This
+// column used to be four buttons that all scrolled to the same section, one of them for
+// "Developer Tools & APIs" we do not make.
+const APP_LINKS: ReadonlyArray<{ label: string; href: string }> = [
+  { label: 'Pujo Passport', href: '/pujo-passport' },
+  { label: 'Durga Puja 2026 guide', href: '/pujo-passport/guide' },
+  { label: 'Ludo Apex', href: '/ludo-apex/' },
+  { label: 'Ludo Apex privacy', href: '/ludo-apex/privacy.html' },
 ];
 
 // Real pages now, served as static files from public/. They are plain <a> links rather
@@ -58,13 +62,13 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, theme = 'dark
 
             <p className="text-zinc-300 text-xs leading-relaxed">
               SeekoLabs (<code className="text-yellow-400">seekolabs.tech</code>) is a digital app
-              publishing house and product studio. We engineer, launch, and scale our own ecosystem
-              of software products.
+              publishing house and product studio. We design, build and publish our own apps for the
+              web and Android.
             </p>
 
             <div className="flex items-center gap-2 text-zinc-300 text-xs">
               <MapPin className="w-4 h-4 text-yellow-400 shrink-0" aria-hidden="true" />
-              <span>Kolkata, India • Global Publishing</span>
+              <span>Kolkata, India</span>
             </div>
 
             <div className="space-y-1.5 text-zinc-300 text-xs">
@@ -114,24 +118,23 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, theme = 'dark
             </ul>
           </nav>
 
-          {/* Col 3: Publishing House Focus */}
-          <nav className="space-y-3" aria-labelledby="footer-focus-heading">
+          {/* Col 3: Our Apps */}
+          <nav className="space-y-3" aria-labelledby="footer-apps-heading">
             <h4
-              id="footer-focus-heading"
+              id="footer-apps-heading"
               className="text-sm font-bold text-white uppercase tracking-wider"
             >
-              Publishing Focus
+              Our Apps
             </h4>
             <ul className="space-y-2 font-medium">
-              {PUBLISHING_FOCUS_LINKS.map((label) => (
-                <li key={label}>
-                  <button
-                    type="button"
-                    onClick={() => onScrollToSection('solutions')}
-                    className={`text-left hover:text-yellow-400 transition-colors ${FOCUS_RING}`}
+              {APP_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className={`hover:text-yellow-400 transition-colors ${FOCUS_RING}`}
                   >
-                    {label}
-                  </button>
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>

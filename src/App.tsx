@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { LudoSpotlight } from './components/LudoSpotlight';
+import { PujoBanner } from './components/PujoBanner';
+import { AppsSection } from './components/AppsSection';
 import { AboutSection } from './components/AboutSection';
 import { SolutionsSection } from './components/SolutionsSection';
 import { ContactForm } from './components/ContactForm';
@@ -69,11 +70,19 @@ export default function App() {
   }, []);
 
   const scrollToSection = useCallback((sectionId: string) => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const behavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+
+    // "Back to top" means the page top. Scrolling #hero into view stops under the sticky
+    // header and leaves the Pujo Passport banner above it scrolled out of sight.
+    if (sectionId === 'hero') {
+      window.scrollTo({ top: 0, behavior });
+      return;
+    }
+
     const el = document.getElementById(sectionId);
     if (!el) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    el.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    el.scrollIntoView({ behavior });
   }, []);
 
   const isDark = theme === 'dark';
@@ -92,6 +101,9 @@ export default function App() {
         Skip to main content
       </a>
 
+      {/* Pujo Passport strip: above the sticky header, scrolls away, gone after the season. */}
+      <PujoBanner />
+
       {/* Navbar Header */}
       <Navbar onScrollToSection={scrollToSection} theme={theme} toggleTheme={toggleTheme} />
 
@@ -100,16 +112,15 @@ export default function App() {
         {/* Hero Section */}
         <Hero
           onScrollToContact={() => scrollToSection('contact')}
-          onScrollToSolutions={() => scrollToSection('solutions')}
+          onScrollToApps={() => scrollToSection('apps')}
           theme={theme}
         />
 
         {/*
-          Our first product, immediately after the hero. High enough that the top of the
-          board is already on screen in the first fold — a visitor sees the thing running
-          before they are asked to believe anything about us.
+          Our products, immediately after the hero: a visitor sees the real things before
+          they are asked to believe anything about us.
         */}
-        <LudoSpotlight theme={theme} />
+        <AppsSection theme={theme} />
 
         {/* Company Brief & Overview */}
         <AboutSection onScrollToContact={() => scrollToSection('contact')} theme={theme} />

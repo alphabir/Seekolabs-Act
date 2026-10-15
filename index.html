@@ -17,7 +17,7 @@
     <title>SeekoLabs — Digital App Publishing House &amp; Product Studio</title>
     <meta
       name="description"
-      content="SeekoLabs is an independent app publishing house and product studio in Kolkata, India. We engineer, launch, and scale our own ecosystem of web applications, mobile utilities, and developer tools."
+      content="SeekoLabs is an independent app studio in Kolkata, India. Makers of Pujo Passport, the Durga Puja 2026 pandal app, and the Ludo Apex board game, coming soon to Android."
     />
     <link rel="canonical" href="https://www.seekolabs.tech/" />
     <meta name="author" content="SeekoLabs" />
@@ -57,7 +57,7 @@
     <meta property="og:title" content="SeekoLabs — Digital App Publishing House &amp; Product Studio" />
     <meta
       property="og:description"
-      content="An independent app publishing house and product studio in Kolkata, India. We engineer, launch, and scale our own ecosystem of web, mobile, and developer software."
+      content="An independent app publishing house and product studio in Kolkata, India. Makers of Pujo Passport, the Durga Puja 2026 pandal app, and the Ludo Apex board game."
     />
     <meta property="og:image" content="https://www.seekolabs.tech/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -70,16 +70,16 @@
     <meta name="twitter:title" content="SeekoLabs — Digital App Publishing House &amp; Product Studio" />
     <meta
       name="twitter:description"
-      content="An independent app publishing house and product studio in Kolkata, India. We engineer, launch, and scale our own ecosystem of web, mobile, and developer software."
+      content="An independent app publishing house and product studio in Kolkata, India. Makers of Pujo Passport, the Durga Puja 2026 pandal app, and the Ludo Apex board game."
     />
     <meta name="twitter:image" content="https://www.seekolabs.tech/og-image.png" />
 
     <!-- Structured data -->
     <!--
       WebSite names the site itself, which is what search engines use for sitelinks and
-      the name shown beside a result. The MobileApplication block mirrors the product
-      the homepage now features; deliberately NO aggregateRating, because the app has no
-      ratings yet and inventing one is both a policy violation and a lie.
+      the name shown beside a result. The WebApplication and MobileApplication blocks
+      mirror the two products the homepage features; deliberately NO aggregateRating,
+      because neither has ratings and inventing one is both a policy violation and a lie.
     -->
     <script type="application/ld+json">
 {
@@ -94,6 +94,27 @@
     "url": "https://www.seekolabs.tech/"
   },
   "inLanguage": "en"
+}
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": "https://www.seekolabs.tech/pujo-passport#app",
+  "name": "Pujo Passport",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Any (web browser)",
+  "url": "https://www.seekolabs.tech/pujo-passport",
+  "image": "https://www.seekolabs.tech/pujo-passport/opengraph-image",
+  "description": "A free web app for Durga Puja 2026 in Kolkata and Howrah. Check in by GPS at each pandal you visit and collect that day's stamp. 388 pandals, 36 walking trails, badges and leaderboards.",
+  "inLanguage": ["en-IN", "bn", "hi"],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "publisher": { "@id": "https://www.seekolabs.tech/#organization" }
 }
     </script>
 
@@ -123,11 +144,12 @@
       {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": "https://www.seekolabs.tech/#organization",
         "name": "SeekoLabs",
         "alternateName": "SeekoLabs Tech",
         "url": "https://www.seekolabs.tech/",
         "logo": "https://www.seekolabs.tech/logo.svg",
-        "description": "An independent digital app publishing house and product studio that engineers, launches, and scales its own ecosystem of web applications, mobile utilities, and developer tools.",
+        "description": "An independent app publishing house and product studio in Kolkata, India. It builds and publishes its own apps: Pujo Passport, a Durga Puja 2026 pandal app, and the Ludo Apex board game.",
         "foundingLocation": {
           "@type": "Place",
           "address": {

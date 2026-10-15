@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Globe, Code2, Rocket, ArrowRight, CheckCircle2, AppWindow } from 'lucide-react';
+import { Cpu, MapPin, Code2, Rocket, ArrowRight, CheckCircle2, AppWindow } from 'lucide-react';
 import { SeekoLabsLogo } from './SeekoLabsLogo';
 
 interface AboutSectionProps {
@@ -41,13 +41,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact, t
             <p className={`text-sm sm:text-base leading-relaxed font-normal ${
               isDark ? 'text-zinc-300' : 'text-zinc-700'
             }`}>
-              <strong className="text-yellow-400 font-bold">SeekoLabs</strong> (<code className="text-yellow-400">seekolabs.tech</code>) is an independent software publishing house based in Kolkata, India. We build, launch and publish <strong className="text-yellow-400 font-semibold">our own ecosystem</strong> of digital products, mobile tools and web applications — and we take on a small number of partner products each year, taken end to end and shipped to the store.
+              <strong className="text-yellow-400 font-bold">SeekoLabs</strong> (<code className="text-yellow-400">seekolabs.tech</code>) is an independent software publishing house based in Kolkata, India. We build, launch and publish <strong className="text-yellow-400 font-semibold">our own apps</strong>, on the web and on Android — and we take on a small number of partner products each year, taken end to end and shipped to the store.
             </p>
 
             <p className={`text-sm sm:text-base leading-relaxed font-normal ${
               isDark ? 'text-zinc-300' : 'text-zinc-700'
             }`}>
-              By controlling the entire lifecycle from initial architectural concept to code execution, user experience design, and global app store distribution, SeekoLabs crafts high-quality software that solves real user needs.
+              We own every step, from the first sketch to the code, the design and the release, so the people who build a product are the same people who answer for it once it is live.
             </p>
 
             {/* Core Values / Pillars */}
@@ -60,7 +60,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact, t
                   <span>100% In-House Engineering</span>
                 </div>
                 <p className={`text-xs ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                  Every product in our portfolio is engineered directly by our core development team with modern TypeScript, React, Cloud Native, and mobile stacks.
+                  Every product we publish is designed and engineered by our own team, from the database to the last pixel.
                 </p>
               </div>
 
@@ -81,10 +81,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact, t
               }`}>
                 <div className="flex items-center gap-2 text-yellow-400 font-bold text-sm mb-1">
                   <AppWindow className="w-4 h-4" />
-                  <span>Product Diversity</span>
+                  <span>Web And Android</span>
                 </div>
                 <p className={`text-xs ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                  Our app portfolio spans utility software, developer tooling, web productivity platforms, and mobile consumer applications.
+                  A festival app that runs in the phone's browser and a board game built for Android. We pick the platform its players actually use.
                 </p>
               </div>
 
@@ -92,11 +92,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact, t
                 isDark ? 'bg-zinc-900/80 border-zinc-800 hover:border-yellow-400/40' : 'bg-white border-zinc-200 shadow-sm'
               }`}>
                 <div className="flex items-center gap-2 text-yellow-400 font-bold text-sm mb-1">
-                  <Globe className="w-4 h-4" />
-                  <span>Global Reach & Scaling</span>
+                  <MapPin className="w-4 h-4" />
+                  <span>Made In Kolkata</span>
                 </div>
                 <p className={`text-xs ${isDark ? 'text-zinc-400' : 'text-zinc-600'}`}>
-                  We ship software to users across North America, Europe, Asia, and emerging markets with localized user experiences.
+                  Pujo Passport was built for our own city's festival, with stamps in English, Bengali and Hindi.
                 </p>
               </div>
             </div>
@@ -143,11 +143,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onScrollToContact, t
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
-                    <span><strong>Rapid Iteration:</strong> Continuous deployment cycles with immediate user telemetry feedback loops.</span>
+                    <span><strong>We Ship While People Play:</strong> Pujo Passport kept getting updates through its first week live, shaped by how people were using it.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
-                    <span><strong>Modern Technology Stack:</strong> Full-stack TypeScript, React, Next/Vite, Node.js microservices, and native mobile modules.</span>
+                    <span><strong>Modern Technology Stack:</strong> TypeScript, React and Next.js on the web, and Unity for games.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
