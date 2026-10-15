@@ -7,10 +7,15 @@ interface FooterProps {
   theme?: 'dark' | 'light';
 }
 
-const NAVIGATION_LINKS: ReadonlyArray<{ id: string; label: string; emphasised?: boolean }> = [
+// Most entries scroll to a section on this page. One with an href is a separate static
+// page, so it is a plain link, like the app and legal links below.
+const NAVIGATION_LINKS: ReadonlyArray<
+  { label: string; emphasised?: boolean } & ({ id: string } | { href: string })
+> = [
   { id: 'apps', label: 'Our Apps' },
   { id: 'about', label: 'About Our House' },
   { id: 'solutions', label: 'What We Do' },
+  { href: '/people/', label: 'People' },
   { id: 'contact', label: 'Contact Us', emphasised: true },
 ];
 
@@ -103,16 +108,22 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToSection, theme = 'dark
             </h4>
             <ul className="space-y-2 font-medium">
               {NAVIGATION_LINKS.map((link) => (
-                <li key={link.id}>
-                  <button
-                    type="button"
-                    onClick={() => onScrollToSection(link.id)}
-                    className={`text-left hover:text-yellow-400 transition-colors ${FOCUS_RING} ${
-                      link.emphasised ? 'text-yellow-400 font-bold' : ''
-                    }`}
-                  >
-                    {link.label}
-                  </button>
+                <li key={link.label}>
+                  {'href' in link ? (
+                    <a href={link.href} className={`hover:text-yellow-400 transition-colors ${FOCUS_RING}`}>
+                      {link.label}
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => onScrollToSection(link.id)}
+                      className={`text-left hover:text-yellow-400 transition-colors ${FOCUS_RING} ${
+                        link.emphasised ? 'text-yellow-400 font-bold' : ''
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>

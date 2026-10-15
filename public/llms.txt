@@ -54,6 +54,7 @@ Factual summary, accurate as of September 2026:
 - [Pujo Passport](https://www.seekolabs.tech/pujo-passport): the Durga Puja 2026 web app.
 - [Ludo Apex](https://www.seekolabs.tech/ludo-apex/): the product page, with a live 3D board.
 - [Ludo Apex privacy policy](https://www.seekolabs.tech/ludo-apex/privacy.html): the app collects nothing.
+- [People](https://www.seekolabs.tech/people/): the people involved in SeekoLabs.
 - [Privacy policy](https://www.seekolabs.tech/privacy.html): how the website itself handles data.
 - [Terms of service](https://www.seekolabs.tech/terms.html): website terms.
 

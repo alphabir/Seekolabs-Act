@@ -60,7 +60,12 @@ src/App.tsx         Page composition, theme state, in-page scrolling
 src/components/     Navbar, Hero, AboutSection, SolutionsSection, ContactForm, Footer
 src/index.css       Tailwind import, theme base colours, scroll margins
 public/             Favicons, social card, robots.txt, sitemap.xml, web manifest
+public/people/      The People page, plus one folder per person's own page
 ```
+
+`public/people/indrajit-tewari/` is a build of a separate project, `D:\CLAUDE\resume-site`,
+not source. Don't edit it by hand. Rebuild it there with `npm run build:seekolabs`, then
+replace this folder's contents with that project's `dist/`. Its README has the details.
 
 ## Theming
 
